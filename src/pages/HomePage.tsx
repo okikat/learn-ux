@@ -21,7 +21,7 @@ export default function HomePage() {
         </p>
         <p className={styles.freeBadge}>
           <span className={styles.freeMark}>FREE</span>
-          20の法則、ぜんぶ無料で公開中。
+          20の法則、無料で公開中。
         </p>
       </section>
 
