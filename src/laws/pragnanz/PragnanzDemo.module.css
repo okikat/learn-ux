@@ -6,13 +6,28 @@
   text-align: center;
 }
 
+/* 2つの文言を同じセルに重ね、常に高い方の高さに固定（切替で伸び縮みしない） */
+.qStack {
+  display: grid;
+  width: 100%;
+}
+
+.qStack > .q {
+  grid-area: 1 / 1;
+}
+
 .q {
   display: flex;
   align-items: center;
-  min-height: 2.4em;
+  justify-content: center;
   font-size: 15px;
   font-weight: 700;
   color: var(--text-muted);
+}
+
+/* 非表示でも場所は確保（レイアウトを動かさない） */
+.hidden {
+  visibility: hidden;
 }
 
 .stage {
@@ -40,6 +55,16 @@
 .toggle:hover {
   border-color: var(--card-accent, var(--accent));
   background: var(--accent-soft);
+}
+
+/* ボタンラベルも重ねて、最大ラベル幅でボタン幅を固定 */
+.btnStack {
+  display: grid;
+}
+
+.btnStack > span {
+  grid-area: 1 / 1;
+  text-align: center;
 }
 
 .note {

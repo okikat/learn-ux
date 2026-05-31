@@ -21,7 +21,6 @@ function pacPath(cx: number, cy: number, r: number, mouthDeg: number) {
   const y1 = (cy + r * Math.sin(a1)).toFixed(2)
   const x2 = (cx + r * Math.cos(a2)).toFixed(2)
   const y2 = (cy + r * Math.sin(a2)).toFixed(2)
-  // 中心→口の片側→大きい弧(300度)→口の反対側→閉じる
   return `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 1 1 ${x2} ${y2} Z`
 }
 
@@ -30,17 +29,22 @@ export default function PragnanzDemo() {
 
   return (
     <div className={styles.demo}>
-      <p className={styles.q}>
-        {aligned
-          ? '白い三角形が見えますか？ ——三角形の線は、1本も引かれていません。'
-          : '欠けの向きを回したら、三角形は消えました。'}
-      </p>
+      {/* 文言が切り替わっても高さが暴れないよう、両方を重ねて最大高さを確保する
+          （非表示側も visibility:hidden で場所を保持）。配色に依存しない表現にする。 */}
+      <div className={styles.qStack}>
+        <p className={`${styles.q} ${aligned ? '' : styles.hidden}`} aria-hidden={!aligned}>
+          図の中央に、三角形が見えますか？
+        </p>
+        <p className={`${styles.q} ${aligned ? styles.hidden : ''}`} aria-hidden={aligned}>
+          回すと消えます。線は元々ありません。
+        </p>
+      </div>
 
       <svg
         className={styles.stage}
         viewBox="0 0 100 100"
         role="img"
-        aria-label="欠けた円が3つ。口の向きがそろうと、引かれていない三角形が浮かんで見える。"
+        aria-label="欠けた円が3つ。口の向きがそろうと、引かれていない三角形が中央に浮かんで見える。"
       >
         {PACS.map((p, i) => {
           const toCentroid = (Math.atan2(CY - p.cy, CX - p.cx) * 180) / Math.PI
@@ -51,7 +55,11 @@ export default function PragnanzDemo() {
       </svg>
 
       <button type="button" className={styles.toggle} onClick={() => setAligned((a) => !a)}>
-        {aligned ? 'タネあかし：欠けの向きを回す' : '三角形を戻す'}
+        {/* ラベルの長短でボタン幅が変わらないよう、こちらも重ねて最大幅を確保 */}
+        <span className={styles.btnStack}>
+          <span className={aligned ? '' : styles.hidden}>欠けの向きを回す</span>
+          <span className={aligned ? styles.hidden : ''}>元に戻す</span>
+        </span>
       </button>
 
       <p className={styles.note}>
