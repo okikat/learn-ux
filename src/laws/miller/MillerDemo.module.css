@@ -87,7 +87,7 @@
   width: 100%;
   background: var(--accent);
   transform-origin: left;
-  animation: shrink 2.5s linear forwards;
+  animation: shrink 3.8s linear forwards;
 }
 
 @keyframes shrink {

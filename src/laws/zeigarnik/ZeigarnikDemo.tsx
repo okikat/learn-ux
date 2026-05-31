@@ -47,9 +47,17 @@ export default function ZeigarnikDemo() {
       </div>
 
       <p className={styles.note} aria-live="polite">
-        {doneExtra
-          ? '「あと1つ」の未完了が、あなたを完成までグイッと引っぱりました。これがツァイガルニク効果。'
-          : '80%まで来て「あと1つ」が残っていると、妙に気になって埋めたくなりませんか？ 未完了は記憶と注意に残ります。'}
+        {doneExtra ? (
+          <>
+            「あと1つ」の未完了が、あなたを完成まで
+            <br />
+            グイッと引っぱりました。
+            <br />
+            これがツァイガルニク効果。
+          </>
+        ) : (
+          '80%まで来て「あと1つ」が残っていると、妙に気になって埋めたくなりませんか？ 未完了は記憶と注意に残ります。'
+        )}
       </p>
       {doneExtra && (
         <button type="button" className={styles.reset} onClick={() => setDoneExtra(false)}>

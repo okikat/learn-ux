@@ -16,21 +16,26 @@
   color: var(--text);
 }
 
-.start {
+.start,
+.retry {
   min-height: var(--tap);
   padding: 0 var(--s6);
-  border: none;
   border-radius: var(--r-pill);
-  background: var(--card-accent, var(--accent));
-  color: #fff;
   font-weight: 700;
   font-size: 15px;
+}
+
+.start {
+  border: none;
+  background: var(--card-accent, var(--accent));
+  color: #fff;
   box-shadow: var(--shadow-md);
 }
 
-.hint {
-  font-weight: 700;
-  color: var(--text-muted);
+.retry {
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
 }
 
 .page {
@@ -39,86 +44,84 @@
   gap: var(--s3);
   width: 100%;
   max-width: 340px;
-  padding: var(--s3);
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--r2);
-}
-
-.block {
-  padding: var(--s3);
+  padding: var(--s4);
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--r1);
-  cursor: pointer;
+  border-radius: var(--r2);
+  box-shadow: var(--shadow-sm);
 }
 
-.h {
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: var(--s2);
-}
-
-.line,
-.lineShort {
-  height: 8px;
-  border-radius: 4px;
-  background: var(--surface-3);
-  margin-top: 6px;
-}
-
-.lineShort {
-  width: 55%;
-}
-
-/* 広告風バナー（あえて目立つが“広告っぽい”見た目） */
-.adBanner {
+.product {
   display: flex;
   align-items: center;
-  gap: var(--s2);
-  padding: var(--s3);
-  border: 1px dashed #d98b00;
-  border-radius: var(--r1);
-  background: repeating-linear-gradient(
-    45deg,
-    #fff7e6,
-    #fff7e6 10px,
-    #fff0cc 10px,
-    #fff0cc 20px
-  );
-  color: #7a5200;
-  font-weight: 700;
-  text-align: left;
+  gap: var(--s3);
 }
 
-.adTag {
-  font-size: 10px;
-  font-weight: 800;
-  background: #d98b00;
-  color: #fff;
-  padding: 2px 6px;
-  border-radius: 4px;
+.thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r1);
+  background: var(--surface-3);
   flex-shrink: 0;
 }
 
-.adText {
+.pInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.pName {
+  font-weight: 700;
+}
+
+.pPrice {
+  color: var(--text-muted);
   font-size: 14px;
 }
 
-.wrong {
+/* よく似たグレーの帯（この中に大事な情報が埋もれる） */
+.banners {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.banner {
+  width: 100%;
+  min-height: 40px;
+  padding: var(--s2) var(--s3);
+  text-align: left;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r1);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* 目立つ購入ボタン（つい押してしまう） */
+.buy {
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  border-radius: var(--r2);
+  background: linear-gradient(135deg, #ff8a3d, #e0533d);
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.hint {
   font-size: 13px;
   color: var(--bad);
   font-weight: 600;
   text-align: center;
 }
 
-.doneTime {
-  font-size: 16px;
-}
-
-.doneTime strong {
-  font-family: var(--mono);
-  color: var(--accent-strong);
+.verdict {
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
 }
 
 .reveal {
@@ -132,4 +135,50 @@
 
 .reveal strong {
   color: var(--text);
+}
+
+/* 改善版 */
+.fix {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s4);
+  background: var(--surface-2);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r2);
+}
+
+.fixLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--good);
+}
+
+.fixInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.fixNote {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--good-soft);
+  border-radius: var(--r1);
+  padding: var(--s2);
+}
+
+.buyStatic {
+  display: grid;
+  place-items: center;
+  min-height: 50px;
+  border-radius: var(--r2);
+  background: linear-gradient(135deg, #ff8a3d, #e0533d);
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
 }

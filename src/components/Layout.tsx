@@ -14,11 +14,11 @@ export default function Layout({ children }: { children: ReactNode }) {
         <div className={`container ${styles.headerInner}`}>
           <Link to="/" className={styles.brand} aria-label="ホーム（法則の一覧）へ戻る">
             <span className={styles.brandMark} aria-hidden="true">
-              ▶
+              UX
             </span>
             <span className={styles.brandText}>やるUX</span>
           </Link>
-          <span className={styles.tagline}>読むより、やる。</span>
+          <span className={styles.tagline}>さわって覚えるUX</span>
         </div>
       </header>
 

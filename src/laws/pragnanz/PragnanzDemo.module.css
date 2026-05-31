@@ -51,6 +51,66 @@
   background: var(--accent-soft);
 }
 
+/* 回答後の3図 */
+.figRow {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--s3);
+  flex-wrap: wrap;
+}
+
+.figItem {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.figCenter {
+  outline: 2px dashed var(--border-strong);
+  outline-offset: 6px;
+  border-radius: var(--r2);
+}
+
+.figCap {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 96px;
+}
+
+.fig {
+  position: relative;
+  width: 92px;
+  height: 92px;
+}
+
+.miniCircle {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+
+.simple {
+  background: transparent;
+  border: 2px solid var(--card-accent, var(--accent));
+}
+
+.origin {
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 35%, transparent);
+  border: 2px solid var(--card-accent, var(--accent));
+  mix-blend-mode: multiply;
+}
+
+.complex {
+  opacity: 0.62;
+  mix-blend-mode: multiply;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
 .reveal {
   display: flex;
   flex-direction: column;

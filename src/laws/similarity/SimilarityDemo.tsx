@@ -5,6 +5,7 @@ type Mode = 'none' | 'color' | 'shape'
 
 export default function SimilarityDemo() {
   const [mode, setMode] = useState<Mode>('none')
+  const [tricked, setTricked] = useState(false)
   const cells = Array.from({ length: 16 }, (_, i) => i)
 
   return (
@@ -42,6 +43,38 @@ export default function SimilarityDemo() {
         {mode === 'color' && '色が同じものが「縦の列」のまとまりとして浮かび上がる。'}
         {mode === 'shape' && '形が同じものが「横の行」のまとまりとして見える。'}
       </p>
+
+      <div className={styles.linkBox}>
+        <p className={styles.sentence}>
+          詳しくは{' '}
+          <span
+            className={styles.fakeLink}
+            role="link"
+            tabIndex={0}
+            onClick={() => setTricked(true)}
+            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setTricked(true)}
+          >
+            こちらのページ
+          </span>
+          {' '}をご覧ください。
+        </p>
+
+        {tricked && (
+          <div className={styles.toast} aria-live="polite">
+            <span className={styles.toastText}>
+              ほらね、押しちゃった😏 ——これ、ただの青い文字で<strong>リンクじゃありません</strong>。
+            </span>
+            <button type="button" className={styles.back} onClick={() => setTricked(false)}>
+              戻る
+            </button>
+          </div>
+        )}
+
+        <p className={styles.linkNote}>
+          「青字＋下線」はリンクと“見た目が似ている”だけ。それでも人は押せると思い込む——
+          見た目の類似は、機能の類似だと受け取られる。
+        </p>
+      </div>
     </div>
   )
 }

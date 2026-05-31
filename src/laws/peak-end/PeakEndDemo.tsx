@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { smoothProgress, jankyProgress } from '../../utils/peakEnd'
 import styles from './PeakEndDemo.module.css'
 
-const DURATION = 3500 // A・B 共通の総時間（ここが同じなのがポイント）
+const DURATION = 4000 // A・B 共通の総時間（ここが同じなのがポイント）
 type Bar = 'A' | 'B'
 
 export default function PeakEndDemo() {
@@ -48,7 +48,7 @@ export default function PeakEndDemo() {
   return (
     <div className={styles.demo}>
       <p className={styles.lead}>
-        AとBは<strong>所要時間がまったく同じ</strong>進捗バーです。両方を再生して、感じ方を比べてください。
+        AとBは<strong>ダウンロードにかかる合計時間がまったく同じ</strong>です。両方を再生して、どちらが快適か比べてください。
       </p>
 
       <ProgressRow
@@ -70,7 +70,7 @@ export default function PeakEndDemo() {
 
       {bothPlayed && vote === null && (
         <div className={styles.voteBox}>
-          <p className={styles.voteQ}>どちらが「快適」に感じましたか？</p>
+          <p className={styles.voteQ}>どちらのダウンロードが「快適」でしたか？</p>
           <div className={styles.voteBtns}>
             <button type="button" className={styles.voteBtn} onClick={() => setVote('A')}>
               Aが快適
@@ -88,9 +88,8 @@ export default function PeakEndDemo() {
             あなたの選択：<strong>{vote}</strong>
           </p>
           <p className={styles.revealText}>
-            実は <strong>A はなめらかに終わり、B は最後で停滞</strong>します（総時間は同じ）。
-            多くの人は終わり方が軽い A を快適と感じます。
-            <strong>同じ時間でも「終わり」の印象が体験全体の評価を左右する</strong>——これがピーク・エンドの法則です。
+            実は B は最後に<strong>「99%」で固まって</strong>なかなか終わりません（誰もが知る、あのイライラ）。
+            A はスッと完了します。<strong>合計時間は同じ</strong>でも、人は<strong>「終わり方」</strong>で体験全体を評価する——これがピーク・エンドの法則です。
           </p>
           <button
             type="button"
@@ -127,15 +126,16 @@ function ProgressRow({
   onPlay: () => void
 }) {
   const pct = Math.round(progress * 100)
+  const done = played && !playing
   return (
     <div className={styles.row}>
       <button type="button" className={styles.playBtn} onClick={onPlay} disabled={disabled}>
-        {played && !playing ? `${title}を再生 ↺` : `${title}を再生 ▶`}
+        {done ? `${title}を再生 ↺` : `${title}を再生 ▶`}
       </button>
       <div className={styles.track}>
         <span className={styles.fill} style={{ width: `${pct}%` }} />
       </div>
-      <span className={styles.pct}>{pct}%</span>
+      <span className={styles.pct}>{done ? '完了 ✓' : `${pct}%`}</span>
     </div>
   )
 }

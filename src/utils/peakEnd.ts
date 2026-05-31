@@ -11,11 +11,13 @@ export function smoothProgress(t: number): number {
 }
 
 /**
- * 序盤で一気に9割まで進むが、終盤で停滞して最後がもたつく（イヤな終わり方）。
- * 総時間は smooth と同じ。
+ * 序盤で一気に99%まで進むが、そこで長く“貼りつき”、最後だけ完了する。
+ * 誰もが知る「99%で固まるダウンロード」。総時間は smooth と同じ。
  */
 export function jankyProgress(t: number): number {
   const x = clamp01(t)
-  if (x < 0.85) return (x / 0.85) * 0.9
-  return 0.9 + ((x - 0.85) / 0.15) * 0.1
+  if (x < 0.45) return (x / 0.45) * 0.9 // 0→90%
+  if (x < 0.6) return 0.9 + ((x - 0.45) / 0.15) * 0.09 // 90→99%
+  if (x < 0.98) return 0.99 // 99%で貼りつく（イライラ）
+  return 0.99 + ((x - 0.98) / 0.02) * 0.01 // 最後に完了
 }

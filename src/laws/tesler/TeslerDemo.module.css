@@ -63,10 +63,21 @@
   gap: var(--s3);
 }
 
+.ymd {
+  display: flex;
+  gap: var(--s2);
+  align-items: flex-end;
+}
+
 .field {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  flex: 1;
+}
+
+.narrow {
+  flex: 0 0 48px;
 }
 
 .fieldLabel {

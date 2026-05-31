@@ -4,6 +4,16 @@
   gap: var(--s4);
 }
 
+.task {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.task strong {
+  color: var(--text);
+}
+
 .label {
   font-size: 14px;
   color: var(--text-muted);
@@ -22,35 +32,26 @@
   cursor: pointer;
 }
 
-.bars {
+.bar {
   display: flex;
-  flex-direction: column;
-  gap: var(--s3);
-}
-
-.barRow {
-  display: grid;
-  grid-template-columns: 72px 1fr auto;
-  align-items: center;
-  gap: var(--s3);
-}
-
-.barLabel {
-  font-size: 13px;
-  color: var(--text-muted);
-}
-
-.track {
-  height: 18px;
-  background: var(--surface-3);
-  border-radius: var(--r-pill);
+  height: 52px;
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
   overflow: hidden;
 }
 
-.fill {
-  display: block;
+.need,
+.expand {
+  display: grid;
+  place-items: center;
   height: 100%;
-  border-radius: var(--r-pill);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-inline: 4px;
   transition: width var(--t-base) var(--ease);
 }
 
@@ -58,16 +59,14 @@
   background: var(--good);
 }
 
-.use {
-  background: var(--card-accent, var(--accent));
-}
-
-.val {
-  font-family: var(--mono);
-  font-weight: 700;
-  font-size: 14px;
-  min-width: 40px;
-  text-align: right;
+.expand {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--card-accent, var(--accent)),
+    var(--card-accent, var(--accent)) 10px,
+    color-mix(in srgb, var(--card-accent, var(--accent)) 78%, #000) 10px,
+    color-mix(in srgb, var(--card-accent, var(--accent)) 78%, #000) 20px
+  );
 }
 
 .note {

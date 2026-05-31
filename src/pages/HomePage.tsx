@@ -6,16 +6,14 @@ export default function HomePage() {
   return (
     <div className="container">
       <section className={styles.hero}>
-        <p className={styles.kicker}>INTERACTIVE · 20 LAWS OF UX</p>
+        <p className={styles.kicker}>INTERACTIVE · LAWS OF UX</p>
         <h1 className={styles.title}>
-          UXの法則を、読むのではなく
-          <br />
-          <em>触って</em>体感する。
+          <em>さわって</em>覚えるUX
         </h1>
         <p className={styles.lead}>
           各法則に、小さな実験を1つずつ。ボタンを押し、数字を覚え、入力し——
-          あなた自身の操作で「なるほど」が一瞬で腑に落ちます。
-          このアプリ自身も、ここで学ぶ法則に従って作っています。
+          <br />
+          あなた自身の操作で「UXの法則」が一瞬で身につきます。
         </p>
         <p className={styles.freeBadge}>
           <span className={styles.freeMark}>FREE</span>

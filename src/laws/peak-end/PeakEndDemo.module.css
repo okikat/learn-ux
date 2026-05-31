@@ -63,8 +63,9 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--text-muted);
-  min-width: 40px;
+  min-width: 56px;
   text-align: right;
+  white-space: nowrap;
 }
 
 .voteBox {

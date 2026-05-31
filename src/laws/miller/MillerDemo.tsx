@@ -3,7 +3,7 @@ import { chunk, digitsEqual, randomDigits } from '../../utils/miller'
 import styles from './MillerDemo.module.css'
 
 const DIGIT_COUNT = 10
-const SHOW_MS = 2500
+const SHOW_MS = 3800
 
 type Phase = 'ready' | 'show' | 'input'
 interface RoundResult {

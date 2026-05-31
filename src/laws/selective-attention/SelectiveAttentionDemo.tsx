@@ -1,22 +1,27 @@
-import { useRef, useState } from 'react'
-import { formatMs } from '../../utils/stats'
+import { useState } from 'react'
 import styles from './SelectiveAttentionDemo.module.css'
 
 type Phase = 'intro' | 'play' | 'done'
+type Reason = 'purchase' | 'found'
+
+const BANNERS = [
+  'ポイント2倍キャンペーン中',
+  '3,000円以上のご購入で送料無料',
+  'あすつく対応エリアが拡大しました',
+]
+const TARGET = 1
 
 export default function SelectiveAttentionDemo() {
   const [phase, setPhase] = useState<Phase>('intro')
-  const [ms, setMs] = useState(0)
+  const [reason, setReason] = useState<Reason>('purchase')
   const [wrong, setWrong] = useState(false)
-  const startRef = useRef(0)
 
   const begin = () => {
     setWrong(false)
-    startRef.current = performance.now()
     setPhase('play')
   }
-  const hit = () => {
-    setMs(performance.now() - startRef.current)
+  const toDone = (r: Reason) => {
+    setReason(r)
     setPhase('done')
   }
 
@@ -24,7 +29,7 @@ export default function SelectiveAttentionDemo() {
     return (
       <div className={styles.demo}>
         <p className={styles.task}>
-          お題：<strong>「送料が無料になる条件」</strong>が書いてある所を、できるだけ速く見つけてタップ！
+          あなたは買い物中。<strong>「送料が無料になる条件」</strong>を確認してから、操作してみてください。
         </p>
         <button type="button" className={styles.start} onClick={begin}>
           スタート
@@ -36,43 +41,58 @@ export default function SelectiveAttentionDemo() {
   if (phase === 'play') {
     return (
       <div className={styles.demo}>
-        <p className={styles.hint}>「送料無料の条件」はどこ？</p>
         <div className={styles.page}>
-          <div className={styles.block} onClick={() => setWrong(true)}>
-            <div className={styles.h}>商品の説明</div>
-            <div className={styles.line} />
-            <div className={styles.line} />
-            <div className={styles.lineShort} />
+          <div className={styles.product}>
+            <span className={styles.thumb} aria-hidden="true" />
+            <span className={styles.pInfo}>
+              <span className={styles.pName}>ワイヤレスイヤホン</span>
+              <span className={styles.pPrice}>¥2,480</span>
+            </span>
           </div>
 
-          {/* 広告風バナー：ここに答えがあるが、見落としやすい */}
-          <button type="button" className={styles.adBanner} onClick={hit}>
-            <span className={styles.adTag}>PR</span>
-            <span className={styles.adText}>3,000円以上のご購入で 送料無料！</span>
+          <div className={styles.banners}>
+            {BANNERS.map((b, i) => (
+              <button
+                key={i}
+                type="button"
+                className={styles.banner}
+                onClick={() => (i === TARGET ? toDone('found') : setWrong(true))}
+              >
+                {b}
+              </button>
+            ))}
+          </div>
+
+          <button type="button" className={styles.buy} onClick={() => toDone('purchase')}>
+            購入する
           </button>
-
-          <div className={styles.block} onClick={() => setWrong(true)}>
-            <div className={styles.h}>カスタマーレビュー</div>
-            <div className={styles.line} />
-            <div className={styles.lineShort} />
-          </div>
         </div>
-        {wrong && <p className={styles.wrong}>そこには書いてありません。広告っぽい所も見てみて。</p>}
+        {wrong && <p className={styles.hint}>それは別のお知らせ。「送料無料」の条件を探して。</p>}
       </div>
     )
   }
 
   return (
     <div className={styles.demo}>
-      <p className={styles.doneTime}>
-        見つけるまで <strong>{formatMs(ms)}</strong>
+      <p className={styles.verdict} aria-live="polite">
+        {reason === 'purchase'
+          ? '「送料無料」の帯を飛ばして“購入”を押しましたね。'
+          : 'よく気づけました。でも、目立つ「購入」に目が行きませんでしたか？'}
       </p>
-      <p className={styles.reveal} aria-live="polite">
-        答えは「広告っぽいバナー」の中にありました。人は<strong>広告に見える場所を無意識に読み飛ばします</strong>
-        （バナー・ブラインドネス＝選択的注意）。だから本当に伝えたい情報は、
-        広告と区別がつく“素直なコンテンツ”として置くのが鉄則です。
+      <p className={styles.reveal}>
+        人は<strong>目立つもの（購入ボタン）に注意が向き、似た見た目のグレーの帯は読み飛ばします</strong>
+        （選択的注意・バナーブラインドネス）。大事な情報を“ありがちな帯”にすると、置いてあっても気づかれません。
       </p>
-      <button type="button" className={styles.start} onClick={begin}>
+
+      <div className={styles.fix}>
+        <span className={styles.fixLabel}>改善：大事な情報は、目立つ操作のすぐ隣に</span>
+        <div className={styles.fixInner}>
+          <span className={styles.fixNote}>3,000円以上のご購入で送料無料！</span>
+          <span className={styles.buyStatic}>購入する</span>
+        </div>
+      </div>
+
+      <button type="button" className={styles.retry} onClick={begin}>
         もう一度
       </button>
     </div>

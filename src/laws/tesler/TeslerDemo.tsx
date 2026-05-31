@@ -1,19 +1,25 @@
 import { useMemo, useState } from 'react'
-import { lookupAddress, SAMPLE_ZIPS } from '../../utils/tesler'
+import { calculateAge } from '../../utils/age'
 import styles from './TeslerDemo.module.css'
 
 export default function TeslerDemo() {
-  // A: 全部自分で入力
-  const [aZip, setAZip] = useState('')
-  const [aPref, setAPref] = useState('')
-  const [aCity, setACity] = useState('')
+  // A: 全部自分で入力（年齢も自分で計算）
+  const [aY, setAY] = useState('')
+  const [aM, setAM] = useState('')
+  const [aD, setAD] = useState('')
+  const [aAge, setAAge] = useState('')
+  // B: アプリが肩代わり（生年月日だけ）
+  const [bDate, setBDate] = useState('')
 
-  // B: アプリが肩代わり（郵便番号だけ）
-  const [bZip, setBZip] = useState('')
-  const bAddr = useMemo(() => lookupAddress(bZip), [bZip])
+  const bAge = useMemo(() => {
+    if (!bDate) return null
+    const d = new Date(bDate)
+    if (Number.isNaN(d.getTime())) return null
+    return calculateAge(d, new Date())
+  }, [bDate])
 
-  const aFilled = [aZip, aPref, aCity].filter((v) => v.trim() !== '').length
-  const bFilled = bZip.trim() !== '' ? 1 : 0
+  const aFilled = [aY, aM, aD, aAge].filter((v) => v.trim() !== '').length
+  const bFilled = bDate.trim() !== '' ? 1 : 0
 
   return (
     <div className={styles.demo}>
@@ -25,12 +31,15 @@ export default function TeslerDemo() {
             <h3 className={styles.cardTitle}>全部、自分で書く</h3>
           </header>
           <div className={styles.fields}>
-            <Field label="郵便番号" value={aZip} onChange={setAZip} placeholder="1000001" inputMode="numeric" />
-            <Field label="都道府県" value={aPref} onChange={setAPref} placeholder="東京都" />
-            <Field label="市区町村" value={aCity} onChange={setACity} placeholder="千代田区千代田" />
+            <div className={styles.ymd}>
+              <Field label="生年" value={aY} onChange={setAY} ph="2000" />
+              <Field label="月" value={aM} onChange={setAM} ph="6" narrow />
+              <Field label="日" value={aD} onChange={setAD} ph="15" narrow />
+            </div>
+            <Field label="年齢（自分で計算して入力）" value={aAge} onChange={setAAge} ph="例: 25" />
           </div>
           <p className={styles.effort}>
-            あなたが入力する項目：<strong>{aFilled} / 3</strong>
+            入力する項目：<strong>{aFilled} / 4</strong>
           </p>
         </section>
 
@@ -41,35 +50,30 @@ export default function TeslerDemo() {
             <h3 className={styles.cardTitle}>アプリが肩代わり</h3>
           </header>
           <div className={styles.fields}>
-            <Field
-              label="郵便番号"
-              value={bZip}
-              onChange={setBZip}
-              placeholder="1000001"
-              inputMode="numeric"
-            />
+            <label className={styles.field}>
+              <span className={styles.fieldLabel}>生年月日</span>
+              <input
+                className={styles.input}
+                type="date"
+                value={bDate}
+                onChange={(e) => setBDate(e.target.value)}
+              />
+            </label>
             <div className={styles.auto}>
-              <span className={styles.autoLabel}>都道府県・市区町村</span>
+              <span className={styles.autoLabel}>年齢</span>
               <span className={styles.autoValue}>
-                {bAddr ? `${bAddr.prefecture} ${bAddr.city}` : '郵便番号から自動入力されます'}
+                {bAge !== null ? `${bAge}歳` : '生年月日から自動で計算されます'}
               </span>
             </div>
           </div>
-          <div className={styles.zipChips}>
-            {SAMPLE_ZIPS.slice(0, 3).map((z) => (
-              <button key={z} type="button" className={styles.zipChip} onClick={() => setBZip(z)}>
-                {z}
-              </button>
-            ))}
-          </div>
           <p className={styles.effort}>
-            あなたが入力する項目：<strong>{bFilled} / 1</strong>
+            入力する項目：<strong>{bFilled} / 1</strong>
           </p>
         </section>
       </div>
 
       <p className={styles.note}>
-        住所を完成させる複雑さは消えていません。Bでは、その手間をアプリ（住所データ）が肩代わりしているだけ。
+        「年齢を出す」という複雑さは消えていません。Bでは、その計算をアプリが肩代わりしているだけ。
         誰かが必ず引き受ける——それがテスラーの法則です。
       </p>
     </div>
@@ -80,24 +84,24 @@ function Field({
   label,
   value,
   onChange,
-  placeholder,
-  inputMode,
+  ph,
+  narrow,
 }: {
   label: string
   value: string
   onChange: (v: string) => void
-  placeholder?: string
-  inputMode?: 'numeric' | 'text'
+  ph?: string
+  narrow?: boolean
 }) {
   return (
-    <label className={styles.field}>
+    <label className={`${styles.field} ${narrow ? styles.narrow : ''}`}>
       <span className={styles.fieldLabel}>{label}</span>
       <input
         className={styles.input}
         type="text"
-        inputMode={inputMode}
+        inputMode="numeric"
         value={value}
-        placeholder={placeholder}
+        placeholder={ph}
         onChange={(e) => onChange(e.target.value)}
         autoComplete="off"
       />

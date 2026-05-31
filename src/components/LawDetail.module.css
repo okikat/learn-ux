@@ -144,6 +144,23 @@
   align-items: stretch;
 }
 
+/* 末尾の法則では中央TOPを省き、[前の法則][TOPへ戻る]の2カラムに */
+.pagerLast {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* 先頭の法則の「前の法則」（無効・グレー） */
+.pagerDisabled {
+  opacity: 0.5;
+  border-style: dashed;
+  cursor: default;
+  pointer-events: none;
+}
+
+.pagerDisabled .pagerName {
+  color: var(--text-faint);
+}
+
 .pagerLink {
   display: flex;
   flex-direction: column;
