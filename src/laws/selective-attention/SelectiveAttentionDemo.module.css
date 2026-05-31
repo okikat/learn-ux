@@ -1,0 +1,184 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.task {
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.task strong {
+  color: var(--text);
+}
+
+.start,
+.retry {
+  min-height: var(--tap);
+  padding: 0 var(--s6);
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.start {
+  border: none;
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+
+.retry {
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  width: 100%;
+  max-width: 340px;
+  padding: var(--s4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  box-shadow: var(--shadow-sm);
+}
+
+.product {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r1);
+  background: var(--surface-3);
+  flex-shrink: 0;
+}
+
+.pInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.pName {
+  font-weight: 700;
+}
+
+.pPrice {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* よく似たグレーの帯（この中に大事な情報が埋もれる） */
+.banners {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.banner {
+  width: 100%;
+  min-height: 40px;
+  padding: var(--s2) var(--s3);
+  text-align: left;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r1);
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* 目立つ購入ボタン（つい押してしまう） */
+.buy {
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  border-radius: var(--r2);
+  background: linear-gradient(135deg, #ff8a3d, #e0533d);
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  box-shadow: var(--shadow-md);
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--bad);
+  font-weight: 600;
+  text-align: center;
+}
+
+.verdict {
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.reveal {
+  padding: var(--s4) var(--s5);
+  background: var(--good-soft);
+  border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+  border-radius: var(--r2);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.reveal strong {
+  color: var(--text);
+}
+
+/* 改善版 */
+.fix {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s4);
+  background: var(--surface-2);
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r2);
+}
+
+.fixLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--good);
+}
+
+.fixInner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.fixNote {
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+  background: var(--good-soft);
+  border-radius: var(--r1);
+  padding: var(--s2);
+}
+
+.buyStatic {
+  display: grid;
+  place-items: center;
+  min-height: 50px;
+  border-radius: var(--r2);
+  background: linear-gradient(135deg, #ff8a3d, #e0533d);
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+}

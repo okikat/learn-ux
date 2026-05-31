@@ -1,0 +1,221 @@
+.article {
+  max-width: 800px;
+}
+
+.head {
+  margin-bottom: var(--s4);
+}
+
+.no {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--card-accent, var(--accent));
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 12%, transparent);
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  margin-bottom: var(--s3);
+}
+
+.title {
+  font-size: clamp(26px, 5.5vw, 38px);
+  line-height: 1.25;
+}
+
+.titleEn {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-faint);
+  margin-top: var(--s1);
+}
+
+/* ①一言定義: 大きめのリード文として強調 */
+.tagline {
+  margin-top: var(--s5);
+  padding: var(--s4) var(--s5);
+  border-left: 4px solid var(--card-accent, var(--accent));
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 7%, var(--surface));
+  border-radius: 0 var(--r2) var(--r2) 0;
+  font-size: clamp(17px, 3vw, 21px);
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.section {
+  margin-top: var(--s7);
+}
+
+.para {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.para + .para {
+  margin-top: var(--s4);
+}
+
+.h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 20px;
+  margin-bottom: var(--s4);
+}
+
+.h2icon {
+  color: var(--card-accent, var(--accent));
+  font-size: 14px;
+}
+
+.demoFrame {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r3);
+  box-shadow: var(--shadow-sm);
+  padding: clamp(var(--s4), 4vw, var(--s6));
+}
+
+/* デモ直後の「気づき」ボックス */
+.takeaway {
+  margin-top: var(--s4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  padding: var(--s4) var(--s5);
+  background: var(--good-soft);
+  border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+  border-radius: var(--r2);
+}
+
+.takeawayLabel {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--good);
+}
+
+.takeawayText {
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.tips {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.tip {
+  display: flex;
+  gap: var(--s3);
+  align-items: flex-start;
+  padding: var(--s4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.tipMark {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+/* 前後ナビ */
+.pager {
+  margin-top: var(--s8);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--s3);
+  align-items: stretch;
+}
+
+/* 末尾の法則では中央TOPを省き、[前の法則][TOPへ戻る]の2カラムに */
+.pagerLast {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* 先頭の法則の「前の法則」（無効・グレー） */
+.pagerDisabled {
+  opacity: 0.5;
+  border-style: dashed;
+  cursor: default;
+  pointer-events: none;
+}
+
+.pagerDisabled .pagerName {
+  color: var(--text-faint);
+}
+
+.pagerLink {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--s3) var(--s4);
+  min-height: var(--tap);
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  color: var(--text);
+  transition: border-color var(--t-base) var(--ease), background var(--t-base) var(--ease);
+}
+
+.pagerLink:hover {
+  text-decoration: none;
+  border-color: var(--card-accent, var(--accent));
+  background: var(--surface-2);
+}
+
+.pagerNext {
+  text-align: right;
+}
+
+.pagerDir {
+  font-size: 12px;
+  color: var(--text-faint);
+}
+
+.pagerName {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.pagerHome {
+  display: grid;
+  place-items: center;
+  min-width: var(--tap);
+  min-height: var(--tap);
+  padding-inline: var(--s3);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.pagerHome:hover {
+  text-decoration: none;
+  border-color: var(--card-accent, var(--accent));
+}
+
+@media (max-width: 480px) {
+  .pagerName {
+    font-size: 13px;
+  }
+}

@@ -1,0 +1,125 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.switch {
+  display: inline-flex;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab {
+  min-height: 40px;
+  padding: 0 var(--s4);
+  border: none;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.active {
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s4);
+  padding: var(--s5);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  width: 100%;
+  max-width: 300px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--surface-3);
+  border: 1px solid var(--border-strong);
+  transition: all var(--t-base) var(--ease);
+}
+
+.colored {
+  background: var(--card-accent, var(--accent));
+  border-color: var(--card-accent, var(--accent));
+}
+
+.square {
+  border-radius: 4px;
+}
+
+.caption {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* リンクっぽい青字のワナ */
+.linkBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  padding: var(--s4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+}
+
+.sentence {
+  font-size: 15px;
+  color: var(--text);
+}
+
+.fakeLink {
+  color: #1c64f2;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.toast {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s3) var(--s4);
+  background: var(--warn-soft);
+  border: 1px solid color-mix(in srgb, var(--warn) 35%, transparent);
+  border-radius: var(--r2);
+}
+
+.toastText {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.back {
+  align-self: flex-start;
+  min-height: 36px;
+  padding: 0 var(--s4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.linkNote {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}

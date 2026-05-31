@@ -1,0 +1,136 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.switch {
+  display: inline-flex;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab {
+  min-height: 40px;
+  padding: 0 var(--s4);
+  border: none;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.active {
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+}
+
+.plans {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  width: 100%;
+  max-width: 360px;
+}
+
+.plan {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  padding: var(--s3) var(--s4);
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--r2);
+  transition: border-color var(--t-base) var(--ease);
+}
+
+.best {
+  border-color: var(--card-accent, var(--accent));
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 6%, var(--surface));
+}
+
+.isDecoy {
+  opacity: 0.6;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s2);
+}
+
+.pName {
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.pPrice {
+  font-family: var(--mono);
+  font-weight: 800;
+}
+
+.pDetail {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.tag,
+.tagBest {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: var(--r-pill);
+}
+
+.tag {
+  background: var(--surface-3);
+  color: var(--text-muted);
+}
+
+.tagBest {
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+}
+
+.shareWrap {
+  margin-top: var(--s1);
+  height: 8px;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.shareBar {
+  display: block;
+  height: 100%;
+  background: var(--card-accent, var(--accent));
+  border-radius: var(--r-pill);
+  transition: width var(--t-base) var(--ease);
+}
+
+.shareVal {
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.caption {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.note {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  text-align: center;
+}

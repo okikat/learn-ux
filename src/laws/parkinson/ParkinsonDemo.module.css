@@ -1,0 +1,80 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.task {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.task strong {
+  color: var(--text);
+}
+
+.label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.label strong {
+  font-family: var(--mono);
+  color: var(--card-accent, var(--accent));
+  font-size: 16px;
+}
+
+.slider {
+  width: 100%;
+  height: var(--tap);
+  accent-color: var(--card-accent, var(--accent));
+  cursor: pointer;
+}
+
+.bar {
+  display: flex;
+  height: 52px;
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  overflow: hidden;
+}
+
+.need,
+.expand {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-inline: 4px;
+  transition: width var(--t-base) var(--ease);
+}
+
+.need {
+  background: var(--good);
+}
+
+.expand {
+  background: repeating-linear-gradient(
+    45deg,
+    var(--card-accent, var(--accent)),
+    var(--card-accent, var(--accent)) 10px,
+    color-mix(in srgb, var(--card-accent, var(--accent)) 78%, #000) 10px,
+    color-mix(in srgb, var(--card-accent, var(--accent)) 78%, #000) 20px
+  );
+}
+
+.note {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.note strong {
+  color: var(--text);
+}

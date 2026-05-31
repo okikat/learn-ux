@@ -1,0 +1,91 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.headerInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s4);
+  min-height: 56px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s3);
+  /* タップ標的を十分大きく（フィッツ） */
+  min-height: var(--tap);
+  padding: var(--s1) var(--s2);
+  margin-left: calc(var(--s2) * -1);
+  border-radius: var(--r2);
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.brand:hover {
+  text-decoration: none;
+  background: var(--surface-2);
+}
+
+.brandMark {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--accent), #8a5cf6);
+  color: var(--accent-ink);
+  font-size: 13px;
+  font-weight: 800;
+  box-shadow: var(--shadow-sm);
+}
+
+.brandText {
+  font-size: 18px;
+}
+
+.tagline {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+/* スマホでは副題を隠して主役（ロゴ）に集中 */
+@media (max-width: 540px) {
+  .tagline {
+    display: none;
+  }
+}
+
+.main {
+  flex: 1 0 auto;
+  width: 100%;
+  padding-block: var(--s6) var(--s8);
+}
+
+.footer {
+  flex-shrink: 0;
+  border-top: 1px solid var(--border);
+  background: var(--surface);
+  padding-block: var(--s5);
+}
+
+.footerNote {
+  color: var(--text-faint);
+  font-size: 13px;
+  line-height: 1.7;
+}

@@ -1,0 +1,92 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.switch {
+  display: inline-flex;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab {
+  min-height: 40px;
+  padding: 0 var(--s4);
+  border: none;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.active {
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 120px;
+  padding: var(--s5);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  width: 100%;
+}
+
+/* ドットと枠を“同じ1セル”に重ねる。トラックが同一なので列が完全に一致＝ドットは動かない。 */
+.grid {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(6, 22px);
+  gap: 16px;
+  align-items: center;
+}
+
+.dots {
+  z-index: 1;
+}
+
+.regions {
+  z-index: 0;
+}
+
+.dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.region {
+  grid-row: 1;
+  align-self: center;
+  height: 52px;
+  border-radius: var(--r2);
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 12%, transparent);
+  border: 2px solid var(--card-accent, var(--accent));
+  margin-inline: -8px;
+}
+
+.regionA {
+  grid-column: 1 / 4;
+}
+
+.regionB {
+  grid-column: 4 / 7;
+}
+
+.caption {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}

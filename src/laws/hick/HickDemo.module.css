@@ -1,0 +1,178 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.counter {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s4);
+  padding: var(--s6) var(--s4);
+  text-align: center;
+}
+
+.introLead {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.targetWord {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.start {
+  min-height: var(--tap);
+  padding: 0 var(--s6);
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: var(--shadow-md);
+}
+
+.playPrompt {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-muted);
+}
+
+.playPrompt strong {
+  color: var(--accent-strong);
+  font-size: 18px;
+}
+
+.grid {
+  display: grid;
+  gap: var(--s2);
+}
+
+.gridWide {
+  grid-template-columns: 1fr;
+  max-width: 320px;
+  margin-inline: auto;
+  gap: var(--s3);
+}
+
+.gridDense {
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+}
+
+.option {
+  min-height: 44px;
+  padding: var(--s2);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r1);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+
+.gridWide .option {
+  min-height: 52px;
+  font-size: 16px;
+}
+
+.option:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.option:active {
+  background: var(--accent-soft-2);
+}
+
+.wrong {
+  text-align: center;
+  color: var(--bad);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* 結果 */
+.resultTitle {
+  font-size: 18px;
+}
+
+.resultRows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.resultRow {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.rLabel {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.rBarWrap {
+  height: 16px;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.rBar {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  transition: width var(--t-base) var(--ease);
+}
+
+.rBarBig {
+  background: var(--bad);
+}
+
+.rTime {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.resultNote {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.retry {
+  align-self: center;
+  min-height: var(--tap);
+  padding: 0 var(--s6);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.retry:hover {
+  background: var(--surface-2);
+}
