@@ -12,6 +12,11 @@ React 19 + TypeScript + Vite / CSS Modules / react-router-dom(HashRouter) / 状�
 - 第三者視点の**UX監修レポート**＝ `docs/ux-review-free20.md`（指摘＋対応ログ）。指摘はすべて反映済み。
 - `npm run build` 成功（127モジュール）/ `npm test` 50件すべて緑 / 375pxで全デモ動作・コンソールエラー0 を実機（ヘッドレスChromium）で確認済み。**2026-05-31 にクリーン環境で再ビルド（127モジュール）・再テスト（50件緑）も確認。**
 - **公開中**：**https://okikat.github.io/learn-ux/** （スマホでタップして閲覧可能・本日疎通確認）。PR #1 は `main` にマージ済み。
+- **2026-05-31 追加UI**（作業ブランチ `claude/busy-meitner-1Tgkh`・`gh-pages`へ再デプロイ済み／ライブ反映を実機HTTPで確認）:
+  - テーマ文言を「さわって**学ぶ**UX」へ変更（ヘッダー/トップ/title/OGP/README）。
+  - ヘッダー右に**☰グローバルメニュー**（`NavMenu`）。TOP＋無料5カテゴリ＋認知バイアス(PRO)。カテゴリ選択で小項目を**左へフライアウト**、展開中はヘッダー/メニュー以外を半透明グレーで覆う（タップ/Escで閉じる）。backdrop-filter対策に `createPortal` で body 直下へ描画。
+  - 下部ナビを**前/次の2つ**＋**note風2段**に（中央TOP廃止、先頭/末尾はグレー無効化）。
+  - ビルド**129モジュール**・テスト**59件**緑（うちコンポーネントテスト9件を新規追加：`src/components/Navigation.test.tsx`）。
 
 ## ブランチ／リモートの状態
 - `claude/focused-bohr-BRsKo` … 本体（全コミット）。PR #1 で `main` にマージ済み。
