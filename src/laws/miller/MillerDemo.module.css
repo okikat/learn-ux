@@ -46,6 +46,22 @@
   opacity: 0.5;
 }
 
+.slowToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 13px;
+  color: var(--text-muted);
+  cursor: pointer;
+  min-height: 36px;
+}
+
+.slowToggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
 .flash {
   display: flex;
   flex-wrap: wrap;

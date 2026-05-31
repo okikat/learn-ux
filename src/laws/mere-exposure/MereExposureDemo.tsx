@@ -33,6 +33,9 @@ export default function MereExposureDemo() {
   }, [])
 
   const start = useCallback(() => {
+    // モーション過敏設定では点滅をゆっくりにする
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const flashMs = reduce ? 700 : FLASH_MS
     const t = Math.floor(Math.random() * SYMBOLS.length)
     setTarget(t)
     setPicked(null)
@@ -48,7 +51,7 @@ export default function MereExposureDemo() {
       }
       setCurrent(seqRef.current[idxRef.current])
       idxRef.current += 1
-      timerRef.current = window.setTimeout(step, FLASH_MS)
+      timerRef.current = window.setTimeout(step, flashMs)
     }
     step()
   }, [])

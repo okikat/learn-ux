@@ -20,7 +20,7 @@ export default function AestheticDemo() {
   return (
     <div className={styles.demo}>
       <p className={styles.lead}>
-        2つの天気カードは<strong>表示している情報も機能もまったく同じ</strong>です。
+        2つの天気カードは<strong>扱う数値も機能も同じ</strong>。違うのは見せ方だけです。
         どちらが「使いやすそう・信頼できる」と感じますか？
       </p>
 
@@ -92,7 +92,7 @@ export default function AestheticDemo() {
             className={styles.again}
             onClick={() => setVote(null)}
           >
-            もう一度投票する
+            もう一度ためす
           </button>
         </div>
       )}

@@ -4,6 +4,7 @@ import styles from './MillerDemo.module.css'
 
 const DIGIT_COUNT = 10
 const SHOW_MS = 3800
+const SHOW_MS_SLOW = 6000
 
 type Phase = 'ready' | 'show' | 'input'
 interface RoundResult {
@@ -20,9 +21,11 @@ export default function MillerDemo() {
   const [digits, setDigits] = useState('')
   const [answer, setAnswer] = useState('')
   const [results, setResults] = useState<RoundResult[]>([])
+  const [slow, setSlow] = useState(false)
   const timerRef = useRef<number | null>(null)
 
   const chunked = roundIndex === 1
+  const showMs = slow ? SHOW_MS_SLOW : SHOW_MS
 
   useEffect(() => {
     return () => {
@@ -38,8 +41,8 @@ export default function MillerDemo() {
     timerRef.current = window.setTimeout(() => {
       setPhase('input')
       timerRef.current = null
-    }, SHOW_MS)
-  }, [])
+    }, slow ? SHOW_MS_SLOW : SHOW_MS)
+  }, [slow])
 
   const submit = useCallback(() => {
     const correct = digitsEqual(answer, digits)
@@ -102,6 +105,10 @@ export default function MillerDemo() {
           <p className={styles.lead}>
             {DIGIT_COUNT}桁の数字が一瞬だけ出ます。覚えて入力してください。
           </p>
+          <label className={styles.slowToggle}>
+            <input type="checkbox" checked={slow} onChange={(e) => setSlow(e.target.checked)} />
+            <span>ゆっくり表示する</span>
+          </label>
           <button type="button" className={styles.start} onClick={start}>
             数字を見る
           </button>
@@ -124,7 +131,7 @@ export default function MillerDemo() {
                 ))}
           </div>
           <div className={styles.countdown}>
-            <span className={styles.countdownBar} />
+            <span className={styles.countdownBar} style={{ animationDuration: `${showMs}ms` }} />
           </div>
           <p className={styles.lead}>覚えて！</p>
         </div>

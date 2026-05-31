@@ -55,7 +55,7 @@ export default function SunkCostDemo() {
             続けるかは“これから楽しいか”だけで決めるのが正解で、過去の投資は判断材料にしないのがコツ。
           </p>
           <button type="button" className={styles.again} onClick={() => setChoice(null)}>
-            選び直す
+            もう一度ためす
           </button>
         </div>
       )}

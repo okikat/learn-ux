@@ -193,6 +193,10 @@ export default function FittsDemo() {
             </div>
           </div>
 
+          <p className={styles.caveat}>
+            ※小さい標的(40px)は“難しさ”を見せる演出です。実際のUIではボタンを44px以上に。1回の計測なので個人差・偶然で前後します。
+          </p>
+
           <button type="button" onClick={reset} className={styles.retry}>
             もう一度ためす
           </button>

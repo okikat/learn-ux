@@ -4,6 +4,14 @@ import styles from './PragnanzDemo.module.css'
 type Variant = 'simple' | 'origin' | 'complex'
 
 const COMPLEX_COLORS = ['#e8590c', '#1c7ed6', '#2f9e44']
+// 「複雑な断片」を可視化する番号付き領域（理屈では分割できる、の意）
+const FRAGMENTS = [
+  { left: '8%', top: '26%' },
+  { left: '64%', top: '26%' },
+  { left: '38%', top: '10%' },
+  { left: '38%', top: '40%' },
+  { left: '38%', top: '66%' },
+]
 
 function MiniFig({ variant }: { variant: Variant }) {
   const base = [
@@ -26,6 +34,12 @@ function MiniFig({ variant }: { variant: Variant }) {
           style={variant === 'complex' ? { ...pt, background: COMPLEX_COLORS[i] } : pt}
         />
       ))}
+      {variant === 'complex' &&
+        FRAGMENTS.map((pt, i) => (
+          <span key={`f${i}`} className={styles.frag} style={pt}>
+            {i + 1}
+          </span>
+        ))}
     </div>
   )
 }
@@ -67,14 +81,14 @@ export default function PragnanzDemo() {
         </figure>
         <figure className={styles.figItem}>
           <MiniFig variant="complex" />
-          <figcaption className={styles.figCap}>複雑：バラバラの断片?</figcaption>
+          <figcaption className={styles.figCap}>複雑：いくつもの断片?</figcaption>
         </figure>
       </div>
 
       <div className={styles.reveal} aria-live="polite">
         <p>
           多くの人は<strong>左の「重なった3つの丸」</strong>と捉えます。
-          右のような“バラバラの断片の集まり”とは見ません。
+          右のように“いくつもの断片（番号の領域）の寄せ集め”とは見ません。
         </p>
         <p className={styles.small}>
           脳は複雑な形を、いちばん<strong>単純で安定した形</strong>にまとめて認識します（プレグナンツ）。

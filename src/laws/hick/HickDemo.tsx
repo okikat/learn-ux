@@ -97,7 +97,8 @@ export default function HickDemo() {
         <p className={styles.resultNote}>
           {diff > 0
             ? `30択は3択より約 ${formatMs(diff)} 多くかかりました。`
-            : '今回は差が小さめでした。何度か試すと傾向が見えます。'}
+            : '今回は差が小さめでした。'}
+          {' '}※1回の計測なので、個人差や偶然で前後します。何度か試すと傾向が見えます。
         </p>
         <button type="button" className={styles.retry} onClick={reset}>
           もう一度ためす

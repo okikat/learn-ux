@@ -58,8 +58,41 @@
   border-radius: var(--r-pill);
 }
 
+.catNav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  margin-bottom: var(--s5);
+}
+
+.catChip {
+  min-height: 38px;
+  padding: 0 var(--s3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 700;
+  transition: border-color var(--t-fast) var(--ease), color var(--t-fast) var(--ease),
+    background var(--t-fast) var(--ease);
+}
+
+.catChip:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+
+.catChipPro {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(135deg, #b5179e, #7b2ff7);
+}
+
 .section {
   margin-top: var(--s7);
+  scroll-margin-top: 72px;
 }
 
 .sectionHead {
@@ -84,6 +117,7 @@
 /* 有料パック区画（無料と視覚的に分ける） */
 .proSection {
   margin-top: var(--s8);
+  scroll-margin-top: 72px;
   padding: clamp(var(--s4), 4vw, var(--s5));
   border: 1px solid color-mix(in srgb, #b5179e 30%, var(--border));
   border-radius: var(--r3);

@@ -25,31 +25,23 @@ export default function CommonRegionDemo() {
       </div>
 
       <div className={styles.stage}>
-        {boxed ? (
-          <>
-            <div className={styles.region}>
-              {dots.slice(0, 3).map((d) => (
-                <span key={d} className={styles.dot} />
-              ))}
-            </div>
-            <div className={styles.region}>
-              {dots.slice(3).map((d) => (
-                <span key={d} className={styles.dot} />
-              ))}
-            </div>
-          </>
-        ) : (
-          <div className={styles.row}>
-            {dots.map((d) => (
-              <span key={d} className={styles.dot} />
-            ))}
+        {/* 枠は背景に敷くだけ。ドットの位置は枠の有無で一切動かない。 */}
+        {boxed && (
+          <div className={`${styles.grid} ${styles.regions}`} aria-hidden="true">
+            <span className={`${styles.region} ${styles.regionA}`} />
+            <span className={`${styles.region} ${styles.regionB}`} />
           </div>
         )}
+        <div className={`${styles.grid} ${styles.dots}`}>
+          {dots.map((d) => (
+            <span key={d} className={styles.dot} />
+          ))}
+        </div>
       </div>
 
-      <p className={styles.caption}>
+      <p className={styles.caption} aria-live="polite">
         {boxed
-          ? '点を動かさず枠で囲むだけで、「2つのグループ」にハッキリ分かれて見える。'
+          ? '点の位置はそのまま。枠で囲うだけで「2つのグループ」にハッキリ分かれて見える。'
           : '6つの点。これだけだと、まとまりの境目はあいまい。'}
       </p>
     </div>

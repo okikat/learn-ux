@@ -49,6 +49,7 @@ export default function JakobDemo() {
           {diff > 0
             ? `見慣れた配置の方が約 ${formatMs(diff)} 速く見つけられました。`
             : '今回は差が小さめでした。慣習に沿うほど迷いは減ります。'}
+          {' '}※奇抜版は意図的に探しにくくしています。1回の計測なので個人差・偶然で前後します。
         </p>
         <button type="button" className={styles.btn} onClick={reset}>
           もう一度ためす

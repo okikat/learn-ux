@@ -6,7 +6,8 @@ const POOL = [
   'つくえ', 'かぎ', 'ふね', 'とり', 'はな', 'ゆき', 'かさ', 'いし',
 ]
 const LIST_LEN = 9
-const SHOW_MS = 3200
+const SHOW_MS = 4200
+const SHOW_MS_SLOW = 6500
 
 type Phase = 'ready' | 'show' | 'recall' | 'result'
 
@@ -19,7 +20,9 @@ export default function SerialPositionDemo() {
   const [list, setList] = useState<string[]>([])
   const [choices, setChoices] = useState<string[]>([])
   const [picked, setPicked] = useState<Set<string>>(new Set())
+  const [slow, setSlow] = useState(false)
   const timerRef = useRef<number | null>(null)
+  const showMs = slow ? SHOW_MS_SLOW : SHOW_MS
 
   useEffect(() => () => {
     if (timerRef.current !== null) window.clearTimeout(timerRef.current)
@@ -36,8 +39,8 @@ export default function SerialPositionDemo() {
     timerRef.current = window.setTimeout(() => {
       setPhase('recall')
       timerRef.current = null
-    }, SHOW_MS)
-  }, [])
+    }, slow ? SHOW_MS_SLOW : SHOW_MS)
+  }, [slow])
 
   const toggle = (w: string) => {
     setPicked((prev) => {
@@ -54,6 +57,10 @@ export default function SerialPositionDemo() {
         <p className={styles.lead}>
           {LIST_LEN}個の単語が順番に一瞬出ます。あとで「どれがあったか」を選んでください。
         </p>
+        <label className={styles.slowToggle}>
+          <input type="checkbox" checked={slow} onChange={(e) => setSlow(e.target.checked)} />
+          <span>ゆっくり表示する</span>
+        </label>
         <button type="button" className={styles.start} onClick={start}>
           スタート
         </button>
@@ -74,7 +81,7 @@ export default function SerialPositionDemo() {
           ))}
         </ol>
         <div className={styles.countdown}>
-          <span className={styles.countdownBar} />
+          <span className={styles.countdownBar} style={{ animationDuration: `${showMs}ms` }} />
         </div>
       </div>
     )
@@ -129,7 +136,7 @@ export default function SerialPositionDemo() {
         })}
       </ol>
       <p className={styles.note}>
-        最初（1番）と最後（{list.length}番）は思い出せた人が多いはず。並びの<strong>両端</strong>が記憶に残るのが系列位置効果です。
+        一般に、最初（1番）と最後（{list.length}番）は思い出しやすいと言われます（並びの<strong>両端</strong>が記憶に残る＝系列位置効果）。1回だと個人差が出るので、何度か試すと傾向が見えます。
       </p>
       <button type="button" className={styles.start} onClick={start}>
         もう一度ためす

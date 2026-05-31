@@ -94,6 +94,21 @@
   border-radius: 50%;
 }
 
+.frag {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  color: #333;
+  font-size: 9px;
+  font-weight: 800;
+  z-index: 2;
+}
+
 .simple {
   background: transparent;
   border: 2px solid var(--card-accent, var(--accent));
