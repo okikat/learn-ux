@@ -35,6 +35,14 @@ npm run preview
 npm test
 ```
 
+## 公開（GitHub Pages）
+
+`main` ブランチへマージすると、GitHub Actions（`.github/workflows/deploy.yml`）が自動でビルドして GitHub Pages に公開します。公開URLは:
+
+**https://okikat.github.io/learn-ux/**
+
+初回のみ、リポジトリの **Settings → Pages → Build and deployment → Source** を「**GitHub Actions**」に設定してください（ワークフローが自動で有効化を試みますが、組織やアカウントの設定によっては手動が必要です）。ルーティングはハッシュ方式（HashRouter）かつ Vite の `base` を相対パスにしているため、サブパス配信でもリロードや直リンクで404になりません。
+
 ## 技術スタック
 
 - **React 19 + TypeScript + Vite** — 高速な開発・ビルド
