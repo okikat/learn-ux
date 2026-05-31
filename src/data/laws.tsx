@@ -1,6 +1,8 @@
 import type { LawMeta } from '../types'
 import PlaceholderDemo from '../components/PlaceholderDemo'
 import FittsDemo from '../laws/fitts/FittsDemo'
+import HickDemo from '../laws/hick/HickDemo'
+import DohertyDemo from '../laws/doherty/DohertyDemo'
 
 /**
  * 10のUX法則のメタデータ。表示順＝この配列順。
@@ -93,8 +95,8 @@ export const laws: LawMeta[] = [
     takeaway:
       '30択は3択よりはっきり遅い。選択肢の“数”そのものが、決定の速さに効いてくる。',
     accent: '#d23b6d',
-    Demo: PlaceholderDemo,
-    ready: false,
+    Demo: HickDemo,
+    ready: true,
   },
   {
     id: 'postel',
@@ -225,7 +227,7 @@ export const laws: LawMeta[] = [
     takeaway:
       '0.4秒を超えると途端に“待たされてる感”が出る。即応性そのものが、快適さを作る。',
     accent: '#e0533d',
-    Demo: PlaceholderDemo,
-    ready: false,
+    Demo: DohertyDemo,
+    ready: true,
   },
 ]
