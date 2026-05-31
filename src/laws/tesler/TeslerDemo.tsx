@@ -52,12 +52,18 @@ export default function TeslerDemo() {
           <div className={styles.fields}>
             <label className={styles.field}>
               <span className={styles.fieldLabel}>生年月日</span>
-              <input
-                className={styles.input}
-                type="date"
-                value={bDate}
-                onChange={(e) => setBDate(e.target.value)}
-              />
+              <span className={styles.dateWrap}>
+                <input
+                  className={`${styles.input} ${styles.dateInput}`}
+                  type="date"
+                  value={bDate}
+                  onChange={(e) => setBDate(e.target.value)}
+                  onClick={(e) => e.currentTarget.showPicker?.()}
+                />
+                <span className={styles.dateIcon} aria-hidden="true">
+                  📅
+                </span>
+              </span>
             </label>
             <div className={styles.auto}>
               <span className={styles.autoLabel}>年齢</span>

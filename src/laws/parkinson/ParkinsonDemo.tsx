@@ -33,7 +33,13 @@ export default function ParkinsonDemo() {
           {needPct >= 18 ? '必要 30分' : ''}
         </span>
         <span className={styles.expand} style={{ width: `${expandPct}%` }}>
-          {expandPct >= 30 ? '膨らんだ時間（先延ばし・やり直し）' : ''}
+          {expandPct >= 20 && (
+            <>
+              膨らんだ時間
+              <br />
+              （先延ばし・やり直し）
+            </>
+          )}
         </span>
       </div>
 

@@ -20,6 +20,11 @@ export function formatMs(ms: number): string {
   return `${rounded}ms`
 }
 
+/** ミリ秒を「x.x秒」表記に（例: 400 -> "0.4秒" / 1000 -> "1.0秒"） */
+export function formatSeconds(ms: number): string {
+  return `${(ms / 1000).toFixed(1)}秒`
+}
+
 /** part / total を 0〜100 の整数パーセントで返す（total=0 は 0） */
 export function percent(part: number, total: number): number {
   if (total === 0) return 0

@@ -175,21 +175,27 @@ export default function FittsDemo() {
           </table>
 
           <div className={styles.summary}>
-            <div className={styles.summaryCard}>
-              <span className={styles.summaryLabel}>大きい標的 平均</span>
-              <span className={styles.summaryValBig}>{formatMs(meanBySize('L'))}</span>
+            <div className={styles.cmpGroup}>
+              <span className={styles.cmpTitle}>大きさで比較</span>
+              <div className={styles.cmpRow}>
+                <span className={styles.cmpName}>大きい標的</span>
+                <span className={styles.cmpVal}>{Math.round(meanBySize('L'))}ms</span>
+              </div>
+              <div className={styles.cmpRow}>
+                <span className={styles.cmpName}>小さい標的</span>
+                <span className={styles.cmpVal}>{Math.round(meanBySize('S'))}ms</span>
+              </div>
             </div>
-            <div className={styles.summaryCard}>
-              <span className={styles.summaryLabel}>小さい標的 平均</span>
-              <span className={styles.summaryValBig}>{formatMs(meanBySize('S'))}</span>
-            </div>
-            <div className={styles.summaryCard}>
-              <span className={styles.summaryLabel}>近い標的 平均</span>
-              <span className={styles.summaryVal}>{formatMs(meanByDist('near'))}</span>
-            </div>
-            <div className={styles.summaryCard}>
-              <span className={styles.summaryLabel}>遠い標的 平均</span>
-              <span className={styles.summaryVal}>{formatMs(meanByDist('far'))}</span>
+            <div className={styles.cmpGroup}>
+              <span className={styles.cmpTitle}>距離で比較</span>
+              <div className={styles.cmpRow}>
+                <span className={styles.cmpName}>近い標的</span>
+                <span className={styles.cmpVal}>{Math.round(meanByDist('near'))}ms</span>
+              </div>
+              <div className={styles.cmpRow}>
+                <span className={styles.cmpName}>遠い標的</span>
+                <span className={styles.cmpVal}>{Math.round(meanByDist('far'))}ms</span>
+              </div>
             </div>
           </div>
 

@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { formatMs } from '../../utils/stats'
+import { formatSeconds } from '../../utils/stats'
 import { responseVerdict } from '../../utils/doherty'
 import styles from './DohertyDemo.module.css'
 
 type Status = 'idle' | 'working' | 'done'
 
 const PRESETS = [0, 400, 1000, 2000]
+const CHIP_LABEL: Record<number, string> = { 0: '即応', 400: '0.4秒', 1000: '1秒', 2000: '2秒' }
 
 export default function DohertyDemo() {
   const [delay, setDelay] = useState(1000)
@@ -37,7 +38,7 @@ export default function DohertyDemo() {
     <div className={styles.demo}>
       <div className={styles.controls}>
         <label className={styles.sliderLabel} htmlFor="doherty-delay">
-          応答までの遅延：<strong>{formatMs(delay)}</strong>
+          応答までの遅延：<strong>{formatSeconds(delay)}</strong>
         </label>
         <input
           id="doherty-delay"
@@ -45,7 +46,7 @@ export default function DohertyDemo() {
           type="range"
           min={0}
           max={2000}
-          step={50}
+          step={100}
           value={delay}
           onChange={(e) => {
             setDelay(Number(e.target.value))
@@ -69,7 +70,7 @@ export default function DohertyDemo() {
                 setStatus('idle')
               }}
             >
-              {p === 0 ? '即応' : formatMs(p)}
+              {CHIP_LABEL[p]}
             </button>
           ))}
         </div>
@@ -112,7 +113,7 @@ export default function DohertyDemo() {
           )}
           {status === 'done' && (
             <div className={`${styles.verdict} ${styles[verdict.level]}`}>
-              <span className={styles.verdictTime}>完了 ✓ 待ち時間 {formatMs(delay)}</span>
+              <span className={styles.verdictTime}>完了 ✓ 待ち時間 {formatSeconds(delay)}</span>
               <span className={styles.verdictLabel}>{verdict.label}</span>
             </div>
           )}

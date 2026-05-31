@@ -17,10 +17,9 @@ export default function Layout({ children }: { children: ReactNode }) {
             <span className={styles.brandMark} aria-hidden="true">
               UX
             </span>
-            <span className={styles.brandText}>やるUX</span>
+            <span className={styles.brandText}>さわって学ぶUX</span>
           </Link>
           <div className={styles.headerRight}>
-            <span className={styles.tagline}>さわって学ぶUX</span>
             <NavMenu />
           </div>
         </div>

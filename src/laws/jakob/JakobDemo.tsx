@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from 'react'
-import { formatMs } from '../../utils/stats'
+import { formatSeconds } from '../../utils/stats'
 import styles from './JakobDemo.module.css'
 
 type Sub = 'intro' | 'play' | 'done'
@@ -47,7 +47,7 @@ export default function JakobDemo() {
         </div>
         <p className={styles.note}>
           {diff > 0
-            ? `見慣れた配置の方が約 ${formatMs(diff)} 速く見つけられました。`
+            ? `見慣れた配置の方が約 ${formatSeconds(diff)} 速く見つけられました。`
             : '今回は差が小さめでした。慣習に沿うほど迷いは減ります。'}
           {' '}※奇抜版は意図的に探しにくくしています。1回の計測なので個人差・偶然で前後します。
         </p>
@@ -146,7 +146,7 @@ function Row({
           style={{ width: `${width}%` }}
         />
       </span>
-      <span className={styles.rowTime}>{formatMs(time)}</span>
+      <span className={styles.rowTime}>{formatSeconds(time)}</span>
     </div>
   )
 }

@@ -122,7 +122,9 @@
   text-align: center;
   font-size: 13px;
   color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.8);
+  /* テーマ非依存の白だとダークで文字が読めない → トークンへ */
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
   padding: 4px 12px;
   border-radius: var(--r-pill);
 }
@@ -202,37 +204,51 @@
 
 .summary {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: var(--s3);
 }
 
-.summaryCard {
+@media (max-width: 480px) {
+  .summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 比較しやすいよう、対（大↔小 / 近↔遠）を1ブロックにまとめ、数値は右そろえ */
+.cmpGroup {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: var(--s1);
-  padding: var(--s3) var(--s4);
+  gap: 2px;
+  padding: var(--s3);
   background: var(--surface-2);
   border: 1px solid var(--border);
   border-radius: var(--r2);
 }
 
-.summaryLabel {
+.cmpTitle {
+  margin-bottom: 2px;
   font-size: 12px;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+
+.cmpRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--s2);
+}
+
+.cmpName {
+  font-size: 13px;
   color: var(--text-muted);
 }
 
-.summaryVal,
-.summaryValBig {
+.cmpVal {
   font-family: var(--mono);
   font-weight: 700;
+  font-size: 16px;
   color: var(--text);
-}
-
-.summaryValBig {
-  font-size: 18px;
-  color: var(--accent-strong);
 }
 
 .caveat {

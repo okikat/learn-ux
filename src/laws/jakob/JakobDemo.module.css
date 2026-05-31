@@ -207,7 +207,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: 96px 1fr auto;
+  grid-template-columns: 96px 1fr 64px;
   align-items: center;
   gap: var(--s3);
 }
@@ -240,6 +240,7 @@
   font-family: var(--mono);
   font-weight: 700;
   font-size: 14px;
+  text-align: right;
 }
 
 .note {
