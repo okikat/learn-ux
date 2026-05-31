@@ -20,7 +20,7 @@ export default function LawCard({ law }: { law: LawMeta }) {
       <p className={styles.titleEn}>{law.titleEn}</p>
       <p className={styles.tagline}>{law.tagline}</p>
       <span className={styles.cta} aria-hidden="true">
-        触ってみる →
+        さわってみる →
       </span>
     </Link>
   )

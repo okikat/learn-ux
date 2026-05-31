@@ -27,7 +27,7 @@ export interface LawMeta {
   accent: string
   /** トップページでの分類 */
   category: Category
-  /** ③触って体感するインタラクティブ・デモ */
+  /** ③さわって体感するインタラクティブ・デモ */
   Demo: ComponentType
   /** デモ実装済みか（未実装は一覧で「準備中」表示） */
   ready: boolean

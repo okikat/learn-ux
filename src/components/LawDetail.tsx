@@ -45,7 +45,7 @@ export default function LawDetail({ law }: { law: LawMeta }) {
           <span className={styles.h2icon} aria-hidden="true">
             ▶
           </span>
-          触って体感する
+          さわって体感する
         </h2>
         <div className={styles.demoFrame}>
           <Demo />
