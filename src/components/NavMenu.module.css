@@ -220,3 +220,59 @@
     width: min(44vw, 200px);
   }
 }
+
+/* ダークモード行（メニュー最下部） */
+.themeRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  min-height: var(--tap);
+  padding: 0 var(--s2);
+}
+
+.themeLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.themeIcon {
+  color: var(--text-muted);
+}
+
+/* iOS風トグルスイッチ（51×31・白いノブがスライド） */
+.switch {
+  position: relative;
+  flex: 0 0 auto;
+  width: 51px;
+  height: 31px;
+  padding: 0;
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--switch-off);
+  transition: background var(--t-base) var(--ease);
+}
+
+.switch[aria-checked='true'] {
+  background: var(--accent);
+}
+
+.knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.2);
+  transition: transform var(--t-base) var(--ease);
+}
+
+.switch[aria-checked='true'] .knob {
+  transform: translateX(20px);
+}

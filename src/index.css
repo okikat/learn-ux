@@ -67,7 +67,48 @@
   --t-base: 180ms;
   --ease: cubic-bezier(0.4, 0, 0.2, 1);
 
+  /* テーマ依存（ライト既定。ダークは [data-theme="dark"] で上書き） */
+  --header-bg: rgba(255, 255, 255, 0.82);
+  --switch-off: #d7dbe6;
+
   color-scheme: light;
+}
+
+/* ダークモード（ヘッダーの☰メニュー内トグルで切替。<html data-theme="dark"> で適用） */
+[data-theme='dark'] {
+  --bg: #0e1014;
+  --surface: #161922;
+  --surface-2: #1d212b;
+  --surface-3: #272c38;
+  --text: #e9ecf3;
+  --text-muted: #aab2c1;
+  --text-faint: #8992a3;
+  --border: #2a3040;
+  --border-strong: #3a4151;
+
+  --accent: #7c7ff3;
+  --accent-strong: #b7b8ff;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(124, 127, 243, 0.18);
+  --accent-soft-2: rgba(124, 127, 243, 0.26);
+
+  --good: #3ecf8e;
+  --good-soft: rgba(62, 207, 142, 0.16);
+  --warn: #e0a13a;
+  --warn-soft: rgba(224, 161, 58, 0.16);
+  --bad: #ef5a64;
+  --bad-soft: rgba(239, 90, 100, 0.16);
+
+  --ring: rgba(124, 127, 243, 0.5);
+
+  --header-bg: rgba(16, 19, 26, 0.8);
+  --switch-off: #3a3a3e;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 16px 44px rgba(0, 0, 0, 0.55);
+
+  color-scheme: dark;
 }
 
 * {

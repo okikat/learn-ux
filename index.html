@@ -9,6 +9,24 @@
       content="やるUX — さわって学ぶUX。UXデザインの心理法則を、操作して体感できるインタラクティブ学習アプリ。すべて無料。"
     />
     <title>やるUX — さわって学ぶUX</title>
+    <script>
+      // ダーク/ライトを初回描画前に確定してチラつきを防ぐ。
+      (function () {
+        try {
+          var t = localStorage.getItem('theme')
+          if (t !== 'dark' && t !== 'light') {
+            t =
+              window.matchMedia &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          }
+          document.documentElement.setAttribute('data-theme', t)
+        } catch (e) {
+          document.documentElement.setAttribute('data-theme', 'light')
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

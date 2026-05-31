@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, useLocation } from 'react-router-dom'
 import { laws, categories, biases, biasPack } from '../data/laws'
+import { useTheme } from '../utils/useTheme'
 import styles from './NavMenu.module.css'
 
 type Group = {
@@ -27,6 +28,8 @@ export default function NavMenu() {
   const toggleRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLElement>(null)
   const location = useLocation()
+  const [theme, toggleTheme] = useTheme()
+  const isDark = theme === 'dark'
 
   const freeGroups = useMemo<Group[]>(
     () =>
@@ -185,6 +188,35 @@ export default function NavMenu() {
               <ul className={styles.catList}>{freeGroups.map(renderRow)}</ul>
               <div className={styles.divider} aria-hidden="true" />
               <ul className={styles.catList}>{renderRow(proGroup)}</ul>
+
+              <div className={styles.divider} aria-hidden="true" />
+              <div className={styles.themeRow}>
+                <span className={styles.themeLabel}>
+                  <svg
+                    className={styles.themeIcon}
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  ダークモード
+                </span>
+                <button
+                  type="button"
+                  role="switch"
+                  aria-checked={isDark}
+                  aria-label="ダークモード"
+                  className={styles.switch}
+                  onClick={toggleTheme}
+                >
+                  <span className={styles.knob} aria-hidden="true" />
+                </button>
+              </div>
             </nav>
           </div>,
           document.body,

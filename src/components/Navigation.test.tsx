@@ -6,7 +6,11 @@ import LawDetail from './LawDetail'
 import { laws, biases, categories } from '../data/laws'
 import type { LawMeta } from '../types'
 
-afterEach(cleanup)
+afterEach(() => {
+  cleanup()
+  localStorage.clear()
+  document.documentElement.removeAttribute('data-theme')
+})
 
 function renderMenu() {
   return render(
@@ -66,6 +70,18 @@ describe('NavMenu（☰ グローバルメニュー）', () => {
     expect(screen.getByRole('navigation', { name: 'メインメニュー' })).toBeInTheDocument()
     fireEvent.keyDown(document, { key: 'Escape' })
     expect(screen.queryByRole('navigation', { name: 'メインメニュー' })).toBeNull()
+  })
+
+  it('ダークモードのiOS風スイッチで data-theme が切り替わる', () => {
+    renderMenu()
+    openMenu()
+    const sw = screen.getByRole('switch', { name: 'ダークモード' })
+    const before = document.documentElement.getAttribute('data-theme')
+    fireEvent.click(sw)
+    expect(document.documentElement.getAttribute('data-theme')).not.toBe(before)
+    expect(sw).toHaveAttribute('aria-checked', before === 'dark' ? 'false' : 'true')
+    fireEvent.click(sw)
+    expect(document.documentElement.getAttribute('data-theme')).toBe(before)
   })
 })
 
