@@ -51,9 +51,11 @@
   font-weight: 600;
 }
 
+@media (hover: hover) {
 .chip:hover {
   border-color: var(--accent);
   background: var(--accent-soft);
+}
 }
 
 .chipClear {

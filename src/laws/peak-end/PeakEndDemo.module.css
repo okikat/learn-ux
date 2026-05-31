@@ -35,8 +35,10 @@
   transition: background var(--t-fast) var(--ease);
 }
 
+@media (hover: hover) {
 .playBtn:hover:not(:disabled) {
   background: var(--accent-soft);
+}
 }
 
 .playBtn:disabled {
@@ -100,8 +102,10 @@
   box-shadow: var(--shadow-sm);
 }
 
+@media (hover: hover) {
 .voteBtn:hover {
   background: var(--accent-strong);
+}
 }
 
 .reveal {

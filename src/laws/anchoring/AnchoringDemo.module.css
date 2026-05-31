@@ -34,8 +34,10 @@
   transition: border-color var(--t-fast) var(--ease);
 }
 
+@media (hover: hover) {
 .card:hover:not(:disabled) {
   border-color: var(--card-accent, var(--accent));
+}
 }
 
 .picked {

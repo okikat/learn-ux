@@ -80,9 +80,11 @@
   min-height: 44px;
 }
 
+@media (hover: hover) {
 .cellBtn:hover {
   border-color: var(--accent);
   background: var(--accent-soft);
+}
 }
 
 /* 際立つ1つ（色だけでなく、サイズ・影でも差をつける＝法則の実践） */

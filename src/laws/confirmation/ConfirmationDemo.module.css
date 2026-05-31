@@ -32,9 +32,11 @@
   font-size: 14px;
 }
 
+@media (hover: hover) {
 .choice:hover:not(:disabled) {
   border-color: var(--card-accent, var(--accent));
   background: var(--accent-soft);
+}
 }
 
 .choice:disabled {

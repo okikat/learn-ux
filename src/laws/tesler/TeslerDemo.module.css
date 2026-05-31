@@ -141,8 +141,10 @@
   font-size: 13px;
 }
 
+@media (hover: hover) {
 .zipChip:hover {
   border-color: var(--accent);
+}
 }
 
 .effort {

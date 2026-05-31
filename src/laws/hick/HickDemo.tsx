@@ -31,6 +31,7 @@ export default function HickDemo() {
   const [times, setTimes] = useState<number[]>([])
   const [wrong, setWrong] = useState(false)
   const startRef = useRef(0)
+  const rootRef = useRef<HTMLDivElement>(null)
 
   const optionCount = ROUNDS[roundIndex]
 
@@ -42,15 +43,13 @@ export default function HickDemo() {
     }
   }, [roundIndex])
 
-  // 「準備OK・開始する」を押した位置に選択肢ボタンが現れると、そこへ
-  // フォーカス（青枠）が移ってしまうことがある。play 突入直後に解除する。
+  // 30択は枠が縦に長い。開始したらテスト枠の上端をヘッダー直下へスクロールし、
+  // 枠全体がなるべく画面に収まるようにする（即時スクロールで反応計測への影響を抑える）。
   useEffect(() => {
-    if (sub !== 'play') return
-    const id = requestAnimationFrame(() => {
-      const el = document.activeElement as HTMLElement | null
-      if (el && el.tagName === 'BUTTON') el.blur()
-    })
-    return () => cancelAnimationFrame(id)
+    if (sub === 'play') {
+      const frame = rootRef.current?.parentElement ?? rootRef.current
+      frame?.scrollIntoView({ block: 'start' })
+    }
   }, [sub])
 
   const begin = useCallback(() => {
@@ -61,11 +60,13 @@ export default function HickDemo() {
 
   const choose = useCallback(
     (word: string) => {
+      const elapsed = performance.now() - startRef.current
+      // 開始タップのすり抜け等、人の反応ではあり得ない速さ(<150ms)は無視する
+      if (elapsed < 150) return
       if (word !== round.target) {
         setWrong(true)
         return
       }
-      const elapsed = performance.now() - startRef.current
       setTimes((prev) => [...prev, elapsed])
       if (roundIndex + 1 >= ROUNDS.length) {
         setSub('done')
@@ -119,7 +120,7 @@ export default function HickDemo() {
   }
 
   return (
-    <div className={styles.demo}>
+    <div className={styles.demo} ref={rootRef}>
       <div className={styles.bar}>
         <span className={styles.counter}>
           ラウンド {roundIndex + 1} / {ROUNDS.length}（{optionCount}択）

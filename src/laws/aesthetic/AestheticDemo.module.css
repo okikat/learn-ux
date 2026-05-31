@@ -125,9 +125,11 @@
   transition: all var(--t-fast) var(--ease);
 }
 
+@media (hover: hover) {
 .voteBtn:hover:not(:disabled) {
   border-color: var(--accent);
   background: var(--accent-soft);
+}
 }
 
 .voteBtn:disabled {

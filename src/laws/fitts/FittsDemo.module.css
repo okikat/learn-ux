@@ -59,8 +59,10 @@
   transition: transform var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
 }
 
+@media (hover: hover) {
 .home:hover {
   background: var(--accent-strong);
+}
 }
 
 .home:active {
@@ -252,6 +254,8 @@
   transition: background var(--t-fast) var(--ease);
 }
 
+@media (hover: hover) {
 .retry:hover {
   background: var(--surface-2);
+}
 }

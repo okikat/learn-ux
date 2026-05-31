@@ -44,8 +44,10 @@
   transition: border-color var(--t-fast) var(--ease);
 }
 
+@media (hover: hover) {
 .choice:hover {
   border-color: var(--card-accent, var(--accent));
+}
 }
 
 .big {

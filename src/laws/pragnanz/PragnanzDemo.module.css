@@ -52,9 +52,11 @@
   font-size: 14px;
 }
 
+@media (hover: hover) {
 .toggle:hover {
   border-color: var(--card-accent, var(--accent));
   background: var(--accent-soft);
+}
 }
 
 /* ボタンラベルも重ねて、最大ラベル幅でボタン幅を固定 */

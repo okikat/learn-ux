@@ -92,9 +92,11 @@
   font-size: 16px;
 }
 
+@media (hover: hover) {
 .option:hover {
   background: var(--accent-soft);
   border-color: var(--accent);
+}
 }
 
 .option:active {
@@ -176,6 +178,8 @@
   font-weight: 700;
 }
 
+@media (hover: hover) {
 .retry:hover {
   background: var(--surface-2);
+}
 }
