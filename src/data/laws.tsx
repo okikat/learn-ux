@@ -1,4 +1,5 @@
 import type { Category, LawMeta } from '../types'
+import FakeLinkTrap from '../components/FakeLinkTrap'
 
 // 見え方（ゲシュタルト）
 import ProximityDemo from '../laws/proximity/ProximityDemo'
@@ -86,7 +87,13 @@ export const laws: LawMeta[] = [
     tagline: '見た目が似ている要素は、同じ仲間だと感じられる。',
     description: [
       '色・形・大きさなどが似ている要素を、人は“同じ役割の仲間”として結びつけて見る。近くになくても、見た目の共通点だけでグループを作れる。',
-      'この性質は便利な反面、危うさもある。リンクでない文字を青字＋下線にすると「押せそう」と誤解される。見た目の類似は、機能の類似だと受け取られるのだ。',
+      <>
+        この性質は便利な反面、危うさもある。
+        <FakeLinkTrap>
+          リンクでない文字を青字＋下線にすると「押せそう」と誤解される。
+        </FakeLinkTrap>
+        見た目の類似は、機能の類似だと受け取られるのだ。
+      </>,
     ],
     tips: [
       '同じ意味・役割のものは見た目をそろえ、違うものははっきり区別する。',

@@ -32,8 +32,8 @@ export default function LawDetail({ law }: { law: LawMeta }) {
 
       {/* ②解説 */}
       <section className={styles.section} aria-label="解説">
-        {law.description.map((para) => (
-          <p key={para.slice(0, 12)} className={styles.para}>
+        {law.description.map((para, i) => (
+          <p key={i} className={styles.para}>
             {para}
           </p>
         ))}

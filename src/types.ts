@@ -1,4 +1,4 @@
-import type { ComponentType } from 'react'
+import type { ComponentType, ReactNode } from 'react'
 
 /** 法則のカテゴリ（トップページでの分類） */
 export type Category = 'perception' | 'memory' | 'decision' | 'operation' | 'design' | 'bias'
@@ -17,8 +17,8 @@ export interface LawMeta {
   titleEn: string
   /** ①一言定義 */
   tagline: string
-  /** ②自分の言葉での短い解説（段落配列） */
-  description: string[]
+  /** ②自分の言葉での短い解説（段落配列。文字列だけでなくJSXも混ぜられる） */
+  description: ReactNode[]
   /** ④実践Tips（2〜3個） */
   tips: string[]
   /** デモ下に出す「この体験から分かること」 */
