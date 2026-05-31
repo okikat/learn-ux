@@ -135,11 +135,11 @@
   font-weight: 800;
 }
 
-/* 前後ナビ（note記事下風・上下2段）。全幅の行を積み、区切り線で仕切る。 */
+/* 前後ナビ（note風・左右2列＋中央の縦区切り線）。各列の外端に ‹ › 矢印。 */
 .pager {
   margin-top: var(--s8);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   border-top: 1px solid var(--border);
 }
 
@@ -147,8 +147,7 @@
   display: flex;
   align-items: center;
   gap: var(--s3);
-  padding: var(--s4) var(--s2);
-  border-bottom: 1px solid var(--border);
+  padding: var(--s4) var(--s3);
   color: var(--text);
   transition: background var(--t-base) var(--ease);
 }
@@ -158,12 +157,22 @@
   background: var(--surface-2);
 }
 
+/* 右列（次）＝中央の縦区切り線。本文は右寄せにして外端へ › を置く。 */
+.pagerNext {
+  border-left: 1px solid var(--border);
+}
+
 .pagerBody {
   display: flex;
   flex-direction: column;
   gap: 2px;
   flex: 1 1 auto;
   min-width: 0;
+}
+
+.pagerNext .pagerBody {
+  align-items: flex-end;
+  text-align: right;
 }
 
 .pagerArrow {

@@ -92,7 +92,7 @@ export default function LawDetail({ law }: { law: LawMeta }) {
         )}
 
         {next ? (
-          <Link to={`/laws/${next.slug}`} className={styles.pagerLink}>
+          <Link to={`/laws/${next.slug}`} className={`${styles.pagerLink} ${styles.pagerNext}`}>
             <span className={styles.pagerBody}>
               <span className={styles.pagerDir}>次の法則</span>
               <span className={styles.pagerName}>{next.titleJa}</span>
@@ -100,7 +100,10 @@ export default function LawDetail({ law }: { law: LawMeta }) {
             <span className={styles.pagerArrow} aria-hidden="true">›</span>
           </Link>
         ) : (
-          <span className={`${styles.pagerLink} ${styles.pagerDisabled}`} aria-hidden="true">
+          <span
+            className={`${styles.pagerLink} ${styles.pagerNext} ${styles.pagerDisabled}`}
+            aria-hidden="true"
+          >
             <span className={styles.pagerBody}>
               <span className={styles.pagerDir}>次の法則</span>
               <span className={styles.pagerName}>これで最後です</span>
