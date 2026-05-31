@@ -41,6 +41,14 @@ npm test
 
 Vite の `base` を相対パスにし、ルーティングをハッシュ方式（HashRouter）にしているため、サイトのどのフォルダ（例: `https://example.com/learn-ux/`）に置いても動作し、ページを再読み込みしても404になりません。サーバー側の特別な設定は不要です。
 
+### 1ファイルだけで配布・オフライン閲覧したいとき
+
+```bash
+npm run build:standalone
+```
+
+JS/CSSをすべて埋め込んだ単一の `dist-standalone/index.html` が生成されます。このファイルは**ダブルクリックするだけ**でブラウザで開け（インターネット接続不要）、メール添付やUSBでの受け渡しにも向きます。
+
 ## 技術スタック
 
 - **React 19 + TypeScript + Vite** — 高速な開発・ビルド
