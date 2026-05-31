@@ -1,6 +1,6 @@
 # 引き継ぎ書（HANDOFF） — やるUX
 
-最終更新: 2026-05-31 / 作業ブランチ: `claude/focused-bohr-BRsKo`（PR #1 → `main`）
+最終更新: 2026-05-31（公開確認） / 作業ブランチ: `claude/busy-meitner-1Tgkh`（旧 `focused-bohr` は PR #1 で `main` にマージ済み）
 
 ## このプロジェクトは何か
 UXの心理法則を「読むのではなく、さわって覚える」インタラクティブ学習アプリ「**やるUX**」。
@@ -10,22 +10,21 @@ React 19 + TypeScript + Vite / CSS Modules / react-router-dom(HashRouter) / 状�
 - **無料20法則**（5カテゴリ：見え方/記憶/判断・行動/操作・速さ/設計の心得）。各：①定義 ②解説 ③触れるデモ ④Tips＋「この体験から分かること」。
 - **有料パック「認知バイアス」¥980：14項目**（トップ最下部のPRO区画。無料と視覚的に分離・前後ナビもセット内で完結）。
 - 第三者視点の**UX監修レポート**＝ `docs/ux-review-free20.md`（指摘＋対応ログ）。指摘はすべて反映済み。
-- `npm run build` 成功（127モジュール）/ `npm test` 50件すべて緑 / 375pxで全デモ動作・コンソールエラー0 を実機（ヘッドレスChromium）で確認済み。
+- `npm run build` 成功（127モジュール）/ `npm test` 50件すべて緑 / 375pxで全デモ動作・コンソールエラー0 を実機（ヘッドレスChromium）で確認済み。**2026-05-31 にクリーン環境で再ビルド（127モジュール）・再テスト（50件緑）も確認。**
+- **公開中**：**https://okikat.github.io/learn-ux/** （スマホでタップして閲覧可能・本日疎通確認）。PR #1 は `main` にマージ済み。
 
 ## ブランチ／リモートの状態
-- `claude/focused-bohr-BRsKo` … 本体（全コミット）。PR #1 で `main` にマージ待ち。
-- `main` … 空の初期コミットのみ（PRのベース）。
+- `claude/focused-bohr-BRsKo` … 本体（全コミット）。PR #1 で `main` にマージ済み。
+- `claude/busy-meitner-1Tgkh` … 現在の作業ブランチ（`focused-bohr` と同内容＋以降の更新）。
+- `main` … PR #1 をマージ済み（無料20＋有料14＋docs 一式）。
 - `gh-pages` … **ビルド済みサイト**（`index.html` / `assets/*` / `.nojekyll`）。← スマホ公開用。
 - GitHub Actionsのデプロイ用ワークフローは**削除済み**（Actions方式は下記理由で断念）。
 
-## 残タスク：スマホで見られる「公開URL」を出す（あと1クリック）
-リポジトリは既に **public** 済み。`gh-pages` に成果物も公開済み。あとはユーザー操作のみ：
-
-1. GitHub → リポジトリ → **Settings** → 左メニュー **Pages**
-2. **Build and deployment → Source: 「Deploy from a branch」**
-3. **Branch: `gh-pages` / フォルダ `/ (root)`** を選んで **Save**
-4. 1〜2分後、**https://okikat.github.io/learn-ux/** がスマホでタップして開けるようになる
-   （base は相対パス＋HashRouter のため、サブパス配信でもリロード/直リンクで404にならない）
+## ✅ 公開完了：スマホで見られる公開URL
+**https://okikat.github.io/learn-ux/** で公開中（2026-05-31 疎通確認）。スマホでタップして閲覧可能。
+- ソース：Settings → Pages →「Deploy from a branch」/ `gh-pages` `/(root)`（設定済み）。
+- base は相対パス＋HashRouter のため、サブパス配信でもリロード/直リンクで404にならない。
+- 内容を更新したいときは末尾の「gh-pages を更新する手順」を実行。
 
 ### 公開URLの“鍵”について（ユーザーの関心事）
 - 公開はいつでも取り下げ可（Pagesをオフ／リポジトリを非公開に戻す）。
@@ -56,7 +55,7 @@ git push -f origin "$COMMIT:refs/heads/gh-pages"
 解説文・Tips・定義はすべて独自記述（転記なし）。出典クレジットは README 末尾（Jon Yablonski "Laws of UX" / lawsofux.com）。有料化しても、独自表現＋出典明記なら問題なし。
 
 ## 次にやると良いこと（任意）
-1. ユーザーがPages設定（上記）→ 公開URL確定。
-2. 必要なら PR #1 を `main` にマージ。
-3. 監視（PR購読）でCIイベントに対応（現状CIワークフローは無し）。
-4. 販売フェーズ：有料14を別配布（note/BOOTH）に切り出し、無料20のみ公開、の出し分け。
+1. ✅ Pages設定 → 公開URL確定（https://okikat.github.io/learn-ux/）。
+2. ✅ PR #1 を `main` にマージ済み。
+3. **販売の出し分け（重要・未対応）**：いまの公開サイトは**有料14もそのまま閲覧できる**（＝URLを知れば誰でも見られる）。本番販売時は、有料14を別配布（note/BOOTH等）へ切り出し、公開サイトは**無料20のみ**に出し分ける。→ ビルド分割の実装が必要。広くプレビュー共有する前に入れておくと流出を防げる。
+4. （任意）アプリ本体のさらなる磨き込み・法則の追加・文言調整など。
