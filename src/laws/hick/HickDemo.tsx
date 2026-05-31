@@ -42,6 +42,17 @@ export default function HickDemo() {
     }
   }, [roundIndex])
 
+  // 「準備OK・開始する」を押した位置に選択肢ボタンが現れると、そこへ
+  // フォーカス（青枠）が移ってしまうことがある。play 突入直後に解除する。
+  useEffect(() => {
+    if (sub !== 'play') return
+    const id = requestAnimationFrame(() => {
+      const el = document.activeElement as HTMLElement | null
+      if (el && el.tagName === 'BUTTON') el.blur()
+    })
+    return () => cancelAnimationFrame(id)
+  }, [sub])
+
   const begin = useCallback(() => {
     startRef.current = performance.now()
     setWrong(false)
@@ -84,14 +95,14 @@ export default function HickDemo() {
             <span className={styles.rBarWrap}>
               <span className={styles.rBar} style={{ width: `${barWidth(times[0], times)}%` }} />
             </span>
-            <span className={styles.rTime}>{formatMs(times[0])}</span>
+            <span className={styles.rTime}>{Math.round(times[0])}ms</span>
           </div>
           <div className={styles.resultRow}>
             <span className={styles.rLabel}>30択</span>
             <span className={styles.rBarWrap}>
               <span className={`${styles.rBar} ${styles.rBarBig}`} style={{ width: `${barWidth(times[1], times)}%` }} />
             </span>
-            <span className={styles.rTime}>{formatMs(times[1])}</span>
+            <span className={styles.rTime}>{Math.round(times[1])}ms</span>
           </div>
         </div>
         <p className={styles.resultNote}>

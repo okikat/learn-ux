@@ -76,6 +76,8 @@
   border-radius: var(--r3);
   box-shadow: var(--shadow-sm);
   padding: clamp(var(--s4), 4vw, var(--s6));
+  /* デモ内から scrollIntoView する際、固定ヘッダーに隠れない余白 */
+  scroll-margin-top: 64px;
 }
 
 /* デモ直後の「気づき」ボックス */

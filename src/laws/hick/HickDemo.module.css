@@ -119,9 +119,11 @@
   gap: var(--s4);
 }
 
+/* 数値の桁数でバー幅が変わらないよう、ラベル列と時間列は固定幅。
+   時間は右寄せにして2行の右端をそろえる。 */
 .resultRow {
   display: grid;
-  grid-template-columns: 52px 1fr auto;
+  grid-template-columns: 48px 1fr 64px;
   align-items: center;
   gap: var(--s3);
 }
@@ -154,6 +156,7 @@
   font-family: var(--mono);
   font-weight: 700;
   font-size: 14px;
+  text-align: right;
 }
 
 .resultNote {

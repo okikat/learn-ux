@@ -5,7 +5,7 @@ const POOL = [
   'みかん', 'さくら', 'でんわ', 'やま', 'ほし', 'くるま', 'ねこ',
   'つくえ', 'かぎ', 'ふね', 'とり', 'はな', 'ゆき', 'かさ', 'いし',
 ]
-const LIST_LEN = 9
+const LIST_LEN = 7
 const SHOW_MS = 4200
 const SHOW_MS_SLOW = 6500
 
@@ -22,11 +22,21 @@ export default function SerialPositionDemo() {
   const [picked, setPicked] = useState<Set<string>>(new Set())
   const [slow, setSlow] = useState(false)
   const timerRef = useRef<number | null>(null)
+  const rootRef = useRef<HTMLDivElement>(null)
   const showMs = slow ? SHOW_MS_SLOW : SHOW_MS
 
   useEffect(() => () => {
     if (timerRef.current !== null) window.clearTimeout(timerRef.current)
   }, [])
+
+  // スタート後、一覧が長くて下部（制限時間バー等）が見切れないよう、
+  // テスト枠の上端を画面上端へスクロールして見せる。
+  useEffect(() => {
+    if (phase === 'show') {
+      const frame = rootRef.current?.parentElement ?? rootRef.current
+      frame?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }
+  }, [phase])
 
   const start = useCallback(() => {
     const shuffled = shuffle(POOL)
@@ -53,7 +63,7 @@ export default function SerialPositionDemo() {
 
   if (phase === 'ready') {
     return (
-      <div className={styles.demo}>
+      <div className={styles.demo} ref={rootRef}>
         <p className={styles.lead}>
           {LIST_LEN}個の単語が順番に一瞬出ます。あとで「どれがあったか」を選んでください。
         </p>
@@ -70,7 +80,11 @@ export default function SerialPositionDemo() {
 
   if (phase === 'show') {
     return (
-      <div className={styles.demo}>
+      <div className={styles.demo} ref={rootRef}>
+        {/* 制限時間バーは上部に（下にあると一覧が長いとき見切れるため） */}
+        <div className={styles.countdown}>
+          <span className={styles.countdownBar} style={{ animationDuration: `${showMs}ms` }} />
+        </div>
         <p className={styles.prompt}>覚えて！</p>
         <ol className={styles.showList}>
           {list.map((w, i) => (
@@ -80,16 +94,13 @@ export default function SerialPositionDemo() {
             </li>
           ))}
         </ol>
-        <div className={styles.countdown}>
-          <span className={styles.countdownBar} style={{ animationDuration: `${showMs}ms` }} />
-        </div>
       </div>
     )
   }
 
   if (phase === 'recall') {
     return (
-      <div className={styles.demo}>
+      <div className={styles.demo} ref={rootRef}>
         <p className={styles.prompt}>さっき出たのはどれ？（複数選べます）</p>
         <div className={styles.choices}>
           {choices.map((w) => (
@@ -117,7 +128,7 @@ export default function SerialPositionDemo() {
 
   // result
   return (
-    <div className={styles.demo}>
+    <div className={styles.demo} ref={rootRef}>
       <p className={styles.prompt}>結果（位置ごとの正解）</p>
       <ol className={styles.resultList}>
         {list.map((w, i) => {
@@ -138,7 +149,7 @@ export default function SerialPositionDemo() {
       <p className={styles.note}>
         一般に、最初（1番）と最後（{list.length}番）は思い出しやすいと言われます（並びの<strong>両端</strong>が記憶に残る＝系列位置効果）。1回だと個人差が出るので、何度か試すと傾向が見えます。
       </p>
-      <button type="button" className={styles.start} onClick={start}>
+      <button type="button" className={styles.start} onClick={() => setPhase('ready')}>
         もう一度ためす
       </button>
     </div>

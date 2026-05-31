@@ -27,19 +27,14 @@ export default function VonRestorffDemo() {
     }, SHOW_MS)
   }, [])
 
-  const pick = useCallback(
-    (i: number) => {
-      setPicked(i)
-      setPhase('result')
-    },
-    [],
-  )
+  const pick = useCallback((i: number) => {
+    setPicked(i)
+    setPhase('result')
+  }, [])
 
-  const correct = picked === highlight
-
-  return (
-    <div className={styles.demo}>
-      {phase === 'intro' && (
+  if (phase === 'intro') {
+    return (
+      <div className={styles.demo}>
         <div className={styles.center}>
           <p className={styles.lead}>
             8個のボタンが一瞬出ます。<strong>1つだけ色が違います</strong>。
@@ -49,62 +44,56 @@ export default function VonRestorffDemo() {
             スタート
           </button>
         </div>
-      )}
+      </div>
+    )
+  }
 
-      {phase === 'show' && (
-        <>
-          <p className={styles.prompt}>よく見て…</p>
-          <div className={styles.grid}>
-            {Array.from({ length: COUNT }, (_, i) => (
-              <div
-                key={i}
-                className={`${styles.cell} ${i === highlight ? styles.cellHi : ''}`}
-                aria-hidden="true"
-              >
-                {i + 1}
-              </div>
-            ))}
-          </div>
-        </>
-      )}
+  const correct = picked === highlight
+  const prompt =
+    phase === 'show'
+      ? 'よく見て…'
+      : phase === 'recall'
+        ? '目立っていたのはどれ？タップで回答'
+        : correct
+          ? '正解！'
+          : '惜しい！ 正解は色付きの方'
 
-      {phase === 'recall' && (
-        <>
-          <p className={styles.prompt}>目立っていたのはどれ？タップで回答</p>
-          <div className={styles.grid}>
-            {Array.from({ length: COUNT }, (_, i) => (
-              <button
-                key={i}
-                type="button"
-                className={styles.cellBtn}
-                onClick={() => pick(i)}
-                aria-label={`${i + 1}番`}
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
+  // show / recall / result は同じグリッド要素を使い回す（class だけ切替）。
+  // 要素をアンマウントしないので、強調セルの拡大・影の描画残りが起きない。
+  return (
+    <div className={styles.demo}>
+      <p
+        className={`${styles.prompt} ${
+          phase === 'result' ? (correct ? styles.okText : styles.ngText) : ''
+        }`}
+      >
+        {prompt}
+      </p>
+      <div className={styles.grid}>
+        {Array.from({ length: COUNT }, (_, i) => {
+          const interactive = phase === 'recall'
+          const isHi = i === highlight && phase !== 'recall'
+          const isWrong = phase === 'result' && i === picked && i !== highlight
+          return (
+            <button
+              key={i}
+              type="button"
+              disabled={!interactive}
+              aria-hidden={interactive ? undefined : true}
+              aria-label={interactive ? `${i + 1}番` : undefined}
+              className={`${interactive ? styles.cellBtn : styles.cell} ${
+                isHi ? styles.cellHi : ''
+              } ${isWrong ? styles.cellWrong : ''}`}
+              onClick={interactive ? () => pick(i) : undefined}
+            >
+              {i + 1}
+            </button>
+          )
+        })}
+      </div>
 
       {phase === 'result' && (
         <>
-          <p className={`${styles.prompt} ${correct ? styles.okText : styles.ngText}`}>
-            {correct ? '正解！ よく覚えていましたね' : '惜しい！ 正解は色付きの方'}
-          </p>
-          <div className={styles.grid}>
-            {Array.from({ length: COUNT }, (_, i) => (
-              <div
-                key={i}
-                className={`${styles.cell} ${i === highlight ? styles.cellHi : ''} ${
-                  i === picked && i !== highlight ? styles.cellWrong : ''
-                }`}
-                aria-hidden="true"
-              >
-                {i + 1}
-              </div>
-            ))}
-          </div>
           <p className={styles.note}>
             周りと違う1つは、見た時間が同じでも記憶に残りやすい。だから「最重要の1つ」を際立たせると効きます。
           </p>

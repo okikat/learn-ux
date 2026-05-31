@@ -26,6 +26,10 @@
 }
 
 .prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.9em;
   font-size: 15px;
   font-weight: 700;
   color: var(--text-muted);
@@ -53,12 +57,18 @@
   aspect-ratio: 1;
   display: grid;
   place-items: center;
+  padding: 0;
   border-radius: var(--r2);
   background: var(--surface-3);
   color: var(--text-faint);
   font-weight: 700;
   font-size: 16px;
   border: 2px solid transparent;
+}
+
+/* show/result の非操作セル（disabled button）は通常表示のまま */
+.cell:disabled {
+  opacity: 1;
 }
 
 .cellBtn {
