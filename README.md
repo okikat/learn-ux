@@ -35,13 +35,11 @@ npm run preview
 npm test
 ```
 
-## 公開（GitHub Pages）
+## 自分のサイト（ホームページ）に載せる
 
-`main` ブランチへマージすると、GitHub Actions（`.github/workflows/deploy.yml`）が自動でビルドして GitHub Pages に公開します。公開URLは:
+`npm run build` を実行すると `dist` フォルダができます。**この `dist` フォルダの中身（`index.html` と `assets` フォルダ）を、あなたのWebサーバー（ホームページ）の好きな場所にアップロードするだけ**で公開できます。
 
-**https://okikat.github.io/learn-ux/**
-
-初回のみ、リポジトリの **Settings → Pages → Build and deployment → Source** を「**GitHub Actions**」に設定してください（ワークフローが自動で有効化を試みますが、組織やアカウントの設定によっては手動が必要です）。ルーティングはハッシュ方式（HashRouter）かつ Vite の `base` を相対パスにしているため、サブパス配信でもリロードや直リンクで404になりません。
+Vite の `base` を相対パスにし、ルーティングをハッシュ方式（HashRouter）にしているため、サイトのどのフォルダ（例: `https://example.com/learn-ux/`）に置いても動作し、ページを再読み込みしても404になりません。サーバー側の特別な設定は不要です。
 
 ## 技術スタック
 
