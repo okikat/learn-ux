@@ -1,0 +1,156 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.q {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s3);
+  width: 100%;
+  align-items: stretch;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s4) var(--s3);
+  border: 2px solid var(--border);
+  border-radius: var(--r2);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color var(--t-fast) var(--ease);
+}
+
+.card:hover:not(:disabled) {
+  border-color: var(--card-accent, var(--accent));
+}
+
+.picked {
+  border-color: var(--card-accent, var(--accent));
+}
+
+.thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r1);
+  background: var(--surface-3);
+}
+
+.name {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.badge {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 800;
+  color: #fff;
+  background: var(--card-accent, var(--accent));
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+
+.stars {
+  font-size: 12px;
+  color: #d9a514;
+  font-weight: 700;
+}
+
+.reveal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  padding: var(--s4) var(--s5);
+  background: var(--good-soft);
+  border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+  border-radius: var(--r2);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.reveal strong {
+  color: var(--text);
+}
+
+.tally {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.barLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.track {
+  height: 12px;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  background: var(--text-faint);
+  border-radius: var(--r-pill);
+  transition: width var(--t-base) var(--ease);
+}
+
+.fillHi {
+  background: var(--card-accent, var(--accent));
+}
+
+.barVal {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.again {
+  align-self: center;
+  min-height: var(--tap);
+  padding: 0 var(--s5);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+}

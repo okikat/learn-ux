@@ -81,6 +81,43 @@
   color: var(--text-muted);
 }
 
+/* 有料パック区画（無料と視覚的に分ける） */
+.proSection {
+  margin-top: var(--s8);
+  padding: clamp(var(--s4), 4vw, var(--s5));
+  border: 1px solid color-mix(in srgb, #b5179e 30%, var(--border));
+  border-radius: var(--r3);
+  background: linear-gradient(180deg, color-mix(in srgb, #b5179e 6%, var(--surface)), var(--surface));
+}
+
+.proHead {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: var(--s4);
+  padding-bottom: var(--s3);
+  border-bottom: 1px solid var(--border);
+}
+
+.proTag {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: linear-gradient(135deg, #b5179e, #7b2ff7);
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  margin-bottom: var(--s1);
+}
+
+.proNote {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: var(--s1);
+}
+
 .grid {
   list-style: none;
   display: grid;

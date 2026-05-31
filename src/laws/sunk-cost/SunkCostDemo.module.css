@@ -1,0 +1,108 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.scene {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.scene strong {
+  color: var(--card-accent, var(--accent));
+}
+
+.label {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: var(--s2);
+}
+
+.slider {
+  width: 100%;
+  height: var(--tap);
+  accent-color: var(--card-accent, var(--accent));
+  cursor: pointer;
+}
+
+.meter {
+  height: 14px;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.meterFill {
+  display: block;
+  height: 100%;
+  background: var(--card-accent, var(--accent));
+  border-radius: var(--r-pill);
+  transition: width var(--t-base) var(--ease);
+}
+
+.meterLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s3);
+  margin-top: var(--s2);
+}
+
+.keep,
+.quit {
+  min-height: var(--tap);
+  border-radius: var(--r2);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.keep {
+  border: none;
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+}
+
+.quit {
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+}
+
+.reveal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin-top: var(--s2);
+  padding: var(--s4) var(--s5);
+  background: var(--good-soft);
+  border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+  border-radius: var(--r2);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.reveal strong {
+  color: var(--text);
+}
+
+.small {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.again {
+  align-self: center;
+  min-height: var(--tap);
+  padding: 0 var(--s5);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+}

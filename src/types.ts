@@ -1,7 +1,7 @@
 import type { ComponentType } from 'react'
 
 /** 法則のカテゴリ（トップページでの分類） */
-export type Category = 'perception' | 'memory' | 'decision' | 'operation' | 'design'
+export type Category = 'perception' | 'memory' | 'decision' | 'operation' | 'design' | 'bias'
 
 /** 1つのUX法則を表すメタデータ。全ページがこの「型」で構成される。 */
 export interface LawMeta {
@@ -31,4 +31,6 @@ export interface LawMeta {
   Demo: ComponentType
   /** デモ実装済みか（未実装は一覧で「準備中」表示） */
   ready: boolean
+  /** 無料か有料パックか（未指定は無料扱い） */
+  tier?: 'free' | 'pro'
 }

@@ -59,6 +59,16 @@
   border-radius: var(--r-pill);
 }
 
+.pro {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: linear-gradient(135deg, #b5179e, #7b2ff7);
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+}
+
 .titleJa {
   font-size: 19px;
   margin-top: var(--s2);

@@ -1,4 +1,4 @@
-import { laws, categories } from '../data/laws'
+import { laws, categories, biases, biasPack } from '../data/laws'
 import LawCard from '../components/LawCard'
 import styles from './HomePage.module.css'
 
@@ -40,6 +40,25 @@ export default function HomePage() {
           </section>
         )
       })}
+
+      {/* 有料パック（認知バイアス）。無料20とハッキリ分けて表示する。 */}
+      <section className={styles.proSection} aria-label={biasPack.label}>
+        <div className={styles.proHead}>
+          <span className={styles.proTag}>PRO ・ {biasPack.price}</span>
+          <h2 className={styles.sectionTitle}>{biasPack.label}</h2>
+          <p className={styles.sectionBlurb}>{biasPack.blurb}</p>
+          <p className={styles.proNote}>
+            無料の20法則で物足りない人へ。判断のクセを突く8つの実践編です。
+          </p>
+        </div>
+        <ul className={styles.grid}>
+          {biases.map((law) => (
+            <li key={law.id} className={styles.cell}>
+              <LawCard law={law} />
+            </li>
+          ))}
+        </ul>
+      </section>
     </div>
   )
 }

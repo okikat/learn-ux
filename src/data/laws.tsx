@@ -25,6 +25,15 @@ import TeslerDemo from '../laws/tesler/TeslerDemo'
 import AestheticDemo from '../laws/aesthetic/AestheticDemo'
 import PeakEndDemo from '../laws/peak-end/PeakEndDemo'
 import ParetoDemo from '../laws/pareto/ParetoDemo'
+// 認知バイアス・パック（有料）
+import AnchoringDemo from '../laws/anchoring/AnchoringDemo'
+import FramingDemo from '../laws/framing/FramingDemo'
+import DecoyDemo from '../laws/decoy/DecoyDemo'
+import SocialProofDemo from '../laws/social-proof/SocialProofDemo'
+import ScarcityDemo from '../laws/scarcity/ScarcityDemo'
+import LossAversionDemo from '../laws/loss-aversion/LossAversionDemo'
+import SunkCostDemo from '../laws/sunk-cost/SunkCostDemo'
+import MereExposureDemo from '../laws/mere-exposure/MereExposureDemo'
 
 /** トップページのカテゴリ（この順で表示）。 */
 export const categories: { id: Category; label: string; blurb: string }[] = [
@@ -489,3 +498,204 @@ export const laws: LawMeta[] = [
     ready: true,
   },
 ]
+
+/** 有料パックの情報（トップで表示）。 */
+export const biasPack = {
+  label: '認知バイアス・パック',
+  price: '¥980',
+  blurb: '人の“判断のクセ”を突く8つ。マーケ・プロダクトにそのまま効く実践編。',
+}
+
+/**
+ * 認知バイアス・パック（有料 ¥980）。無料の20法則と同じ「型」で構成。
+ * 解説・Tips・一言定義はすべて独自記述。
+ */
+export const biases: LawMeta[] = [
+  {
+    id: 'anchoring',
+    no: '21',
+    slug: 'anchoring',
+    titleJa: 'アンカリング',
+    titleEn: 'Anchoring',
+    tagline: '最初に見た数字が、その後の判断の“基準”になる。',
+    description: [
+      '人は何かを評価するとき、最初に提示された数字（アンカー）を無意識の基準にして、そこから調整して答えを出す。だから最初の数字が高ければ高く、低ければ低く見積もりがちになる。',
+      '「定価¥9,800 → ¥4,980」の取り消し線が効くのはこのため。同じ¥4,980でも、高いアンカーがあると“お得”に感じる。',
+    ],
+    tips: [
+      '見せたい価値より高い基準（定価・比較対象）を先に示すと、後の数字が魅力的に見える。',
+      'ただし非現実的なアンカーは不信を招く。誠実な比較に留める。',
+      'ユーザーに見積もらせる場面では、最初に出す数字（初期値・例示）の影響を意識する。',
+    ],
+    takeaway: '同じ¥4,980でも、先に高い値段を見せられると「お得」に感じる。最初の数字が基準を作る。',
+    accent: '#b5179e',
+    category: 'bias',
+    Demo: AnchoringDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'framing',
+    no: '22',
+    slug: 'framing',
+    titleJa: 'フレーミング効果',
+    titleEn: 'Framing Effect',
+    tagline: '同じ事実でも、「言い方」で印象が変わる。',
+    description: [
+      'まったく同じ内容でも、ポジティブに言うかネガティブに言うかで、受け手の判断は大きく変わる。「成功率90%」と「失敗率10%」は同じなのに、前者の方が選ばれやすい。',
+      'だから“何を言うか”だけでなく“どう言うか”が体験を左右する。誠実さを保ちつつ、前向きな枠組みで伝えるのが基本。',
+    ],
+    tips: [
+      '同じ事実は、ユーザーの利益が伝わる前向きな表現を選ぶ（「残り10%」より「90%完了」）。',
+      'ネガティブな数字を出すときは、文脈や対処法とセットにする。',
+      '誤認を招くフレーミングは避ける。短期的に得でも信頼を失う。',
+    ],
+    takeaway: '「90%成功」と「10%失敗」は同じ。それでも前者を選ぶ——伝え方が判断を変える。',
+    accent: '#d6336c',
+    category: 'bias',
+    Demo: FramingDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'decoy',
+    no: '23',
+    slug: 'decoy',
+    titleJa: 'おとり効果',
+    titleEn: 'Decoy Effect',
+    tagline: '“引き立て役”を1つ置くと、狙った選択肢が選ばれる。',
+    description: [
+      '2択では迷う人も、3つ目に「明らかに見劣りする選択肢（おとり）」を加えると、それと比べて魅力的に見える特定の選択肢を選びやすくなる。',
+      '価格プランで“真ん中が一番お得”に見える構成が典型。おとりは、選ばせたい選択肢を引き立てるために置かれる。',
+    ],
+    tips: [
+      '選んでほしいプランの近くに、それより少し劣る比較対象を置くと魅力が際立つ。',
+      'おとりは1つに絞る。選択肢を増やしすぎるとヒックの法則で逆効果。',
+      'ユーザーを欺く露骨なおとりは避け、納得感のある比較に留める。',
+    ],
+    takeaway: 'おとりを1つ足すだけで、選ばれる割合が偏る。比較対象が選択を作る。',
+    accent: '#1098ad',
+    category: 'bias',
+    Demo: DecoyDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'social-proof',
+    no: '24',
+    slug: 'social-proof',
+    titleJa: '社会的証明',
+    titleEn: 'Social Proof',
+    tagline: 'みんなが選ぶものを、人は「正しい」と感じる。',
+    description: [
+      '自分で判断しづらいとき、人は「他の多くの人の行動」を手がかりにする。レビュー件数、★評価、「人気No.1」「売れ筋」表示が効くのはこのため。',
+      '数字や他者の声は迷いを減らし、安心を与える。ただし“やらせ”が露見すると、一気に信頼を失う。',
+    ],
+    tips: [
+      'レビュー件数・利用者数・ランキングなど、信頼できる社会的証明を見せる。',
+      '具体的な数字や実名の声ほど効く（「多くの人」より「1,240件・★4.8」）。',
+      '証明は本物だけ。捏造・盛りは長期的に最大の損失になる。',
+    ],
+    takeaway: '同じ商品でも「★4.8・1,240件・人気No.1」が付くと、ぐっと選びたくなる。',
+    accent: '#f59f00',
+    category: 'bias',
+    Demo: SocialProofDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'scarcity',
+    no: '25',
+    slug: 'scarcity',
+    titleJa: '希少性',
+    titleEn: 'Scarcity',
+    tagline: '「残りわずか」「期間限定」だと、価値が上がって見える。',
+    description: [
+      '手に入りにくいもの、もうすぐ無くなるものを、人は価値が高いと感じ、欲しくなる。「在庫残り2点」「本日23:59まで」が背中を押すのはこのため。',
+      '希少性は強力だが、嘘の煽り（偽のカウントダウン等）は信頼を壊すダークパターンになりやすい。',
+    ],
+    tips: [
+      '本当に限りがあるもの（在庫・期限）は、正直に明示すると行動を後押しできる。',
+      '数量・期限はリアルタイムで正確に。偽の希少性は厳禁。',
+      '希少性に頼りすぎず、商品本来の価値も伝える。',
+    ],
+    takeaway: '同じ商品でも「残り2点・本日限り」が付くと、急に欲しくなる。少なさが価値に化ける。',
+    accent: '#e8590c',
+    category: 'bias',
+    Demo: ScarcityDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'loss-aversion',
+    no: '26',
+    slug: 'loss-aversion',
+    titleJa: '損失回避',
+    titleEn: 'Loss Aversion',
+    tagline: '人は「得」より「損」を、約2倍強く嫌う。',
+    description: [
+      '同じ金額でも、得る喜びより失う痛みのほうが大きく感じられる。だから「無料お試しが終了します」「ポイントが失効します」という“失う”通知は、強く行動を促す。',
+      'この非対称性は選択のリスク態度も変える。得の場面では手堅く、損の場面では一発逆転を狙いがちになる。',
+    ],
+    tips: [
+      '「得られる」より「失う・逃す」を避けたい心理に訴える（ただし誠実に）。',
+      '無料期間・保有ポイント・カート保存など、“失いたくないもの”を可視化する。',
+      '不安の過剰な煽りは避け、ユーザーの利益に沿わせる。',
+    ],
+    takeaway: '「+1000円」より「−1000円」が心に重い。だから“失う”が人を動かす。',
+    accent: '#5f3dc4',
+    category: 'bias',
+    Demo: LossAversionDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'sunk-cost',
+    no: '27',
+    slug: 'sunk-cost',
+    titleJa: 'サンクコスト',
+    titleEn: 'Sunk Cost Fallacy',
+    tagline: 'すでに使った労力やお金が惜しくて、やめられなくなる。',
+    description: [
+      'これまで注ぎ込んだ時間やお金（取り戻せない＝サンクコスト）が惜しくて、合理的にはやめるべき場面でも続けてしまう。「ここまで来たんだから」は判断を狂わせる。',
+      '本来の判断材料は“これからの損得”だけ。過去の投資は、未来の選択には関係ない。',
+    ],
+    tips: [
+      'ユーザーが「もったいない」で不利な選択を続けないよう、いつでも引き返せる導線を用意する。',
+      '解約・中断のしやすさは、長期的な信頼につながる（無理な囲い込みの逆）。',
+      '自分の設計判断でも、作り込んだ機能への固執がないか問い直す。',
+    ],
+    takeaway: 'つぎ込むほど「やめる」が難しくなる。でも過去の投資は、未来の判断には無関係。',
+    accent: '#c2255c',
+    category: 'bias',
+    Demo: SunkCostDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'mere-exposure',
+    no: '28',
+    slug: 'mere-exposure',
+    titleJa: '単純接触効果',
+    titleEn: 'Mere Exposure Effect',
+    tagline: '何度も目にするほど、人はそれを好きになる。',
+    description: [
+      '特に意味がなくても、繰り返し接した対象に人は親しみと好意を持つ。見慣れたロゴ・色・レイアウトが“なんとなく良い”と感じられるのはこのため。',
+      'だから一貫したブランド表現の反復は、じわじわ好意と信頼を育てる。ただし過剰な反復は、飽きや嫌悪に転じることもある。',
+    ],
+    tips: [
+      'ブランドの色・形・トーンを一貫して反復し、見慣れ→好意を育てる。',
+      '新要素は、馴染みのある文脈の中に少しずつ載せる（急な刷新は抵抗を生む）。',
+      '反復はほどほどに。しつこさは逆効果になりうる。',
+    ],
+    takeaway: 'よく見たものほど“なんとなく好き”になる。見慣れは、静かに好意を作る。',
+    accent: '#1c7ed6',
+    category: 'bias',
+    Demo: MereExposureDemo,
+    ready: true,
+    tier: 'pro',
+  },
+]
+
+/** 無料20＋有料8の全件（スラッグ検索用）。 */
+export const allLaws: LawMeta[] = [...laws, ...biases]

@@ -13,6 +13,7 @@ export default function LawCard({ law }: { law: LawMeta }) {
     >
       <div className={styles.top}>
         <span className={styles.no}>{law.no}</span>
+        {law.tier === 'pro' && <span className={styles.pro}>PRO</span>}
         {!law.ready && <span className={styles.soon}>準備中</span>}
       </div>
       <h3 className={styles.titleJa}>{law.titleJa}</h3>

@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import type { LawMeta } from '../types'
-import { laws } from '../data/laws'
+import { laws, biases } from '../data/laws'
 import styles from './LawDetail.module.css'
 
 /**
@@ -9,9 +9,11 @@ import styles from './LawDetail.module.css'
  *  ①一言定義 ②解説 ③インタラクティブ・デモ＋気づき ④実践Tips
  */
 export default function LawDetail({ law }: { law: LawMeta }) {
-  const index = laws.findIndex((l) => l.id === law.id)
-  const prev = index > 0 ? laws[index - 1] : null
-  const next = index < laws.length - 1 ? laws[index + 1] : null
+  // 前後ナビは「同じセット内」で完結させる（無料20 / 有料パックを混ぜない）
+  const set = law.tier === 'pro' ? biases : laws
+  const index = set.findIndex((l) => l.id === law.id)
+  const prev = index > 0 ? set[index - 1] : null
+  const next = index < set.length - 1 ? set[index + 1] : null
   const isLast = next === null
   const Demo = law.Demo
 
