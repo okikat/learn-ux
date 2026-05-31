@@ -1,0 +1,131 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.lead {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.lead strong {
+  color: var(--text);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.playBtn {
+  min-height: 44px;
+  min-width: 104px;
+  padding: 0 var(--s3);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--accent-strong);
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background var(--t-fast) var(--ease);
+}
+
+.playBtn:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+
+.playBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.track {
+  height: 14px;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, var(--accent), #8a5cf6);
+}
+
+.pct {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  min-width: 40px;
+  text-align: right;
+}
+
+.voteBox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  padding: var(--s4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  align-items: center;
+}
+
+.voteQ {
+  font-weight: 700;
+}
+
+.voteBtns {
+  display: flex;
+  gap: var(--s3);
+}
+
+.voteBtn {
+  min-height: var(--tap);
+  padding: 0 var(--s5);
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: var(--shadow-sm);
+}
+
+.voteBtn:hover {
+  background: var(--accent-strong);
+}
+
+.reveal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  padding: var(--s4) var(--s5);
+  background: var(--good-soft);
+  border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+  border-radius: var(--r2);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.revealText strong {
+  color: var(--text);
+}
+
+.retry {
+  align-self: center;
+  min-height: var(--tap);
+  padding: 0 var(--s6);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+}

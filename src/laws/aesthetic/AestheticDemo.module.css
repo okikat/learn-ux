@@ -1,0 +1,210 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.lead {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.lead strong {
+  color: var(--text);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s4);
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+/* --- A: 素っ気ないUI（あえて整えない） --- */
+.plainCard {
+  flex: 1;
+  border: 1px solid #999;
+  padding: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  background: #fff;
+  color: #000;
+  font-family: Times, "Times New Roman", serif;
+}
+
+.plainBtn {
+  margin-top: 6px;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+/* --- B: 整ったUI --- */
+.fancyCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s4);
+  border-radius: var(--r3);
+  background: linear-gradient(160deg, #eef2ff, #f8f5ff);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.fancyHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fancyCity {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.fancyIcon {
+  font-size: 22px;
+}
+
+.fancyTemp {
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text);
+}
+
+.fancyCond {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.fancyMeta {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: var(--s2);
+}
+
+.fancyMeta li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.fancyMeta strong {
+  color: var(--text);
+}
+
+.fancyBtn {
+  margin-top: var(--s2);
+  min-height: 40px;
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.voteBtn {
+  min-height: var(--tap);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r2);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+  font-size: 14px;
+  transition: all var(--t-fast) var(--ease);
+}
+
+.voteBtn:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.voteBtn:disabled {
+  opacity: 0.5;
+}
+
+/* --- reveal --- */
+.reveal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  padding: var(--s4) var(--s5);
+  background: var(--good-soft);
+  border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+  border-radius: var(--r2);
+}
+
+.revealLead {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.revealLead strong {
+  color: var(--good);
+}
+
+.tally {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.tallyRow {
+  display: grid;
+  grid-template-columns: 92px 1fr auto;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.tallyLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.tallyTrack {
+  height: 12px;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.tallyFill {
+  display: block;
+  height: 100%;
+  background: var(--text-faint);
+  border-radius: var(--r-pill);
+  transition: width var(--t-base) var(--ease);
+}
+
+.tallyFillHi {
+  background: var(--accent);
+}
+
+.tallyVal {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.again {
+  align-self: center;
+  min-height: var(--tap);
+  padding: 0 var(--s5);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+}

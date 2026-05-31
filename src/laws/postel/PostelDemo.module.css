@@ -1,0 +1,124 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.input {
+  width: 100%;
+  min-height: 52px;
+  padding: 0 var(--s4);
+  font-size: 17px; /* iOSでズームしない最小 */
+  font-family: var(--mono);
+  border: 2px solid var(--border-strong);
+  border-radius: var(--r2);
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color var(--t-fast) var(--ease);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.samples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.samplesLabel {
+  font-size: 13px;
+  color: var(--text-faint);
+}
+
+.chip,
+.chipClear {
+  min-height: 40px;
+  padding: 0 var(--s3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.chip:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.chipClear {
+  color: var(--text-faint);
+}
+
+.pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  margin-top: var(--s2);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s1);
+  padding: var(--s3) var(--s4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+}
+
+.stepOk {
+  background: var(--good-soft);
+  border-color: color-mix(in srgb, var(--good) 30%, transparent);
+}
+
+.stepLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+}
+
+.stepValue,
+.stepResult {
+  font-family: var(--mono);
+  font-size: 16px;
+  word-break: break-all;
+  color: var(--text);
+}
+
+.stepResult {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--good);
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--good);
+}
+
+.arrow {
+  text-align: center;
+  font-size: 12px;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}

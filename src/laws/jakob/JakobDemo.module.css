@@ -1,0 +1,249 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.counter {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.introBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s4);
+  padding: var(--s6) var(--s3);
+  text-align: center;
+}
+
+.introLead {
+  color: var(--text-muted);
+  line-height: 1.9;
+}
+
+.introLead strong {
+  color: var(--accent-strong);
+}
+
+.btn,
+.btnPrimary {
+  min-height: var(--tap);
+  padding: 0 var(--s6);
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.btnPrimary {
+  border: none;
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: var(--shadow-md);
+}
+
+.btn {
+  align-self: center;
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* --- おなじみ配置 --- */
+.screen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  padding: var(--s4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  min-height: 260px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--s3);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.search {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.item {
+  color: var(--text);
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.actions {
+  margin-top: auto;
+  display: flex;
+  gap: var(--s3);
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.secondary {
+  min-height: var(--tap);
+  padding: 0 var(--s4);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r2);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.primary {
+  min-height: var(--tap);
+  padding: 0 var(--s5);
+  border: none;
+  border-radius: var(--r2);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+/* --- 奇抜な配置（探しにくい） --- */
+.screenWeird {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  min-height: 260px;
+}
+
+.tinyLink {
+  align-self: flex-start;
+  border: none;
+  background: none;
+  color: var(--text-faint);
+  font-size: 12px;
+  text-decoration: underline;
+  padding: 4px;
+  min-height: 32px;
+}
+
+.weirdPrice {
+  align-self: flex-end;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.bigDecoy {
+  margin: var(--s3) 0;
+  min-height: 64px;
+  padding: 0 var(--s6);
+  border: none;
+  border-radius: var(--r3);
+  background: linear-gradient(135deg, #ff8a3d, #e0533d);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  box-shadow: var(--shadow-lg);
+}
+
+.weirdSearch {
+  align-self: flex-start;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.weirdItem {
+  align-self: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.weirdLogo {
+  align-self: flex-end;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.wrong {
+  text-align: center;
+  color: var(--bad);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* --- 結果 --- */
+.title {
+  font-size: 17px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.rowLabel {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.track {
+  height: 16px;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--r-pill);
+  transition: width var(--t-base) var(--ease);
+}
+
+.fillDanger {
+  background: var(--bad);
+}
+
+.rowTime {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.note {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}

@@ -1,7 +1,13 @@
 import type { LawMeta } from '../types'
-import PlaceholderDemo from '../components/PlaceholderDemo'
+import JakobDemo from '../laws/jakob/JakobDemo'
 import FittsDemo from '../laws/fitts/FittsDemo'
+import MillerDemo from '../laws/miller/MillerDemo'
 import HickDemo from '../laws/hick/HickDemo'
+import PostelDemo from '../laws/postel/PostelDemo'
+import PeakEndDemo from '../laws/peak-end/PeakEndDemo'
+import AestheticDemo from '../laws/aesthetic/AestheticDemo'
+import VonRestorffDemo from '../laws/von-restorff/VonRestorffDemo'
+import TeslerDemo from '../laws/tesler/TeslerDemo'
 import DohertyDemo from '../laws/doherty/DohertyDemo'
 
 /**
@@ -29,8 +35,8 @@ export const laws: LawMeta[] = [
     takeaway:
       '「見慣れた配置」のほうが、目的の操作を圧倒的に速く見つけられる。慣習に乗ることが最速のオンボーディング。',
     accent: '#e0792b',
-    Demo: PlaceholderDemo,
-    ready: false,
+    Demo: JakobDemo,
+    ready: true,
   },
   {
     id: 'fitts',
@@ -73,8 +79,8 @@ export const laws: LawMeta[] = [
     takeaway:
       '同じ桁数でも、区切られた数字のほうが圧倒的に思い出しやすい。チャンク化が記憶を助ける。',
     accent: '#2a9d8f',
-    Demo: PlaceholderDemo,
-    ready: false,
+    Demo: MillerDemo,
+    ready: true,
   },
   {
     id: 'hick',
@@ -117,8 +123,8 @@ export const laws: LawMeta[] = [
     takeaway:
       '雑に入れても正しく整う入力欄は、ユーザーに考えさせない。寛容さが、そのまま使いやすさになる。',
     accent: '#2f7fd1',
-    Demo: PlaceholderDemo,
-    ready: false,
+    Demo: PostelDemo,
+    ready: true,
   },
   {
     id: 'peak-end',
@@ -139,8 +145,8 @@ export const laws: LawMeta[] = [
     takeaway:
       '総時間が同じでも、「終わりがスッと締まる」ほうが心地よく記憶に残る。終わり方が印象を作る。',
     accent: '#b5563f',
-    Demo: PlaceholderDemo,
-    ready: false,
+    Demo: PeakEndDemo,
+    ready: true,
   },
   {
     id: 'aesthetic',
@@ -161,8 +167,8 @@ export const laws: LawMeta[] = [
     takeaway:
       '機能が同じでも、整ったUIのほうが「信頼できる・使いやすい」と感じる。見た目は体験の一部。',
     accent: '#8a5cf6',
-    Demo: PlaceholderDemo,
-    ready: false,
+    Demo: AestheticDemo,
+    ready: true,
   },
   {
     id: 'von-restorff',
@@ -183,8 +189,8 @@ export const laws: LawMeta[] = [
     takeaway:
       '同じ要素の中で1つだけ違うものは、後からでも思い出せる。際立ちが記憶を作る。',
     accent: '#d9a514',
-    Demo: PlaceholderDemo,
-    ready: false,
+    Demo: VonRestorffDemo,
+    ready: true,
   },
   {
     id: 'tesler',
@@ -205,8 +211,8 @@ export const laws: LawMeta[] = [
     takeaway:
       '同じ作業でも、アプリが肩代わりするほどユーザーの手数は減る。複雑さは消えず、“移動”するだけ。',
     accent: '#1f9d6b',
-    Demo: PlaceholderDemo,
-    ready: false,
+    Demo: TeslerDemo,
+    ready: true,
   },
   {
     id: 'doherty',
