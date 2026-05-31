@@ -1,0 +1,67 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.switch {
+  display: inline-flex;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab {
+  min-height: 40px;
+  padding: 0 var(--s4);
+  border: none;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.active {
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s4);
+  padding: var(--s5);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  width: 100%;
+  max-width: 300px;
+}
+
+.cell {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--surface-3);
+  border: 1px solid var(--border-strong);
+  transition: all var(--t-base) var(--ease);
+}
+
+.colored {
+  background: var(--card-accent, var(--accent));
+  border-color: var(--card-accent, var(--accent));
+}
+
+.square {
+  border-radius: 4px;
+}
+
+.caption {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}

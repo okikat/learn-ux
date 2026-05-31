@@ -1,0 +1,81 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+}
+
+.label {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.label strong {
+  font-family: var(--mono);
+  color: var(--card-accent, var(--accent));
+  font-size: 16px;
+}
+
+.slider {
+  width: 100%;
+  height: var(--tap);
+  accent-color: var(--card-accent, var(--accent));
+  cursor: pointer;
+}
+
+.bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 72px 1fr auto;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.barLabel {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.track {
+  height: 18px;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-pill);
+  transition: width var(--t-base) var(--ease);
+}
+
+.need {
+  background: var(--good);
+}
+
+.use {
+  background: var(--card-accent, var(--accent));
+}
+
+.val {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 14px;
+  min-width: 40px;
+  text-align: right;
+}
+
+.note {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.note strong {
+  color: var(--text);
+}

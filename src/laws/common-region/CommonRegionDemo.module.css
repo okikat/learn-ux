@@ -1,0 +1,73 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.switch {
+  display: inline-flex;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
+  padding: 4px;
+  gap: 4px;
+}
+
+.tab {
+  min-height: 40px;
+  padding: 0 var(--s4);
+  border: none;
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.active {
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+}
+
+.stage {
+  display: flex;
+  gap: var(--s4);
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  padding: var(--s5);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  width: 100%;
+}
+
+.row,
+.region {
+  display: flex;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.region {
+  padding: var(--s3);
+  border: 2px solid var(--card-accent, var(--accent));
+  border-radius: var(--r2);
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 10%, transparent);
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.caption {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}

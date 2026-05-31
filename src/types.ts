@@ -1,5 +1,8 @@
 import type { ComponentType } from 'react'
 
+/** 法則のカテゴリ（トップページでの分類） */
+export type Category = 'perception' | 'memory' | 'decision' | 'operation' | 'design'
+
 /** 1つのUX法則を表すメタデータ。全ページがこの「型」で構成される。 */
 export interface LawMeta {
   /** 一意なID（フィッツなら "fitts"） */
@@ -22,6 +25,8 @@ export interface LawMeta {
   takeaway: string
   /** カード等のアクセントカラー */
   accent: string
+  /** トップページでの分類 */
+  category: Category
   /** ③触って体感するインタラクティブ・デモ */
   Demo: ComponentType
   /** デモ実装済みか（未実装は一覧で「準備中」表示） */

@@ -1,5 +1,5 @@
 .hero {
-  padding-block: var(--s5) var(--s7);
+  padding-block: var(--s5) var(--s6);
   max-width: 720px;
 }
 
@@ -33,16 +33,52 @@
   line-height: 1.85;
 }
 
-.progress {
-  margin-top: var(--s4);
-  display: inline-block;
+.freeBadge {
+  margin-top: var(--s5);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--good-soft);
+  border: 1px solid color-mix(in srgb, var(--good) 35%, transparent);
+  padding: 8px 14px 8px 8px;
+  border-radius: var(--r-pill);
+}
+
+.freeMark {
   font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--good);
+  padding: 3px 8px;
+  border-radius: var(--r-pill);
+}
+
+.section {
+  margin-top: var(--s7);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s3);
+  flex-wrap: wrap;
+  margin-bottom: var(--s4);
+  padding-bottom: var(--s2);
+  border-bottom: 1px solid var(--border);
+}
+
+.sectionTitle {
+  font-size: 20px;
+}
+
+.sectionBlurb {
   font-size: 13px;
   color: var(--text-muted);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 6px 12px;
-  border-radius: var(--r-pill);
 }
 
 .grid {
@@ -56,9 +92,13 @@
   display: flex;
 }
 
-/* スマホ(〜375px想定)では1カラムで崩さない */
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+
+  .sectionHead {
+    flex-direction: column;
+    gap: 2px;
   }
 }
