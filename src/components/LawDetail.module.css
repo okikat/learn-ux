@@ -135,87 +135,77 @@
   font-weight: 800;
 }
 
-/* 前後ナビ */
+/* 前後ナビ（note記事下風・上下2段）。全幅の行を積み、区切り線で仕切る。 */
 .pager {
   margin-top: var(--s8);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  gap: var(--s3);
-  align-items: stretch;
-}
-
-/* 末尾の法則では中央TOPを省き、[前の法則][TOPへ戻る]の2カラムに */
-.pagerLast {
-  grid-template-columns: 1fr 1fr;
-}
-
-/* 先頭の法則の「前の法則」（無効・グレー） */
-.pagerDisabled {
-  opacity: 0.5;
-  border-style: dashed;
-  cursor: default;
-  pointer-events: none;
-}
-
-.pagerDisabled .pagerName {
-  color: var(--text-faint);
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
 }
 
 .pagerLink {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: var(--s3) var(--s4);
-  min-height: var(--tap);
-  justify-content: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r2);
+  align-items: center;
+  gap: var(--s3);
+  padding: var(--s4) var(--s2);
+  border-bottom: 1px solid var(--border);
   color: var(--text);
-  transition: border-color var(--t-base) var(--ease), background var(--t-base) var(--ease);
+  transition: background var(--t-base) var(--ease);
 }
 
 .pagerLink:hover {
   text-decoration: none;
-  border-color: var(--card-accent, var(--accent));
   background: var(--surface-2);
 }
 
-.pagerNext {
-  text-align: right;
+.pagerBody {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.pagerArrow {
+  flex: 0 0 auto;
+  font-size: 22px;
+  line-height: 1;
+  color: var(--accent-strong);
 }
 
 .pagerDir {
   font-size: 12px;
-  color: var(--text-faint);
+  font-weight: 700;
+  color: var(--accent-strong);
 }
 
 .pagerName {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.pagerHome {
-  display: grid;
-  place-items: center;
-  min-width: var(--tap);
-  min-height: var(--tap);
-  padding-inline: var(--s3);
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r2);
-  color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 700;
+/* 先頭/末尾の無効方向はグレーで非活性に */
+.pagerDisabled {
+  cursor: default;
+  pointer-events: none;
 }
 
-.pagerHome:hover {
-  text-decoration: none;
-  border-color: var(--card-accent, var(--accent));
+.pagerDisabled .pagerArrow,
+.pagerDisabled .pagerDir {
+  color: var(--text-faint);
+}
+
+.pagerDisabled .pagerName {
+  color: var(--text-faint);
+  font-weight: 600;
 }
 
 @media (max-width: 480px) {
   .pagerName {
-    font-size: 13px;
+    font-size: 14px;
   }
 }

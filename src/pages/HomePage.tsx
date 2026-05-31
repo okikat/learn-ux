@@ -12,7 +12,7 @@ export default function HomePage() {
       <section className={styles.hero}>
         <p className={styles.kicker}>INTERACTIVE · LAWS OF UX</p>
         <h1 className={styles.title}>
-          <em>さわって</em>覚えるUX
+          <em>さわって</em>学ぶUX
         </h1>
         <p className={styles.lead}>
           各法則に、小さな実験を1つずつ。ボタンを押し、数字を覚え、入力し——

@@ -14,7 +14,6 @@ export default function LawDetail({ law }: { law: LawMeta }) {
   const index = set.findIndex((l) => l.id === law.id)
   const prev = index > 0 ? set[index - 1] : null
   const next = index < set.length - 1 ? set[index + 1] : null
-  const isLast = next === null
   const Demo = law.Demo
 
   return (
@@ -72,36 +71,42 @@ export default function LawDetail({ law }: { law: LawMeta }) {
         </ul>
       </section>
 
-      {/* 法則間の行き来（前後＋TOP）。先頭は前を無効化、末尾は巡回せずTOPへ。 */}
-      <nav className={`${styles.pager} ${isLast ? styles.pagerLast : ''}`} aria-label="ほかの法則へ">
+      {/* 法則間の行き来（前/次のみ・note記事下風の上下2段）。先頭/末尾は不可方向をグレー無効化。 */}
+      <nav className={styles.pager} aria-label="ほかの法則へ">
         {prev ? (
           <Link to={`/laws/${prev.slug}`} className={styles.pagerLink}>
-            <span className={styles.pagerDir}>← 前の法則</span>
-            <span className={styles.pagerName}>{prev.titleJa}</span>
+            <span className={styles.pagerArrow} aria-hidden="true">‹</span>
+            <span className={styles.pagerBody}>
+              <span className={styles.pagerDir}>前の法則</span>
+              <span className={styles.pagerName}>{prev.titleJa}</span>
+            </span>
           </Link>
         ) : (
           <span className={`${styles.pagerLink} ${styles.pagerDisabled}`} aria-hidden="true">
-            <span className={styles.pagerDir}>← 前の法則</span>
-            <span className={styles.pagerName}>—</span>
+            <span className={styles.pagerArrow}>‹</span>
+            <span className={styles.pagerBody}>
+              <span className={styles.pagerDir}>前の法則</span>
+              <span className={styles.pagerName}>これが最初です</span>
+            </span>
           </span>
         )}
 
-        {!isLast && (
-          <Link to="/" className={styles.pagerHome}>
-            TOP
-          </Link>
-        )}
-
         {next ? (
-          <Link to={`/laws/${next.slug}`} className={`${styles.pagerLink} ${styles.pagerNext}`}>
-            <span className={styles.pagerDir}>次の法則 →</span>
-            <span className={styles.pagerName}>{next.titleJa}</span>
+          <Link to={`/laws/${next.slug}`} className={styles.pagerLink}>
+            <span className={styles.pagerBody}>
+              <span className={styles.pagerDir}>次の法則</span>
+              <span className={styles.pagerName}>{next.titleJa}</span>
+            </span>
+            <span className={styles.pagerArrow} aria-hidden="true">›</span>
           </Link>
         ) : (
-          <Link to="/" className={`${styles.pagerLink} ${styles.pagerNext}`}>
-            <span className={styles.pagerDir}>おわり →</span>
-            <span className={styles.pagerName}>TOPへ戻る</span>
-          </Link>
+          <span className={`${styles.pagerLink} ${styles.pagerDisabled}`} aria-hidden="true">
+            <span className={styles.pagerBody}>
+              <span className={styles.pagerDir}>次の法則</span>
+              <span className={styles.pagerName}>これで最後です</span>
+            </span>
+            <span className={styles.pagerArrow}>›</span>
+          </span>
         )}
       </nav>
     </article>

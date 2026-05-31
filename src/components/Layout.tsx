@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import styles from './Layout.module.css'
+import NavMenu from './NavMenu'
 
 /**
  * 全ページ共通の枠。
@@ -18,7 +19,10 @@ export default function Layout({ children }: { children: ReactNode }) {
             </span>
             <span className={styles.brandText}>やるUX</span>
           </Link>
-          <span className={styles.tagline}>さわって覚えるUX</span>
+          <div className={styles.headerRight}>
+            <span className={styles.tagline}>さわって学ぶUX</span>
+            <NavMenu />
+          </div>
         </div>
       </header>
 

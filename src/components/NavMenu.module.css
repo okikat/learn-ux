@@ -1,0 +1,222 @@
+/* =========================================================
+   グローバルメニュー（ヘッダー右の「☰」）
+   ========================================================= */
+
+/* ☰ トグル */
+.toggle {
+  display: grid;
+  place-items: center;
+  width: var(--tap);
+  height: var(--tap);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color var(--t-base) var(--ease), background var(--t-base) var(--ease);
+}
+
+.toggle:hover {
+  background: var(--surface-2);
+  border-color: var(--border-strong);
+}
+
+/* オーバーレイ（createPortal で body 直下に描画）。
+   透明部分はヘッダーへクリックを通すため pointer-events を切る。 */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  --panel-w: min(52vw, 230px);
+}
+
+.overlay > * {
+  pointer-events: auto;
+}
+
+/* 透過グレーの覆い（ヘッダーより下だけ） */
+.scrim {
+  position: fixed;
+  top: var(--menu-top, 56px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(16, 21, 28, 0.42);
+  animation: navFade var(--t-base) var(--ease);
+}
+
+/* メインメニュー（右ドロワー） */
+.panel {
+  position: fixed;
+  top: var(--menu-top, 56px);
+  right: 0;
+  bottom: 0;
+  width: var(--panel-w);
+  padding: var(--s3);
+  padding-right: max(var(--s3), env(safe-area-inset-right));
+  overflow-y: auto;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  outline: none;
+  animation: navSlide var(--t-base) var(--ease);
+}
+
+/* TOP */
+.top {
+  display: flex;
+  align-items: center;
+  min-height: var(--tap);
+  padding: 0 var(--s3);
+  border-radius: var(--r2);
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.top:hover {
+  text-decoration: none;
+  background: var(--surface-2);
+}
+
+.divider {
+  height: 1px;
+  margin: var(--s2) var(--s1);
+  background: var(--border);
+}
+
+.catList {
+  list-style: none;
+}
+
+.catRow {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  width: 100%;
+  min-height: var(--tap);
+  padding: 0 var(--s2);
+  border: 0;
+  border-radius: var(--r2);
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+
+.catRow:hover {
+  background: var(--surface-2);
+}
+
+.catRowActive {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.caret {
+  flex: 0 0 auto;
+  font-size: 11px;
+  color: var(--text-faint);
+}
+
+.catRowActive .caret {
+  color: var(--accent-strong);
+}
+
+.catLabel {
+  flex: 1 1 auto;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.proBadge {
+  flex: 0 0 auto;
+  padding: 2px 6px;
+  border-radius: var(--r-pill);
+  background: linear-gradient(135deg, var(--accent), #8a5cf6);
+  color: var(--accent-ink);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+/* 小項目（メニューの左へフライアウト） */
+.submenu {
+  position: fixed;
+  top: var(--menu-top, 56px);
+  right: var(--panel-w);
+  bottom: 0;
+  width: min(46vw, 220px);
+  padding: var(--s3) var(--s2);
+  overflow-y: auto;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  animation: navSlide var(--t-base) var(--ease);
+}
+
+.submenuHead {
+  padding: 0 var(--s2) var(--s2);
+  color: var(--text-faint);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.subList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.subLink {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding: var(--s1) var(--s2);
+  border-radius: var(--r1);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.subLink:hover {
+  text-decoration: none;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+@keyframes navFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes navSlide {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ごく狭い画面では2カラムをやや細く */
+@media (max-width: 360px) {
+  .overlay {
+    --panel-w: min(50vw, 200px);
+  }
+  .submenu {
+    width: min(44vw, 200px);
+  }
+}
