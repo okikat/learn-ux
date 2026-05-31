@@ -113,7 +113,13 @@
 }
 
 .dateInput {
+  -webkit-appearance: none;
+  appearance: none;
   padding-right: 40px;
+}
+
+.dateInput::-webkit-date-and-time-value {
+  text-align: left;
 }
 
 .dateInput::-webkit-calendar-picker-indicator {

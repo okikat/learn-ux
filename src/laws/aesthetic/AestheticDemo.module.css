@@ -52,7 +52,12 @@
   gap: var(--s2);
   padding: var(--s4);
   border-radius: var(--r3);
-  background: linear-gradient(160deg, #eef2ff, #f8f5ff);
+  /* ライト/ダーク両対応（白の直書きだとダークで白文字が読めなくなる） */
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent) 12%, var(--surface)),
+    var(--surface)
+  );
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
 }
