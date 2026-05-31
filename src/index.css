@@ -1,0 +1,179 @@
+/* =========================================================
+   Learn UX — グローバル・デザインシステム
+   このアプリ自身が「美的ユーザビリティ効果」「フィッツ」等の
+   手本になるよう、トークン（変数）でUIの一貫性を担保する。
+   ========================================================= */
+
+:root {
+  /* --- 色 --- */
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --surface-2: #f1f3f9;
+  --surface-3: #e9ecf5;
+  --text: #14181f;
+  --text-muted: #5b6473;
+  --text-faint: #8c95a3;
+  --border: #e4e8f0;
+  --border-strong: #d3d9e6;
+
+  --accent: #5b5bd6;
+  --accent-strong: #4b4bc4;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(91, 91, 214, 0.1);
+  --accent-soft-2: rgba(91, 91, 214, 0.16);
+
+  --good: #14916b;
+  --good-soft: rgba(20, 145, 107, 0.12);
+  --warn: #c2710c;
+  --warn-soft: rgba(194, 113, 12, 0.12);
+  --bad: #d23b46;
+  --bad-soft: rgba(210, 59, 70, 0.12);
+
+  --ring: rgba(91, 91, 214, 0.4);
+
+  /* --- 余白スケール --- */
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+  --s8: 64px;
+
+  /* --- 角丸 --- */
+  --r1: 8px;
+  --r2: 12px;
+  --r3: 16px;
+  --r4: 24px;
+  --r-pill: 999px;
+
+  /* --- 影 --- */
+  --shadow-sm: 0 1px 2px rgba(16, 21, 28, 0.06), 0 1px 3px rgba(16, 21, 28, 0.05);
+  --shadow-md: 0 6px 16px rgba(16, 21, 28, 0.08);
+  --shadow-lg: 0 16px 40px rgba(16, 21, 28, 0.14);
+
+  /* --- タイポ --- */
+  --font: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Meiryo, system-ui, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+
+  /* --- 操作 --- */
+  --tap: 44px; /* フィッツの法則: タップ標的の最小サイズ */
+  --container: 960px;
+
+  /* --- アニメーション（ドハティ: すべて0.4秒未満） --- */
+  --t-fast: 120ms;
+  --t-base: 180ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* 端末のセーフエリア（ノッチ等）を尊重 */
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) 0 env(safe-area-inset-left);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+figure {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.3;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: var(--accent-strong);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* キーボード操作時のみフォーカスリング（ヤコブ: 慣習に沿う） */
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: var(--r1);
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --- 共通ユーティリティ --- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--s4);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* モーション過敏への配慮（アクセシビリティ＝良いUX） */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

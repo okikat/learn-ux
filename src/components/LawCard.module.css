@@ -1,0 +1,87 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: var(--s2);
+  padding: var(--s5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r3);
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
+  overflow: hidden;
+  transition:
+    transform var(--t-base) var(--ease),
+    box-shadow var(--t-base) var(--ease),
+    border-color var(--t-base) var(--ease);
+}
+
+/* 上辺のアクセントライン */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: var(--card-accent, var(--accent));
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--card-accent, var(--accent));
+  text-decoration: none;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.no {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--card-accent, var(--accent));
+  background: color-mix(in srgb, var(--card-accent, var(--accent)) 12%, transparent);
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+}
+
+.soon {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-faint);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+}
+
+.titleJa {
+  font-size: 19px;
+  margin-top: var(--s2);
+}
+
+.titleEn {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.02em;
+}
+
+.tagline {
+  margin-top: var(--s2);
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.cta {
+  margin-top: var(--s3);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--card-accent, var(--accent));
+}
