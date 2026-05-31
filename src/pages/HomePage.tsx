@@ -48,7 +48,7 @@ export default function HomePage() {
           <h2 className={styles.sectionTitle}>{biasPack.label}</h2>
           <p className={styles.sectionBlurb}>{biasPack.blurb}</p>
           <p className={styles.proNote}>
-            無料の20法則で物足りない人へ。判断のクセを突く8つの実践編です。
+            無料の20法則で物足りない人へ。判断のクセを突く実践編です。
           </p>
         </div>
         <ul className={styles.grid}>

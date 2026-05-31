@@ -34,6 +34,12 @@ import ScarcityDemo from '../laws/scarcity/ScarcityDemo'
 import LossAversionDemo from '../laws/loss-aversion/LossAversionDemo'
 import SunkCostDemo from '../laws/sunk-cost/SunkCostDemo'
 import MereExposureDemo from '../laws/mere-exposure/MereExposureDemo'
+import DefaultEffectDemo from '../laws/default-effect/DefaultEffectDemo'
+import EndowmentDemo from '../laws/endowment/EndowmentDemo'
+import GamblersFallacyDemo from '../laws/gamblers-fallacy/GamblersFallacyDemo'
+import AvailabilityDemo from '../laws/availability/AvailabilityDemo'
+import HaloDemo from '../laws/halo/HaloDemo'
+import ConfirmationDemo from '../laws/confirmation/ConfirmationDemo'
 
 /** トップページのカテゴリ（この順で表示）。 */
 export const categories: { id: Category; label: string; blurb: string }[] = [
@@ -503,7 +509,7 @@ export const laws: LawMeta[] = [
 export const biasPack = {
   label: '認知バイアス・パック',
   price: '¥980',
-  blurb: '人の“判断のクセ”を突く8つ。マーケ・プロダクトにそのまま効く実践編。',
+  blurb: '人の“判断のクセ”を突く実践集。マーケ・プロダクトにそのまま効く。',
 }
 
 /**
@@ -695,7 +701,145 @@ export const biases: LawMeta[] = [
     ready: true,
     tier: 'pro',
   },
+  {
+    id: 'default-effect',
+    no: '29',
+    slug: 'default-effect',
+    titleJa: 'デフォルト効果',
+    titleEn: 'Default Effect',
+    tagline: '初期値（デフォルト）は、たいていそのまま受け入れられる。',
+    description: [
+      '人は、あらかじめ選ばれている初期値を、わざわざ変えずにそのまま受け入れがち。チェックの有無、初期プラン、初期設定が、最終結果を大きく左右する。',
+      'だから「何を初期値にするか」は最重要の設計判断。ただし、ユーザーに不利な初期チェック（勝手にオン）は典型的なダークパターン。',
+    ],
+    tips: [
+      '“多くの人にとって最善”を初期値にする（選ばなくても良い結果になるように）。',
+      'ユーザーに不利なオプトイン（メール・課金）を初期ONにしない。',
+      '初期値は変更しやすく、何が選ばれているかを明示する。',
+    ],
+    takeaway: '初期チェックのまま進む人が大多数。初期値は、最も強い“そっと押す力”。',
+    accent: '#0c8599',
+    category: 'bias',
+    Demo: DefaultEffectDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'endowment',
+    no: '30',
+    slug: 'endowment',
+    titleJa: '保有効果',
+    titleEn: 'Endowment Effect',
+    tagline: '自分のものになると、急に手放したくなくなる。',
+    description: [
+      '人は、いったん自分の所有物になったものを、持つ前より高く評価する。同じ品でも「売る時の値段」は「買う時に出す値段」より高くなりがち。',
+      '無料お試し・マイリスト・カスタマイズで“自分のもの”という感覚を作ると、手放しにくくなる。',
+    ],
+    tips: [
+      '無料体験やお試しで、先に“自分のもの”という感覚を持ってもらう。',
+      '保存・カスタマイズ・マイリストなど「自分の」要素を作ると愛着が増す。',
+      'ただし解約をわざと難しくするのは逆効果。信頼を損なう。',
+    ],
+    takeaway: '同じ物でも「売値 ＞ 買値」。持っているだけで価値が上がる。',
+    accent: '#f06595',
+    category: 'bias',
+    Demo: EndowmentDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'gamblers-fallacy',
+    no: '31',
+    slug: 'gamblers-fallacy',
+    titleJa: 'ギャンブラーの誤謬',
+    titleEn: "Gambler's Fallacy",
+    tagline: '「続いたから、そろそろ逆」と感じてしまう。',
+    description: [
+      '独立した偶然（コイン・くじ）でも、人は「表が続いたから次は裏」と、過去が未来に影響すると錯覚する。実際には、毎回の確率は変わらない。',
+      'この錯覚は、ガチャ・抽選・統計の読み違いを生む。確率は“流れ”ではなく、毎回独立であることを忘れない。',
+    ],
+    tips: [
+      '確率に関わるUI（抽選・ガチャ）では、独立性を誤解させない誠実な表示を。',
+      '「そろそろ当たる」と射幸心をあおる演出はダークパターンになりうる。',
+      'データを見せるときは、偶然の連続を“傾向”と誤読させないよう注意する。',
+    ],
+    takeaway: 'コインに記憶はない。何回続こうと、次は毎回50%。',
+    accent: '#7048e8',
+    category: 'bias',
+    Demo: GamblersFallacyDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'availability',
+    no: '32',
+    slug: 'availability',
+    titleJa: '可用性ヒューリスティック',
+    titleEn: 'Availability Heuristic',
+    tagline: '思い出しやすいことを、「よく起きる」と錯覚する。',
+    description: [
+      '人は頻度や確率を、事実ではなく「どれだけ簡単に例を思い出せるか」で見積もる。だからニュースで繰り返される派手な出来事は、実際より多く起きていると感じる。',
+      '印象の強さが判断を歪める。レビューや事例も、目立つ一件が全体の印象を支配しがち。',
+    ],
+    tips: [
+      '怖い・派手な事例の印象に流されず、実際のデータで判断する。',
+      'ユーザーに見せる事例は、印象だけで誤解を生まないよう代表性に配慮する。',
+      '“最近見た・よく見る”が「正しい・多い」とは限らないと自戒する。',
+    ],
+    takeaway: 'ニュースで目立つ出来事ほど“多そう”に錯覚する。印象は頻度ではない。',
+    accent: '#4263eb',
+    category: 'bias',
+    Demo: AvailabilityDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'halo',
+    no: '33',
+    slug: 'halo',
+    titleJa: 'ハロー効果',
+    titleEn: 'Halo Effect',
+    tagline: '一つの際立った長所が、全体の評価まで底上げする。',
+    description: [
+      '見た目・肩書き・実績など一つの目立つ長所があると、人はその対象の“それ以外”まで高く評価してしまう。美しいデザインのサービスが「中身も良い」と感じられるのは典型例。',
+      '逆に一つの欠点が全体を下げる「逆ハロー」もある。第一印象は、後の評価に長く尾を引く。',
+    ],
+    tips: [
+      '第一印象（見た目・最初の体験）に投資する。後の評価まで押し上げる。',
+      '信頼の手がかり（実績・受賞・専門性）を、誠実に分かりやすく示す。',
+      'ただし“見た目だけ”で中身が伴わないと、いずれ逆ハローで一気に崩れる。',
+    ],
+    takeaway: '同じ言葉でも「専門家」の一言で正しく感じる。目立つ長所が全体を染める。',
+    accent: '#f08c00',
+    category: 'bias',
+    Demo: HaloDemo,
+    ready: true,
+    tier: 'pro',
+  },
+  {
+    id: 'confirmation',
+    no: '34',
+    slug: 'confirmation',
+    titleJa: '確証バイアス',
+    titleEn: 'Confirmation Bias',
+    tagline: '人は、自分の考えを“裏づける”情報ばかり集める。',
+    description: [
+      'いったん信念を持つと、人はそれを支持する情報を選び、反証を無視・軽視しがち。だから「自分の仮説は正しい」という確信は、検証なしにどんどん強まってしまう。',
+      '作り手にとっては危険な罠。「このデザインで完璧」という思い込みは、反証（実ユーザーの行動）でしか崩せない。',
+    ],
+    tips: [
+      '自分の仮説の“反証”を意識的に探す（賛成意見だけ集めない）。',
+      'ユーザーテスト・A/Bテストで、思い込みを実データで検証する。',
+      'レビュー依頼では「良い点」だけでなく「ダメな点」も明示的に聞く。',
+    ],
+    takeaway: '信じていると、賛成の情報ばかり選んでしまう。反証は、意識しないと見えない。',
+    accent: '#e03131',
+    category: 'bias',
+    Demo: ConfirmationDemo,
+    ready: true,
+    tier: 'pro',
+  },
 ]
 
-/** 無料20＋有料8の全件（スラッグ検索用）。 */
+/** 無料20＋有料14の全件（スラッグ検索用）。 */
 export const allLaws: LawMeta[] = [...laws, ...biases]

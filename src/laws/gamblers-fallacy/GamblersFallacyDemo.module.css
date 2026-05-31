@@ -1,0 +1,94 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.q {
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.coins {
+  display: flex;
+  gap: var(--s2);
+}
+
+.coin {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ffd43b, #f59f00);
+  color: #5c3c00;
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: var(--shadow-sm);
+}
+
+.q2 {
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  width: 100%;
+  max-width: 300px;
+}
+
+.choice {
+  min-height: var(--tap);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r2);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.choice:hover:not(:disabled) {
+  border-color: var(--card-accent, var(--accent));
+  background: var(--accent-soft);
+}
+
+.choice:disabled {
+  opacity: 0.6;
+}
+
+.reveal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s4) var(--s5);
+  background: var(--good-soft);
+  border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+  border-radius: var(--r2);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.reveal strong {
+  color: var(--text);
+}
+
+.small {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.again {
+  align-self: center;
+  min-height: var(--tap);
+  padding: 0 var(--s5);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+}

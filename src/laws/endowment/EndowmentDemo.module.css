@@ -1,0 +1,98 @@
+.demo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s4);
+  align-items: center;
+}
+
+.mug {
+  font-size: 56px;
+}
+
+.q {
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.slider {
+  width: 100%;
+  max-width: 300px;
+  height: var(--tap);
+  accent-color: var(--card-accent, var(--accent));
+  cursor: pointer;
+}
+
+.val {
+  font-family: var(--mono);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--card-accent, var(--accent));
+}
+
+.next {
+  min-height: var(--tap);
+  padding: 0 var(--s6);
+  border: none;
+  border-radius: var(--r-pill);
+  background: var(--card-accent, var(--accent));
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: var(--shadow-md);
+}
+
+.rows {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+}
+
+.rowItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--s3) var(--s4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r2);
+}
+
+.rowItem strong {
+  font-family: var(--mono);
+  font-size: 18px;
+}
+
+.reveal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s4) var(--s5);
+  background: var(--good-soft);
+  border: 1px solid color-mix(in srgb, var(--good) 30%, transparent);
+  border-radius: var(--r2);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.reveal strong {
+  color: var(--text);
+}
+
+.small {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.again {
+  align-self: center;
+  min-height: var(--tap);
+  padding: 0 var(--s5);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 700;
+}
