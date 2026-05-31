@@ -1,37 +1,32 @@
 import { useState } from 'react'
 import styles from './SelectiveAttentionDemo.module.css'
 
-type Phase = 'intro' | 'play' | 'done'
-type Reason = 'purchase' | 'found'
-
-const BANNERS = [
-  'ポイント2倍キャンペーン中',
-  '3,000円以上のご購入で送料無料',
-  'あすつく対応エリアが拡大しました',
-]
-const TARGET = 1
+type Phase = 'intro' | 'play' | 'result'
 
 export default function SelectiveAttentionDemo() {
   const [phase, setPhase] = useState<Phase>('intro')
-  const [reason, setReason] = useState<Reason>('purchase')
-  const [wrong, setWrong] = useState(false)
+  const [missed, setMissed] = useState(true)
 
-  const begin = () => {
-    setWrong(false)
-    setPhase('play')
-  }
-  const toDone = (r: Reason) => {
-    setReason(r)
-    setPhase('done')
+  const finish = (didMiss: boolean) => {
+    setMissed(didMiss)
+    setPhase('result')
   }
 
   if (phase === 'intro') {
+    // あえて「クーポンを探して」とは言わない（言うと探してしまい、法則が成立しない）
     return (
       <div className={styles.demo}>
         <p className={styles.task}>
-          あなたは買い物中。<strong>「送料が無料になる条件」</strong>を確認してから、操作してみてください。
+          ネットでお買い物中。<strong>この商品を買って</strong>みてください。
         </p>
-        <button type="button" className={styles.start} onClick={begin}>
+        <button
+          type="button"
+          className={styles.start}
+          onClick={() => {
+            setMissed(true)
+            setPhase('play')
+          }}
+        >
           スタート
         </button>
       </div>
@@ -46,53 +41,53 @@ export default function SelectiveAttentionDemo() {
             <span className={styles.thumb} aria-hidden="true" />
             <span className={styles.pInfo}>
               <span className={styles.pName}>ワイヤレスイヤホン</span>
-              <span className={styles.pPrice}>¥2,480</span>
+              <span className={styles.pPrice}>¥3,000</span>
             </span>
           </div>
 
-          <div className={styles.banners}>
-            {BANNERS.map((b, i) => (
-              <button
-                key={i}
-                type="button"
-                className={styles.banner}
-                onClick={() => (i === TARGET ? toDone('found') : setWrong(true))}
-              >
-                {b}
-              </button>
-            ))}
-          </div>
+          {/* 広告のような帯。中に「20%OFFクーポン」が埋もれている */}
+          <button type="button" className={styles.coupon} onClick={() => finish(false)}>
+            🎟 今だけ20%OFFクーポン（タップで適用）
+          </button>
 
-          <button type="button" className={styles.buy} onClick={() => toDone('purchase')}>
-            購入する
+          {/* 目立つ購入ボタン。つい押してしまう */}
+          <button type="button" className={styles.buy} onClick={() => finish(true)}>
+            購入する　¥3,000
           </button>
         </div>
-        {wrong && <p className={styles.hint}>それは別のお知らせ。「送料無料」の条件を探して。</p>}
       </div>
     )
   }
 
+  // result（悪い例を体験 → 良い例を提示）
   return (
     <div className={styles.demo}>
       <p className={styles.verdict} aria-live="polite">
-        {reason === 'purchase'
-          ? '「送料無料」の帯を飛ばして“購入”を押しましたね。'
-          : 'よく気づけました。でも、目立つ「購入」に目が行きませんでしたか？'}
+        {missed ? '¥3,000の定価で購入しました。' : 'クーポンに気づけましたね。'}
       </p>
       <p className={styles.reveal}>
-        人は<strong>目立つもの（購入ボタン）に注意が向き、似た見た目のグレーの帯は読み飛ばします</strong>
-        （選択的注意・バナーブラインドネス）。大事な情報を“ありがちな帯”にすると、置いてあっても気づかれません。
+        人は目的（買う）に集中し、<strong>広告のような帯は読み飛ばします</strong>
+        （選択的注意・バナーブラインドネス）。20%OFFクーポンは、すぐ上にあっても見落とされがちです。
       </p>
 
-      <div className={styles.fix}>
-        <span className={styles.fixLabel}>改善：大事な情報は、目立つ操作のすぐ隣に</span>
-        <div className={styles.fixInner}>
-          <span className={styles.fixNote}>3,000円以上のご購入で送料無料！</span>
-          <span className={styles.buyStatic}>購入する</span>
+      <div className={styles.compare}>
+        <div className={styles.exBlock}>
+          <span className={`${styles.exLabel} ${styles.badLabel}`}>✗ 悪い例</span>
+          <span className={styles.couponStatic} aria-hidden="true">
+            🎟 今だけ20%OFFクーポン
+          </span>
+          <span className={styles.exDesc}>大事な情報を“広告風の帯”で別に置く → 見落とされる。</span>
+        </div>
+        <div className={styles.exBlock}>
+          <span className={`${styles.exLabel} ${styles.goodLabel}`}>✓ 良い例</span>
+          <span className={styles.couponBuy} aria-hidden="true">
+            クーポンを使って購入　¥2,400（−20%）
+          </span>
+          <span className={styles.exDesc}>クーポンを操作（購入ボタン）に統合 → 見落としようがない。</span>
         </div>
       </div>
 
-      <button type="button" className={styles.retry} onClick={begin}>
+      <button type="button" className={styles.retry} onClick={() => setPhase('intro')}>
         もう一度
       </button>
     </div>
