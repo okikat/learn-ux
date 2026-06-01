@@ -197,6 +197,9 @@ export default function NavMenu() {
               <Link to="/" className={styles.top} onClick={closeAll}>
                 TOP
               </Link>
+              <Link to="/intro" className={styles.top} onClick={closeAll}>
+                はじめに
+              </Link>
               <div className={styles.divider} aria-hidden="true" />
               <ul className={styles.catList}>{freeGroups.map(renderRow)}</ul>
               <div className={styles.divider} aria-hidden="true" />

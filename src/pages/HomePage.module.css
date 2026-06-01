@@ -58,6 +58,32 @@
   border-radius: var(--r-pill);
 }
 
+/* 0からの人向けの導入ページへの誘導 */
+.introLink {
+  margin-top: var(--s4);
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  width: fit-content;
+  min-height: var(--tap);
+  padding: 0 var(--s5);
+  border: 1px solid var(--accent);
+  border-radius: var(--r-pill);
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .introLink:hover {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+}
+
 .catNav {
   display: flex;
   flex-wrap: wrap;

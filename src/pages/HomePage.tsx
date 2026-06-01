@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { laws, categories, biases, biasPack } from '../data/laws'
 import LawCard from '../components/LawCard'
 import styles from './HomePage.module.css'
@@ -23,6 +24,9 @@ export default function HomePage() {
           <span className={styles.freeMark}>FREE</span>
           20の法則、無料で公開中。
         </p>
+        <Link to="/intro" className={styles.introLink}>
+          📖 はじめての方へ
+        </Link>
       </section>
 
       {/* カテゴリへジャンプ（長い一覧を素早く回遊できるように） */}
