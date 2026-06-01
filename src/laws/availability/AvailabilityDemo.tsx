@@ -16,7 +16,7 @@ export default function AvailabilityDemo() {
           disabled={vote !== null}
         >
           <span className={styles.emoji} aria-hidden="true">🦈</span>
-          <span className={styles.label}>サメに襲われる</span>
+          <span className={styles.label}>サメ</span>
         </button>
         <button
           type="button"
@@ -25,7 +25,7 @@ export default function AvailabilityDemo() {
           disabled={vote !== null}
         >
           <span className={styles.emoji} aria-hidden="true">🦟</span>
-          <span className={styles.label}>蚊が運ぶ病気</span>
+          <span className={styles.label}>蚊</span>
         </button>
       </div>
 
