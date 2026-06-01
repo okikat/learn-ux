@@ -1,46 +1,62 @@
 import { useState } from 'react'
 import styles from './EndowmentDemo.module.css'
 
-type Phase = 'gift' | 'offer' | 'result'
+type Phase = 'pull' | 'got' | 'result'
 type Choice = 'keep' | 'swap'
 
+const CHARS = [
+  { emoji: '⚔️', name: '炎の剣士' },
+  { emoji: '🏹', name: '風の狩人' },
+  { emoji: '🔮', name: '雷の魔導士' },
+  { emoji: '🛡️', name: '氷の騎士' },
+]
+
 /**
- * 保有効果：もらった瞬間から手放したくなくなる。
- * くじでマグを「受け取る」→ 同価値のペンと交換できると提案 → 多くは交換せず持ち続ける。
- * （中身は同価値なのに手放したくない＝保有効果。Knetsch のマグ／ペン実験を体感版に）
+ * 保有効果：自分が手に入れたものを高く感じ、手放したくなくなる。
+ * ソシャゲのガチャを引く →「同じ★3の別キャラと交換できる」と提案 → 多くは“この子がいい”と手放さない。
+ * デジタルでも“自分が引いたキャラ”には所有感が生まれる＝アプリ文脈で現実味のある例。
  */
 export default function EndowmentDemo() {
-  const [phase, setPhase] = useState<Phase>('gift')
+  const [phase, setPhase] = useState<Phase>('pull')
+  const [char, setChar] = useState(0)
   const [choice, setChoice] = useState<Choice | null>(null)
 
+  const pull = () => {
+    setChar(Math.floor(Math.random() * CHARS.length))
+    setPhase('got')
+  }
   const reset = () => {
-    setPhase('gift')
     setChoice(null)
+    setPhase('pull')
   }
 
-  if (phase === 'gift') {
+  if (phase === 'pull') {
     return (
       <div className={styles.demo}>
-        <p className={styles.lead}>くじが当たりました！ タップして受け取ってください。</p>
-        <button type="button" className={styles.gift} onClick={() => setPhase('offer')}>
-          <span className={styles.giftIcon} aria-hidden="true">🎁</span>
-          <span className={styles.giftLabel}>受け取る</span>
+        <p className={styles.lead}>ソシャゲのガチャを1回引きます。タップしてみてください。</p>
+        <button type="button" className={styles.gacha} onClick={pull}>
+          <span className={styles.gachaIcon} aria-hidden="true">🎰</span>
+          <span className={styles.gachaLabel}>ガチャを引く</span>
         </button>
       </div>
     )
   }
 
-  if (phase === 'offer') {
+  const c = CHARS[char]
+
+  if (phase === 'got') {
     return (
       <div className={styles.demo}>
-        <div className={styles.owned}>
-          <span className={styles.item} aria-hidden="true">☕</span>
-          <span className={styles.ownedTag}>あなたのマグ</span>
+        <span className={styles.getTag}>GET! あなたのキャラ</span>
+        <div className={styles.card}>
+          <span className={styles.rarity}>★★★</span>
+          <span className={styles.charIcon} aria-hidden="true">{c.emoji}</span>
+          <span className={styles.charName}>{c.name}</span>
         </div>
         <p className={styles.q}>
-          同じ¥1,000相当の<strong>ボールペン</strong>と
+          <strong>別の★3キャラ</strong>と交換できます。
           <br />
-          交換できます。どうしますか？
+          どうする？
         </p>
         <div className={styles.choices}>
           <button
@@ -51,7 +67,7 @@ export default function EndowmentDemo() {
               setPhase('result')
             }}
           >
-            <span className={styles.cIcon} aria-hidden="true">🖊️</span>
+            <span className={styles.cIcon} aria-hidden="true">🔄</span>
             交換する
           </button>
           <button
@@ -62,8 +78,8 @@ export default function EndowmentDemo() {
               setPhase('result')
             }}
           >
-            <span className={styles.cIcon} aria-hidden="true">☕</span>
-            持っておく
+            <span className={styles.cIcon} aria-hidden="true">💛</span>
+            この子がいい
           </button>
         </div>
       </div>
@@ -73,20 +89,21 @@ export default function EndowmentDemo() {
   const kept = choice === 'keep'
   return (
     <div className={styles.demo}>
-      <div className={styles.owned}>
-        <span className={styles.item} aria-hidden="true">{kept ? '☕' : '🖊️'}</span>
-        <span className={styles.ownedTag}>{kept ? 'マグのまま' : 'ペンに交換した'}</span>
+      <div className={styles.card}>
+        <span className={styles.rarity}>★★★</span>
+        <span className={styles.charIcon} aria-hidden="true">{kept ? c.emoji : '❔'}</span>
+        <span className={styles.charName}>{kept ? c.name : '別の★3キャラ'}</span>
       </div>
       <div className={styles.reveal} aria-live="polite">
         {kept ? (
           <p>交換しませんでしたね。じつは多くの人が同じ選択をします。</p>
         ) : (
-          <p>交換した少数派！ 一般には、交換せず持ち続ける人が多数です。</p>
+          <p>交換した少数派！ 交換せず手元に残す人が多数です。</p>
         )}
         <p className={styles.small}>
-          マグもペンも<strong>同じ¥1,000相当</strong>。面白いのは、最初に
-          <strong>ペンをもらっていたら今度はペンを手放したくなくなる</strong>こと。手にした“自分のもの”を高く感じる——これが保有効果。
-          無料お試しや返品保証が効くのも、この力です。
+          レアリティが同じ＝<strong>価値は同じ</strong>。面白いのは、別の子を引いていたら
+          <strong>今度はその子を手放したくなくなる</strong>こと。自分が手にした“この子”を特別に感じる——これが保有効果。
+          ガチャのキャラを売れない設計や「コンプしたい」心理も、この力です。
         </p>
         <button type="button" className={styles.again} onClick={reset}>
           もう一度

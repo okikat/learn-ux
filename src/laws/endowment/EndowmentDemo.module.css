@@ -11,62 +11,79 @@
   line-height: 1.7;
 }
 
-/* もらう（受け取る）ボタン */
-.gift {
+/* ガチャを引くボタン（誘うCTA） */
+.gacha {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--s2);
   padding: var(--s5) var(--s6);
-  border: 2px solid var(--border);
+  border: none;
   border-radius: var(--r3);
-  background: var(--surface);
-  box-shadow: var(--shadow-sm);
-  transition: border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+  background: var(--card-accent, var(--accent));
+  color: var(--accent-ink);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--t-fast) var(--ease);
 }
 
 @media (hover: hover) {
-  .gift:hover {
-    border-color: var(--card-accent, var(--accent));
+  .gacha:hover {
     transform: translateY(-2px);
   }
 }
 
-.giftIcon {
-  font-size: 56px;
+.gachaIcon {
+  font-size: 48px;
   line-height: 1;
 }
 
-.giftLabel {
-  font-size: 15px;
+.gachaLabel {
+  font-size: 16px;
   font-weight: 800;
-  color: var(--card-accent, var(--accent));
 }
 
-/* 「自分のもの」表示 */
-.owned {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--s2);
-  padding: var(--s4) var(--s6);
-  border: 2px solid var(--card-accent, var(--accent));
-  border-radius: var(--r3);
-  background: var(--surface-2);
-}
-
-.item {
-  font-size: 56px;
-  line-height: 1;
-}
-
-.ownedTag {
+/* GET! バッジ */
+.getTag {
   font-size: 12px;
   font-weight: 800;
   color: var(--accent-ink);
   background: var(--card-accent, var(--accent));
-  padding: 3px 12px;
+  padding: 4px 14px;
   border-radius: var(--r-pill);
+}
+
+/* 引いたキャラのカード */
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s1);
+  padding: var(--s4) var(--s6);
+  border: 2px solid var(--card-accent, var(--accent));
+  border-radius: var(--r3);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent) 14%, var(--surface)),
+    var(--surface)
+  );
+  box-shadow: var(--shadow-sm);
+}
+
+.rarity {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--card-accent, var(--accent));
+}
+
+.charIcon {
+  font-size: 52px;
+  line-height: 1;
+}
+
+.charName {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text);
 }
 
 .q {
@@ -110,7 +127,7 @@
 }
 
 .cIcon {
-  font-size: 30px;
+  font-size: 28px;
   line-height: 1;
 }
 
