@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Term from '../../components/Term'
 import styles from './PragnanzDemo.module.css'
 
 const R = 16
@@ -63,7 +64,7 @@ export default function PragnanzDemo() {
       </button>
 
       <p className={styles.note}>
-        脳は欠けた円のすき間を、<strong>いちばん単純で安定した形＝三角形</strong>として補って“見て”しまう（プレグナンツ）。
+        脳は欠けた円のすき間を、<strong>いちばん単純で安定した形＝三角形</strong>として補って“見て”しまう（<Term>プレグナンツ</Term>）。
         だからロゴやアイコンは、線が少なく単純な形ほど速く正しく伝わる。
       </p>
     </div>

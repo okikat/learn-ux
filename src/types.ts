@@ -19,8 +19,8 @@ export interface LawMeta {
   tagline: string
   /** ②自分の言葉での短い解説（段落配列。文字列だけでなくJSXも混ぜられる） */
   description: ReactNode[]
-  /** ④実践Tips（2〜3個） */
-  tips: string[]
+  /** ④実践Tips（2〜3個）。文字列だけでなくJSX（用語ヒント等）も混ぜられる */
+  tips: ReactNode[]
   /** デモ下に出す「この体験から分かること」 */
   takeaway: string
   /** カード等のアクセントカラー */

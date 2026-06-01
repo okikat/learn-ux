@@ -60,8 +60,8 @@ export default function LawDetail({ law }: { law: LawMeta }) {
       <section className={styles.section} aria-label="実践のヒント">
         <h2 className={styles.h2}>だから、設計ではこうする</h2>
         <ul className={styles.tips}>
-          {law.tips.map((tip) => (
-            <li key={tip.slice(0, 12)} className={styles.tip}>
+          {law.tips.map((tip, i) => (
+            <li key={i} className={styles.tip}>
               <span className={styles.tipMark} aria-hidden="true">
                 ✓
               </span>
