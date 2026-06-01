@@ -48,7 +48,7 @@ export default function PeakEndDemo() {
   return (
     <div className={styles.demo}>
       <p className={styles.lead}>
-        AとBは<strong>ダウンロードにかかる合計時間がまったく同じ</strong>です。両方を再生して、どちらが快適か比べてください。
+        AとBは<strong>合計時間がまったく同じ</strong>ダウンロードです。違うのは<strong>「終わり方」</strong>だけ。両方を再生して、どちらが快適だったか選んでください。
       </p>
 
       <ProgressRow
@@ -66,6 +66,7 @@ export default function PeakEndDemo() {
         playing={playing === 'B'}
         disabled={playing !== null}
         onPlay={() => play('B')}
+        janky
       />
 
       {bothPlayed && vote === null && (
@@ -117,6 +118,7 @@ function ProgressRow({
   playing,
   disabled,
   onPlay,
+  janky,
 }: {
   title: string
   progress: number
@@ -124,9 +126,11 @@ function ProgressRow({
   playing: boolean
   disabled: boolean
   onPlay: () => void
+  janky?: boolean
 }) {
   const pct = Math.round(progress * 100)
   const done = played && !playing
+  const stuck = janky && playing && pct >= 99
   return (
     <div className={styles.row}>
       <button type="button" className={styles.playBtn} onClick={onPlay} disabled={disabled}>
@@ -135,7 +139,9 @@ function ProgressRow({
       <div className={styles.track}>
         <span className={styles.fill} style={{ width: `${pct}%` }} />
       </div>
-      <span className={styles.pct}>{done ? '完了 ✓' : `${pct}%`}</span>
+      <span className={styles.pct}>
+        {done ? (janky ? '完了 😣' : '完了 ✓') : stuck ? '99% 🔄' : `${pct}%`}
+      </span>
     </div>
   )
 }

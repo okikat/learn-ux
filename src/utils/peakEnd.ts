@@ -16,8 +16,7 @@ export function smoothProgress(t: number): number {
  */
 export function jankyProgress(t: number): number {
   const x = clamp01(t)
-  if (x < 0.45) return (x / 0.45) * 0.9 // 0→90%
-  if (x < 0.6) return 0.9 + ((x - 0.45) / 0.15) * 0.09 // 90→99%
-  if (x < 0.98) return 0.99 // 99%で貼りつく（イライラ）
-  return 0.99 + ((x - 0.98) / 0.02) * 0.01 // 最後に完了
+  if (x < 0.35) return (x / 0.35) * 0.99 // 序盤で一気に99%（最初は快調に見える）
+  if (x < 0.97) return 0.99 // 99%で“長く”貼りつく（イライラのピーク＝悪い終わり方）
+  return 0.99 + ((x - 0.97) / 0.03) * 0.01 // 最後にやっと完了
 }
