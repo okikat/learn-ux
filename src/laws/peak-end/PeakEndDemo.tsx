@@ -1,83 +1,44 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { smoothProgress, jankyProgress } from '../../utils/peakEnd'
+import { useState } from 'react'
 import styles from './PeakEndDemo.module.css'
 
-const DURATION = 4000 // A・B 共通の総時間（ここが同じなのがポイント）
-type Bar = 'A' | 'B'
+type Store = 'A' | 'B'
 
+/**
+ * ピーク・エンドの法則：同じ買い物（商品・値段・手順は同一）でも、
+ * 「最後の画面（締め方）」が違うと体験全体の印象が変わる。
+ * 悪い終わり方(B) と 良い終わり方(A) を見比べさせ、どちらをまた使うか問う。
+ */
 export default function PeakEndDemo() {
-  const [progA, setProgA] = useState(0)
-  const [progB, setProgB] = useState(0)
-  const [playing, setPlaying] = useState<Bar | null>(null)
-  const [playedA, setPlayedA] = useState(false)
-  const [playedB, setPlayedB] = useState(false)
-  const [vote, setVote] = useState<Bar | null>(null)
-  const rafRef = useRef<number | null>(null)
+  const [bought, setBought] = useState<{ A: boolean; B: boolean }>({ A: false, B: false })
+  const [vote, setVote] = useState<Store | null>(null)
 
-  useEffect(() => {
-    return () => {
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
-    }
-  }, [])
-
-  const play = useCallback((bar: Bar) => {
-    if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
-    setPlaying(bar)
-    const setProg = bar === 'A' ? setProgA : setProgB
-    const fn = bar === 'A' ? smoothProgress : jankyProgress
-    setProg(0)
-    const start = performance.now()
-    const tick = (now: number) => {
-      const t = (now - start) / DURATION
-      if (t >= 1) {
-        setProg(1)
-        setPlaying(null)
-        if (bar === 'A') setPlayedA(true)
-        else setPlayedB(true)
-        rafRef.current = null
-        return
-      }
-      setProg(fn(t))
-      rafRef.current = requestAnimationFrame(tick)
-    }
-    rafRef.current = requestAnimationFrame(tick)
-  }, [])
-
-  const bothPlayed = playedA && playedB
+  const bothBought = bought.A && bought.B
+  const reset = () => {
+    setBought({ A: false, B: false })
+    setVote(null)
+  }
 
   return (
     <div className={styles.demo}>
       <p className={styles.lead}>
-        AとBは<strong>合計時間がまったく同じ</strong>ダウンロードです。違うのは<strong>「終わり方」</strong>だけ。両方を再生して、どちらが快適だったか選んでください。
+        同じ商品を2つのお店で買います。<strong>商品も値段も手順も同じ</strong>。
+        違うのは<strong>「最後の画面」だけ</strong>です。両方で買って、見比べてください。
       </p>
 
-      <ProgressRow
-        title="A"
-        progress={progA}
-        played={playedA}
-        playing={playing === 'A'}
-        disabled={playing !== null}
-        onPlay={() => play('A')}
-      />
-      <ProgressRow
-        title="B"
-        progress={progB}
-        played={playedB}
-        playing={playing === 'B'}
-        disabled={playing !== null}
-        onPlay={() => play('B')}
-        janky
-      />
+      <div className={styles.stores}>
+        <StoreCard store="A" bought={bought.A} onBuy={() => setBought((b) => ({ ...b, A: true }))} />
+        <StoreCard store="B" bought={bought.B} onBuy={() => setBought((b) => ({ ...b, B: true }))} />
+      </div>
 
-      {bothPlayed && vote === null && (
+      {bothBought && vote === null && (
         <div className={styles.voteBox}>
-          <p className={styles.voteQ}>どちらのダウンロードが「快適」でしたか？</p>
+          <p className={styles.voteQ}>どちらのお店を、また使いたいですか？</p>
           <div className={styles.voteBtns}>
             <button type="button" className={styles.voteBtn} onClick={() => setVote('A')}>
-              Aが快適
+              店A
             </button>
             <button type="button" className={styles.voteBtn} onClick={() => setVote('B')}>
-              Bが快適
+              店B
             </button>
           </div>
         </div>
@@ -86,23 +47,14 @@ export default function PeakEndDemo() {
       {vote !== null && (
         <div className={styles.reveal} aria-live="polite">
           <p>
-            あなたの選択：<strong>{vote}</strong>
+            あなたの選択：<strong>店{vote}</strong>
           </p>
           <p className={styles.revealText}>
-            実は B は最後に<strong>「99%」で固まって</strong>なかなか終わりません（誰もが知る、あのイライラ）。
-            A はスッと完了します。<strong>合計時間は同じ</strong>でも、人は<strong>「終わり方」</strong>で体験全体を評価する——これがピーク・エンドの法則です。
+            商品も値段も手順も<strong>まったく同じ</strong>。なのに多くの人が<strong>店A</strong>を選ぶのは、
+            人が体験全体を<strong>「終わり方」</strong>で評価するから——これがピーク・エンドの法則です。
+            申込みやチェックアウトの<strong>最後の一画面</strong>こそ、丁寧に締めくくる価値があります。
           </p>
-          <button
-            type="button"
-            className={styles.retry}
-            onClick={() => {
-              setVote(null)
-              setPlayedA(false)
-              setPlayedB(false)
-              setProgA(0)
-              setProgB(0)
-            }}
-          >
+          <button type="button" className={styles.retry} onClick={reset}>
             もう一度ためす
           </button>
         </div>
@@ -111,37 +63,51 @@ export default function PeakEndDemo() {
   )
 }
 
-function ProgressRow({
-  title,
-  progress,
-  played,
-  playing,
-  disabled,
-  onPlay,
-  janky,
-}: {
-  title: string
-  progress: number
-  played: boolean
-  playing: boolean
-  disabled: boolean
-  onPlay: () => void
-  janky?: boolean
-}) {
-  const pct = Math.round(progress * 100)
-  const done = played && !playing
-  const stuck = janky && playing && pct >= 99
+function StoreCard({ store, bought, onBuy }: { store: Store; bought: boolean; onBuy: () => void }) {
   return (
-    <div className={styles.row}>
-      <button type="button" className={styles.playBtn} onClick={onPlay} disabled={disabled}>
-        {done ? `${title}を再生 ↺` : `${title}を再生 ▶`}
-      </button>
-      <div className={styles.track}>
-        <span className={styles.fill} style={{ width: `${pct}%` }} />
+    <div className={styles.store}>
+      <div className={styles.storeHead}>
+        <span className={styles.storeTag}>店{store}</span>
+        <span className={styles.steps}>カート→住所→支払い（手順は同じ）</span>
       </div>
-      <span className={styles.pct}>
-        {done ? (janky ? '完了 😣' : '完了 ✓') : stuck ? '99% 🔄' : `${pct}%`}
-      </span>
+      <div className={styles.product}>
+        <span className={styles.thumb} aria-hidden="true" />
+        <span className={styles.pInfo}>
+          <span className={styles.pName}>ワイヤレスイヤホン</span>
+          <span className={styles.pPrice}>¥3,000</span>
+        </span>
+      </div>
+
+      {/* ボタン⇄結果の差し替えで枠が動かないよう、最小高さを確保 */}
+      <div className={styles.action}>
+        {!bought ? (
+          <button type="button" className={styles.buyBtn} onClick={onBuy}>
+            購入を確定する
+          </button>
+        ) : store === 'A' ? (
+          <div className={`${styles.ending} ${styles.endingGood}`}>
+            <span className={styles.endingIcon} aria-hidden="true">
+              🎉
+            </span>
+            <span className={styles.endingText}>
+              ご購入ありがとうございます！
+              <br />
+              また会えるのを楽しみにしています😊
+            </span>
+          </div>
+        ) : (
+          <div className={`${styles.ending} ${styles.endingBad}`}>
+            <span className={styles.endingIcon} aria-hidden="true">
+              ⚠️
+            </span>
+            <span className={styles.endingText}>
+              エラーが発生しました。
+              <br />
+              お手数ですが最初からやり直してください。
+            </span>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
