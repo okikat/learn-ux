@@ -11,9 +11,9 @@ export function clamp(n: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, n))
 }
 
-/** ミリ秒を「x.x秒」表記に（例: 400 -> "0.4秒" / 1000 -> "1.0秒"） */
-export function formatSeconds(ms: number): string {
-  return `${(ms / 1000).toFixed(1)}秒`
+/** ミリ秒を「x.x秒」表記に（既定は小数1桁。digits=2 で「x.xx秒」＝差が丸まる比較用） */
+export function formatSeconds(ms: number, digits = 1): string {
+  return `${(ms / 1000).toFixed(digits)}秒`
 }
 
 /** part / total を 0〜100 の整数パーセントで返す（total=0 は 0） */

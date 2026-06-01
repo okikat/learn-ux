@@ -27,6 +27,10 @@ describe('formatSeconds', () => {
     expect(formatSeconds(1000)).toBe('1.0秒')
     expect(formatSeconds(3216)).toBe('3.2秒')
   })
+  it('digits=2 で小数2桁（fitts用）', () => {
+    expect(formatSeconds(480, 2)).toBe('0.48秒')
+    expect(formatSeconds(1234, 2)).toBe('1.23秒')
+  })
 })
 
 describe('percent', () => {
