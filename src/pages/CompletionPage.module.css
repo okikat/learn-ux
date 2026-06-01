@@ -1,0 +1,248 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s6);
+  padding-top: var(--s5);
+  padding-bottom: var(--s6);
+}
+
+/* 祝福（ピーク） */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--s3);
+}
+
+.burst {
+  font-size: 64px;
+  line-height: 1;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.sub {
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-muted);
+}
+
+/* 進捗 */
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  padding: var(--s5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r3);
+}
+
+.progressHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.progressNum {
+  font-family: var(--mono);
+  font-size: 16px;
+  color: var(--accent);
+}
+
+.track {
+  height: 14px;
+  background: var(--surface-3);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--r-pill);
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 55%, var(--good)));
+}
+
+.progressNote {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.progressNote strong {
+  color: var(--text);
+}
+
+/* PRO 紹介 */
+.pro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--s3);
+  padding: var(--s6) var(--s5);
+  border-radius: var(--r3);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent) 12%, var(--surface)),
+    var(--surface)
+  );
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+.proBadge {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--accent-ink);
+  background: var(--accent);
+  padding: 3px 12px;
+  border-radius: var(--r-pill);
+}
+
+.proTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.proMeta {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.proBlurb {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s2);
+  list-style: none;
+}
+
+.chip {
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--text-muted);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  margin-top: var(--s2);
+  padding: 0 var(--s6);
+  border-radius: var(--r-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 800;
+  font-size: 15px;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .cta:hover {
+    background: var(--accent-strong);
+  }
+}
+
+.back {
+  min-height: var(--tap);
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .back:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+}
+
+/* 種明かし（自己言及） */
+.reveal {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s3);
+  padding: var(--s5);
+  border-radius: var(--r3);
+  background: var(--surface-2);
+  border: 1px dashed var(--border-strong);
+}
+
+.revealTitle {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.revealLead {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.tricks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
+  list-style: none;
+}
+
+.tricks li {
+  position: relative;
+  padding-left: var(--s4);
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--text-muted);
+}
+
+.tricks li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.tricks strong {
+  color: var(--text);
+}
+
+.revealEnd {
+  margin-top: var(--s2);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.9;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.revealEnd strong {
+  color: var(--accent);
+}

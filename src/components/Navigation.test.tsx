@@ -117,10 +117,19 @@ describe('LawDetail の前後ナビ（前/次の2つだけ・中央TOPなし）'
     expect(within(nav).getByText('これが最初です')).toBeInTheDocument()
   })
 
-  it('末尾の法則: 「次」は無効（リンクは「前」だけ）', () => {
-    const nav = renderPager(stub(laws[laws.length - 1]))
+  it('PRO の最後: 「次」は無効（これで最後です）', () => {
+    const nav = renderPager(stub(biases[biases.length - 1]))
     expect(within(nav).getAllByRole('link')).toHaveLength(1)
     expect(within(nav).getByText('これで最後です')).toBeInTheDocument()
+  })
+
+  it('無料の最後（法則20）: 「次」は修了ページへのリンク', () => {
+    const nav = renderPager(stub(laws[laws.length - 1]))
+    expect(within(nav).getAllByRole('link')).toHaveLength(2)
+    expect(within(nav).getByRole('link', { name: /おつかれさま|修了/ })).toHaveAttribute(
+      'href',
+      '/complete',
+    )
   })
 
   it('PRO の前後ナビは PRO セット内で完結する', () => {

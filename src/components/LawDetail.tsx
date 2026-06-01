@@ -99,6 +99,15 @@ export default function LawDetail({ law }: { law: LawMeta }) {
             </span>
             <span className={styles.pagerArrow} aria-hidden="true">›</span>
           </Link>
+        ) : law.tier !== 'pro' ? (
+          // 無料20本目の「次」は修了ページへ（コースを気持ちよく締める＝ピーク・エンド）
+          <Link to="/complete" className={`${styles.pagerLink} ${styles.pagerNext}`}>
+            <span className={styles.pagerBody}>
+              <span className={styles.pagerDir}>コース修了</span>
+              <span className={styles.pagerName}>おつかれさま！ 🎉</span>
+            </span>
+            <span className={styles.pagerArrow} aria-hidden="true">›</span>
+          </Link>
         ) : (
           <span
             className={`${styles.pagerLink} ${styles.pagerNext} ${styles.pagerDisabled}`}
