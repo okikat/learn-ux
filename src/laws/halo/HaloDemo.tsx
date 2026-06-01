@@ -6,7 +6,11 @@ export default function HaloDemo() {
 
   return (
     <div className={styles.demo}>
-      <p className={styles.q}>まったく同じアドバイスです。「信頼できる」と感じるのは？</p>
+      <p className={styles.q}>
+        まったく同じアドバイスです。
+        <br />
+        「信頼できる」と感じるのは？
+      </p>
 
       <div className={styles.cards}>
         <button

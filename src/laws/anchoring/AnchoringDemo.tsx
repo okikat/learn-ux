@@ -6,7 +6,11 @@ export default function AnchoringDemo() {
 
   return (
     <div className={styles.demo}>
-      <p className={styles.q}>まったく同じイヤホンです。「お得！」と感じるのはどっち？</p>
+      <p className={styles.q}>
+        まったく同じイヤホンです。
+        <br />
+        「お得！」と感じるのはどっち？
+      </p>
 
       <div className={styles.cards}>
         <button

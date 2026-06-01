@@ -12,6 +12,19 @@ type Group = {
   items: { slug: string; titleJa: string }[]
 }
 
+/** カテゴリ名の末尾「（…）」は、メニュー内では改行して2段で見せる（例: 見え方（ゲシュタルト））。 */
+function catLabelLines(label: string) {
+  const i = label.indexOf('（')
+  if (i <= 0) return label
+  return (
+    <>
+      {label.slice(0, i)}
+      <br />
+      {label.slice(i)}
+    </>
+  )
+}
+
 /**
  * ヘッダー右の「☰」グローバルメニュー。
  *  - 一番上に TOP。以降は無料5カテゴリ ＋ 認知バイアス（PRO）。
@@ -107,7 +120,7 @@ export default function NavMenu() {
           <span className={styles.caret} aria-hidden="true">
             ◀
           </span>
-          <span className={styles.catLabel}>{g.label}</span>
+          <span className={styles.catLabel}>{catLabelLines(g.label)}</span>
           {g.pro && <span className={styles.proBadge}>PRO</span>}
         </button>
       </li>

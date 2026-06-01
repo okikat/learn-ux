@@ -5,64 +5,113 @@
   align-items: center;
 }
 
-.mug {
-  font-size: 56px;
-}
-
-.q {
+.lead {
   text-align: center;
   font-size: 15px;
   line-height: 1.7;
 }
 
-.slider {
-  width: 100%;
-  max-width: 300px;
-  height: var(--tap);
-  accent-color: var(--card-accent, var(--accent));
-  cursor: pointer;
+/* もらう（受け取る）ボタン */
+.gift {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s2);
+  padding: var(--s5) var(--s6);
+  border: 2px solid var(--border);
+  border-radius: var(--r3);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
 }
 
-.val {
-  font-family: var(--mono);
-  font-size: 24px;
+@media (hover: hover) {
+  .gift:hover {
+    border-color: var(--card-accent, var(--accent));
+    transform: translateY(-2px);
+  }
+}
+
+.giftIcon {
+  font-size: 56px;
+  line-height: 1;
+}
+
+.giftLabel {
+  font-size: 15px;
   font-weight: 800;
   color: var(--card-accent, var(--accent));
 }
 
-.next {
-  min-height: var(--tap);
-  padding: 0 var(--s6);
-  border: none;
-  border-radius: var(--r-pill);
-  background: var(--card-accent, var(--accent));
-  color: #fff;
-  font-weight: 700;
-  font-size: 15px;
-  box-shadow: var(--shadow-md);
-}
-
-.rows {
-  width: 100%;
-  max-width: 300px;
+/* 「自分のもの」表示 */
+.owned {
   display: flex;
   flex-direction: column;
-  gap: var(--s2);
-}
-
-.rowItem {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: var(--s3) var(--s4);
+  gap: var(--s2);
+  padding: var(--s4) var(--s6);
+  border: 2px solid var(--card-accent, var(--accent));
+  border-radius: var(--r3);
   background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--r2);
 }
 
-.rowItem strong {
-  font-family: var(--mono);
-  font-size: 18px;
+.item {
+  font-size: 56px;
+  line-height: 1;
+}
+
+.ownedTag {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--accent-ink);
+  background: var(--card-accent, var(--accent));
+  padding: 3px 12px;
+  border-radius: var(--r-pill);
+}
+
+.q {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.q strong {
+  color: var(--card-accent, var(--accent));
+}
+
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s3);
+  width: 100%;
+}
+
+.choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  min-height: 92px;
+  padding: var(--s4) var(--s3);
+  border: 2px solid var(--border);
+  border-radius: var(--r2);
+  background: var(--surface);
+  font-size: 14px;
+  font-weight: 700;
+  transition: border-color var(--t-fast) var(--ease);
+}
+
+@media (hover: hover) {
+  .choice:hover {
+    border-color: var(--card-accent, var(--accent));
+  }
+}
+
+.cIcon {
+  font-size: 30px;
+  line-height: 1;
 }
 
 .reveal {

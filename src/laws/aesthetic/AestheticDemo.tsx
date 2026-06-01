@@ -38,7 +38,7 @@ export default function AestheticDemo() {
             </button>
           </div>
           <button type="button" className={styles.voteBtn} onClick={() => cast('plain')} disabled={vote !== null}>
-            こちらを信頼（A）
+            こちら（A）
           </button>
         </div>
 
@@ -72,7 +72,7 @@ export default function AestheticDemo() {
             </button>
           </div>
           <button type="button" className={styles.voteBtn} onClick={() => cast('fancy')} disabled={vote !== null}>
-            こちらを信頼（B）
+            こちら（B）
           </button>
         </div>
       </div>

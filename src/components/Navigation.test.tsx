@@ -22,6 +22,10 @@ function renderMenu() {
 
 const openMenu = () => fireEvent.click(screen.getByRole('button', { name: 'メニューを開く' }))
 
+// カテゴリ名の末尾「（…）」は表示上2段に改行されることがある（アクセシブル名に空白が入る）。
+// 改行位置の空白を許容してマッチさせる。
+const labelRe = (label: string) => new RegExp(label.replace('（', '\\s*（'))
+
 describe('NavMenu（☰ グローバルメニュー）', () => {
   it('初期状態ではメニューは閉じている', () => {
     renderMenu()
@@ -33,7 +37,7 @@ describe('NavMenu（☰ グローバルメニュー）', () => {
     openMenu()
     expect(screen.getByRole('link', { name: 'TOP' })).toHaveAttribute('href', '/')
     for (const c of categories) {
-      expect(screen.getByRole('button', { name: new RegExp(c.label) })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: labelRe(c.label) })).toBeInTheDocument()
     }
     // PRO バッジ（有料カテゴリを含める）
     expect(screen.getByText('PRO')).toBeInTheDocument()
@@ -46,7 +50,7 @@ describe('NavMenu（☰ グローバルメニュー）', () => {
     const firstLaw = laws.find((l) => l.category === cat.id)!
     // 開く前は小項目リンクは無い
     expect(screen.queryByRole('link', { name: firstLaw.titleJa })).toBeNull()
-    fireEvent.click(screen.getByRole('button', { name: new RegExp(cat.label) }))
+    fireEvent.click(screen.getByRole('button', { name: labelRe(cat.label) }))
     expect(screen.getByRole('link', { name: firstLaw.titleJa })).toHaveAttribute(
       'href',
       `/laws/${firstLaw.slug}`,

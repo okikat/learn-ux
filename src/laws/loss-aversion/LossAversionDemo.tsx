@@ -21,11 +21,13 @@ export default function LossAversionDemo() {
         <p className={styles.q}>どちらを選ぶ？</p>
         <div className={styles.choices}>
           <button type="button" className={styles.choice} onClick={() => { setGain('sure'); setRound(1) }}>
-            <span className={styles.big}>確実に +1,000円</span>
+            <span className={styles.lead}>確実に</span>
+            <span className={styles.big}>+1,000円</span>
             <span className={styles.sub}>ノーリスク</span>
           </button>
           <button type="button" className={styles.choice} onClick={() => { setGain('gamble'); setRound(1) }}>
-            <span className={styles.big}>50%で +2,500円</span>
+            <span className={styles.lead}>50%で</span>
+            <span className={styles.big}>+2,000円</span>
             <span className={styles.sub}>50%で 0円</span>
           </button>
         </div>
@@ -40,11 +42,13 @@ export default function LossAversionDemo() {
         <p className={styles.q}>どちらを選ぶ？</p>
         <div className={styles.choices}>
           <button type="button" className={styles.choice} onClick={() => { setLoss('sure'); setRound(2) }}>
-            <span className={styles.big}>確実に −1,000円</span>
+            <span className={styles.lead}>確実に</span>
+            <span className={styles.big}>−1,000円</span>
             <span className={styles.sub}>ノーリスク</span>
           </button>
           <button type="button" className={styles.choice} onClick={() => { setLoss('gamble'); setRound(2) }}>
-            <span className={styles.big}>50%で −2,500円</span>
+            <span className={styles.lead}>50%で</span>
+            <span className={styles.big}>−2,000円</span>
             <span className={styles.sub}>50%で 0円</span>
           </button>
         </div>

@@ -17,7 +17,9 @@ export default function DefaultEffectDemo() {
             disabled={done}
           />
           <span>
-            📩 お得情報メールを受け取る<span className={styles.rec}>（おすすめ）</span>
+            📩 お得情報メールを受け取る
+            <br />
+            <span className={styles.rec}>（おすすめ）</span>
           </span>
         </label>
         {/* ボタン⇄結果の差し替えで枠が伸び縮みしないよう高さを確保 */}

@@ -1,89 +1,94 @@
 import { useState } from 'react'
 import styles from './EndowmentDemo.module.css'
 
+type Phase = 'gift' | 'offer' | 'result'
+type Choice = 'keep' | 'swap'
+
+/**
+ * 保有効果：もらった瞬間から手放したくなくなる。
+ * くじでマグを「受け取る」→ 同価値のペンと交換できると提案 → 多くは交換せず持ち続ける。
+ * （中身は同価値なのに手放したくない＝保有効果。Knetsch のマグ／ペン実験を体感版に）
+ */
 export default function EndowmentDemo() {
-  const [step, setStep] = useState<0 | 1 | 2>(0)
-  const [sell, setSell] = useState(800)
-  const [buy, setBuy] = useState(800)
+  const [phase, setPhase] = useState<Phase>('gift')
+  const [choice, setChoice] = useState<Choice | null>(null)
 
-  if (step === 0) {
+  const reset = () => {
+    setPhase('gift')
+    setChoice(null)
+  }
+
+  if (phase === 'gift') {
     return (
       <div className={styles.demo}>
-        <div className={styles.mug} aria-hidden="true">☕</div>
-        <p className={styles.q}>
-          このマグカップは<strong>あなたのもの</strong>です。
-          <br />
-          最低いくらなら手放せますか？（売値）
-        </p>
-        <input
-          className={styles.slider}
-          type="range"
-          min={0}
-          max={2000}
-          step={100}
-          value={sell}
-          onChange={(e) => setSell(Number(e.target.value))}
-        />
-        <span className={styles.val}>¥{sell.toLocaleString()}</span>
-        <button type="button" className={styles.next} onClick={() => setStep(1)}>
-          決めた
+        <p className={styles.lead}>くじが当たりました！ タップして受け取ってください。</p>
+        <button type="button" className={styles.gift} onClick={() => setPhase('offer')}>
+          <span className={styles.giftIcon} aria-hidden="true">🎁</span>
+          <span className={styles.giftLabel}>受け取る</span>
         </button>
       </div>
     )
   }
 
-  if (step === 1) {
+  if (phase === 'offer') {
     return (
       <div className={styles.demo}>
-        <div className={styles.mug} aria-hidden="true">☕</div>
+        <div className={styles.owned}>
+          <span className={styles.item} aria-hidden="true">☕</span>
+          <span className={styles.ownedTag}>あなたのマグ</span>
+        </div>
         <p className={styles.q}>
-          では、<strong>持っていない</strong>として。
+          同じ¥1,000相当の<strong>ボールペン</strong>と
           <br />
-          同じマグ、最高いくらまで出して買いますか？（買値）
+          交換できます。どうしますか？
         </p>
-        <input
-          className={styles.slider}
-          type="range"
-          min={0}
-          max={2000}
-          step={100}
-          value={buy}
-          onChange={(e) => setBuy(Number(e.target.value))}
-        />
-        <span className={styles.val}>¥{buy.toLocaleString()}</span>
-        <button type="button" className={styles.next} onClick={() => setStep(2)}>
-          決めた
-        </button>
+        <div className={styles.choices}>
+          <button
+            type="button"
+            className={styles.choice}
+            onClick={() => {
+              setChoice('swap')
+              setPhase('result')
+            }}
+          >
+            <span className={styles.cIcon} aria-hidden="true">🖊️</span>
+            交換する
+          </button>
+          <button
+            type="button"
+            className={styles.choice}
+            onClick={() => {
+              setChoice('keep')
+              setPhase('result')
+            }}
+          >
+            <span className={styles.cIcon} aria-hidden="true">☕</span>
+            持っておく
+          </button>
+        </div>
       </div>
     )
   }
 
-  const gap = sell - buy
+  const kept = choice === 'keep'
   return (
     <div className={styles.demo}>
-      <div className={styles.rows}>
-        <div className={styles.rowItem}>
-          <span>売値（手放す）</span>
-          <strong>¥{sell.toLocaleString()}</strong>
-        </div>
-        <div className={styles.rowItem}>
-          <span>買値（買う）</span>
-          <strong>¥{buy.toLocaleString()}</strong>
-        </div>
+      <div className={styles.owned}>
+        <span className={styles.item} aria-hidden="true">{kept ? '☕' : '🖊️'}</span>
+        <span className={styles.ownedTag}>{kept ? 'マグのまま' : 'ペンに交換した'}</span>
       </div>
       <div className={styles.reveal} aria-live="polite">
-        {gap > 0 ? (
-          <p>
-            <strong>売値 ＞ 買値</strong>でしたね。多くの人がそうなります。
-          </p>
+        {kept ? (
+          <p>交換しませんでしたね。じつは多くの人が同じ選択をします。</p>
         ) : (
-          <p>今回は差が小さめ。一般には「売値 ＞ 買値」になりがちです。</p>
+          <p>交換した少数派！ 一般には、交換せず持ち続ける人が多数です。</p>
         )}
         <p className={styles.small}>
-          同じ物でも、<strong>自分が持っているだけで価値を高く見積もる</strong>——これが保有効果。
-          無料お試しで“自分のもの”にさせると手放しにくくなるのも、この力です。
+          マグもペンも<strong>同じ¥1,000相当</strong>。面白いのは、最初に
+          <strong>ペンをもらっていたら今度はペンを手放したくなくなる</strong>こと。手にした“自分のもの”を高く感じる——これが保有効果。
+          無料お試しや返品保証が効くのも、この力です。
         </p>
-        <button type="button" className={styles.again} onClick={() => setStep(0)}>
+        <button type="button" className={styles.again} onClick={reset}>
           もう一度
         </button>
       </div>

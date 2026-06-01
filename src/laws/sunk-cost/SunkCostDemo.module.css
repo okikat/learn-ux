@@ -47,10 +47,11 @@
   color: var(--text-muted);
 }
 
+/* 「もったいないし続ける」が狭幅で折り返さないよう縦並び・全幅に */
 .choices {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--s3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s2);
   margin-top: var(--s2);
 }
 
