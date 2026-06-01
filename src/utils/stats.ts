@@ -11,15 +11,6 @@ export function clamp(n: number, min: number, max: number): number {
   return Math.min(max, Math.max(min, n))
 }
 
-/** ミリ秒を読みやすく整形（例: 1234 -> "1234ms" / 1500以上は秒併記） */
-export function formatMs(ms: number): string {
-  const rounded = Math.round(ms)
-  if (rounded >= 1000) {
-    return `${(rounded / 1000).toFixed(2)}秒 (${rounded}ms)`
-  }
-  return `${rounded}ms`
-}
-
 /** ミリ秒を「x.x秒」表記に（例: 400 -> "0.4秒" / 1000 -> "1.0秒"） */
 export function formatSeconds(ms: number): string {
   return `${(ms / 1000).toFixed(1)}秒`

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { formatMs } from '../../utils/stats'
+import { formatSeconds } from '../../utils/stats'
 import styles from './HickDemo.module.css'
 
 /** 30択ぶん用意した、見分けのつく語彙プール。 */
@@ -96,19 +96,19 @@ export default function HickDemo() {
             <span className={styles.rBarWrap}>
               <span className={styles.rBar} style={{ width: `${barWidth(times[0], times)}%` }} />
             </span>
-            <span className={styles.rTime}>{Math.round(times[0])}ms</span>
+            <span className={styles.rTime}>{formatSeconds(times[0])}</span>
           </div>
           <div className={styles.resultRow}>
             <span className={styles.rLabel}>30択</span>
             <span className={styles.rBarWrap}>
               <span className={`${styles.rBar} ${styles.rBarBig}`} style={{ width: `${barWidth(times[1], times)}%` }} />
             </span>
-            <span className={styles.rTime}>{Math.round(times[1])}ms</span>
+            <span className={styles.rTime}>{formatSeconds(times[1])}</span>
           </div>
         </div>
         <p className={styles.resultNote}>
           {diff > 0
-            ? `30択は3択より約 ${formatMs(diff)} 多くかかりました。`
+            ? `30択は3択より約 ${formatSeconds(diff)} 多くかかりました。`
             : '今回は差が小さめでした。'}
           {' '}※1回の計測なので、個人差や偶然で前後します。何度か試すと傾向が見えます。
         </p>

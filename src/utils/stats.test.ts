@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { mean, clamp, formatMs, percent, wrapIndex } from './stats'
+import { mean, clamp, formatSeconds, percent, wrapIndex } from './stats'
 
 describe('mean', () => {
   it('空配列は0', () => {
@@ -21,13 +21,11 @@ describe('clamp', () => {
   })
 })
 
-describe('formatMs', () => {
-  it('1000ms未満はそのまま整数ms', () => {
-    expect(formatMs(420)).toBe('420ms')
-    expect(formatMs(420.7)).toBe('421ms')
-  })
-  it('1000ms以上は秒を併記', () => {
-    expect(formatMs(1500)).toBe('1.50秒 (1500ms)')
+describe('formatSeconds', () => {
+  it('ミリ秒を「x.x秒」（小数1桁）に整形', () => {
+    expect(formatSeconds(400)).toBe('0.4秒')
+    expect(formatSeconds(1000)).toBe('1.0秒')
+    expect(formatSeconds(3216)).toBe('3.2秒')
   })
 })
 

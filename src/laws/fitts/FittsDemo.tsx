@@ -1,5 +1,5 @@
 import { useCallback, useRef, useState } from 'react'
-import { formatMs, mean } from '../../utils/stats'
+import { formatSeconds, mean } from '../../utils/stats'
 import { distanceBetween } from '../../utils/fitts'
 import styles from './FittsDemo.module.css'
 
@@ -104,7 +104,7 @@ export default function FittsDemo() {
         </span>
         {lastMt !== null && phase !== 'done' && (
           <span className={styles.last} aria-live="polite">
-            直前: <strong>{formatMs(lastMt)}</strong>
+            直前: <strong>{formatSeconds(lastMt)}</strong>
           </span>
         )}
       </div>
@@ -168,7 +168,7 @@ export default function FittsDemo() {
                     </span>
                   </td>
                   <td className={styles.num}>{Math.round(r.d)}px</td>
-                  <td className={styles.num}>{formatMs(r.mt)}</td>
+                  <td className={styles.num}>{formatSeconds(r.mt)}</td>
                 </tr>
               ))}
             </tbody>
@@ -179,22 +179,22 @@ export default function FittsDemo() {
               <span className={styles.cmpTitle}>大きさで比較</span>
               <div className={styles.cmpRow}>
                 <span className={styles.cmpName}>大きい標的</span>
-                <span className={styles.cmpVal}>{Math.round(meanBySize('L'))}ms</span>
+                <span className={styles.cmpVal}>{formatSeconds(meanBySize('L'))}</span>
               </div>
               <div className={styles.cmpRow}>
                 <span className={styles.cmpName}>小さい標的</span>
-                <span className={styles.cmpVal}>{Math.round(meanBySize('S'))}ms</span>
+                <span className={styles.cmpVal}>{formatSeconds(meanBySize('S'))}</span>
               </div>
             </div>
             <div className={styles.cmpGroup}>
               <span className={styles.cmpTitle}>距離で比較</span>
               <div className={styles.cmpRow}>
                 <span className={styles.cmpName}>近い標的</span>
-                <span className={styles.cmpVal}>{Math.round(meanByDist('near'))}ms</span>
+                <span className={styles.cmpVal}>{formatSeconds(meanByDist('near'))}</span>
               </div>
               <div className={styles.cmpRow}>
                 <span className={styles.cmpName}>遠い標的</span>
-                <span className={styles.cmpVal}>{Math.round(meanByDist('far'))}ms</span>
+                <span className={styles.cmpVal}>{formatSeconds(meanByDist('far'))}</span>
               </div>
             </div>
           </div>
