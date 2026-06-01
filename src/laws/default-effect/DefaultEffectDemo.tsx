@@ -20,17 +20,20 @@ export default function DefaultEffectDemo() {
             📩 お得情報メールを受け取る<span className={styles.rec}>（おすすめ）</span>
           </span>
         </label>
-        {!done ? (
-          <button type="button" className={styles.submit} onClick={() => setDone(true)}>
-            登録する
-          </button>
-        ) : (
-          <div className={styles.result} aria-live="polite">
-            {checked
-              ? 'メール受信「ON」で登録完了。初期チェックのまま進みませんでしたか？'
-              : '「OFF」で登録完了。わざわざ外したあなたは、実は少数派かも。'}
-          </div>
-        )}
+        {/* ボタン⇄結果の差し替えで枠が伸び縮みしないよう高さを確保 */}
+        <div className={styles.action}>
+          {!done ? (
+            <button type="button" className={styles.submit} onClick={() => setDone(true)}>
+              登録する
+            </button>
+          ) : (
+            <div className={styles.result} aria-live="polite">
+              {checked
+                ? 'メール受信「ON」で登録完了。初期チェックのまま進みませんでしたか？'
+                : '「OFF」で登録完了。わざわざ外したあなたは、実は少数派かも。'}
+            </div>
+          )}
+        </div>
       </div>
 
       <p className={styles.note}>

@@ -76,6 +76,11 @@
   border-radius: var(--r-pill);
 }
 
+/* OFF時も高さを確保してトグルで枠が動かないようにする */
+.stockHidden {
+  visibility: hidden;
+}
+
 .price {
   font-size: 18px;
   font-weight: 800;
@@ -112,6 +117,8 @@
   font-size: 14px;
   color: var(--text-muted);
   line-height: 1.7;
+  /* トグルで文言が変わっても下が動かないよう確保 */
+  min-height: 2.8em;
 }
 
 .note {

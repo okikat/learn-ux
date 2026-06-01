@@ -55,6 +55,11 @@
   text-decoration: line-through;
 }
 
+/* A側（取り消し線価格なし）でも高さを確保し、両カードの価格位置をそろえる */
+.wasHidden {
+  visibility: hidden;
+}
+
 .price {
   font-size: 22px;
   font-weight: 800;

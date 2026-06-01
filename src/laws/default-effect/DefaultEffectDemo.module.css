@@ -45,6 +45,14 @@
   font-weight: 700;
 }
 
+/* ボタン⇄結果で枠の高さが動かないよう確保 */
+.action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 76px;
+}
+
 .submit {
   min-height: var(--tap);
   border: none;

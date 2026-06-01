@@ -16,6 +16,10 @@ export default function AnchoringDemo() {
           disabled={vote !== null}
         >
           <span className={styles.name}>ワイヤレスイヤホン</span>
+          {/* B側の取り消し線価格と価格の高さをそろえる（比較しやすく） */}
+          <span className={`${styles.was} ${styles.wasHidden}`} aria-hidden="true">
+            ¥9,800
+          </span>
           <span className={styles.price}>¥4,980</span>
         </button>
         <button

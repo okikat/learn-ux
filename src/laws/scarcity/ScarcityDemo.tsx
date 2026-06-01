@@ -27,7 +27,10 @@ export default function ScarcityDemo() {
         <span className={styles.thumb} aria-hidden="true" />
         <div className={styles.body}>
           <span className={styles.name}>限定デザインのマグカップ</span>
-          {on && <span className={styles.stock}>⚠ 残り2点・本日23:59まで</span>}
+          {/* 行が増えて枠が伸びないよう、OFF時も場所を確保（visibility） */}
+          <span className={`${styles.stock} ${on ? '' : styles.stockHidden}`}>
+            ⚠ 残り2点・本日23:59まで
+          </span>
           <span className={styles.price}>¥1,800</span>
           <span className={`${styles.cart} ${on ? styles.pulse : ''}`}>カートに入れる</span>
         </div>
