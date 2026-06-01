@@ -6,7 +6,11 @@ export default function FramingDemo() {
 
   return (
     <div className={styles.demo}>
-      <p className={styles.q}>同じヨーグルトです。買いたくなるのはどっち？</p>
+      <p className={styles.q}>
+        同じヨーグルトです。
+        <br />
+        買いたくなるのはどっち？
+      </p>
 
       <div className={styles.cards}>
         <button

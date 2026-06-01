@@ -16,7 +16,7 @@ const PLANS_NO: Plan[] = [
 ]
 const PLANS_DECOY: Plan[] = [
   { id: 'A', name: 'ライト', price: '¥500', detail: '容量 5GB', share: 20 },
-  { id: 'B', name: 'スタンダード', price: '¥950', detail: '容量 5GB', share: 5, decoy: true },
+  { id: 'B', name: 'スタンダード', price: '¥900', detail: '容量 10GB', share: 5, decoy: true },
   { id: 'C', name: 'プロ', price: '¥1,000', detail: '容量 100GB', share: 75 },
 ]
 
@@ -68,7 +68,7 @@ export default function DecoyDemo() {
 
       <p className={styles.caption} aria-live="polite">
         {decoy
-          ? '「プロと同じ値段なのに容量はライト並み」のおとりを足すと、プロが“断然お得”に見えて選ばれます。'
+          ? '「プロまであと¥100なのに容量は1/10」のおとりを置くと、プロが“断然お得”に見えて選ばれます。'
           : '2択だと、安いライトと高機能プロで好みが分かれます。'}
       </p>
       <p className={styles.note}>
