@@ -1,0 +1,79 @@
+.wrap {
+  display: flex;
+  justify-content: center;
+  padding-block: var(--s7);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s3);
+  width: 100%;
+  max-width: 440px;
+  padding: var(--s6) var(--s5);
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r3);
+  box-shadow: var(--shadow-sm);
+}
+
+.icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.body {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--s3);
+  margin-top: var(--s2);
+}
+
+.reload,
+.home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap);
+  padding: 0 var(--s5);
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.reload {
+  border: none;
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.home {
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+}
+
+@media (hover: hover) {
+  .reload:hover {
+    background: var(--accent-strong);
+  }
+  .home:hover {
+    background: var(--surface-2);
+  }
+}

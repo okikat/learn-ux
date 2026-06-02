@@ -52,7 +52,7 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.06em;
-  color: #fff;
+  color: var(--accent-ink);
   background: var(--good);
   padding: 3px 8px;
   border-radius: var(--r-pill);
@@ -104,14 +104,16 @@
     background var(--t-fast) var(--ease);
 }
 
-.catChip:hover {
-  border-color: var(--accent);
-  color: var(--accent-strong);
-  background: var(--accent-soft);
+@media (hover: hover) {
+  .catChip:hover {
+    border-color: var(--accent);
+    color: var(--accent-strong);
+    background: var(--accent-soft);
+  }
 }
 
 .catChipPro {
-  color: #fff;
+  color: var(--accent-ink);
   border-color: transparent;
   background: linear-gradient(135deg, #b5179e, #7b2ff7);
 }
@@ -165,7 +167,7 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: #fff;
+  color: var(--accent-ink);
   background: linear-gradient(135deg, #b5179e, #7b2ff7);
   padding: 4px 10px;
   border-radius: var(--r-pill);

@@ -15,9 +15,11 @@
   transition: border-color var(--t-base) var(--ease), background var(--t-base) var(--ease);
 }
 
-.toggle:hover {
-  background: var(--surface-2);
-  border-color: var(--border-strong);
+@media (hover: hover) {
+  .toggle:hover {
+    background: var(--surface-2);
+    border-color: var(--border-strong);
+  }
 }
 
 /* オーバーレイ（createPortal で body 直下に描画）。
@@ -76,9 +78,11 @@
   letter-spacing: 0.06em;
 }
 
-.top:hover {
-  text-decoration: none;
-  background: var(--surface-2);
+@media (hover: hover) {
+  .top:hover {
+    text-decoration: none;
+    background: var(--surface-2);
+  }
 }
 
 .divider {
@@ -106,8 +110,10 @@
   transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
 }
 
-.catRow:hover {
-  background: var(--surface-2);
+@media (hover: hover) {
+  .catRow:hover {
+    background: var(--surface-2);
+  }
 }
 
 .catRowActive {
@@ -185,10 +191,12 @@
   line-height: 1.35;
 }
 
-.subLink:hover {
-  text-decoration: none;
-  background: var(--accent-soft);
-  color: var(--accent-strong);
+@media (hover: hover) {
+  .subLink:hover {
+    text-decoration: none;
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+  }
 }
 
 @keyframes navFade {
@@ -268,8 +276,8 @@
   width: 27px;
   height: 27px;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 0 1px rgba(0, 0, 0, 0.2);
+  background: var(--accent-ink);
+  box-shadow: var(--shadow-sm);
   transition: transform var(--t-base) var(--ease);
 }
 
