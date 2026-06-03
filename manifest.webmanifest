@@ -1,0 +1,19 @@
+{
+  "name": "さわって学ぶUX",
+  "short_name": "学ぶUX",
+  "description": "UXデザインの心理法則を、操作して体感できるインタラクティブ学習アプリ。",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7fb",
+  "theme_color": "#5b5bd6",
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
