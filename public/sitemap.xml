@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- HashRouter のため各法則は #/laws/... のフラグメント＝個別URLにならない。
+     クローラ対象になり得るのはサイトの入口のみを記載する。 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://okikat.github.io/learn-ux/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
